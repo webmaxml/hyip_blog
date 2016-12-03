@@ -1,2 +1,45 @@
+@import "utilities";
 @import "vars";
+@import "fonts";
+@import "normalize";
+@import "reset";
+@import "assets/index";
 @import "base";
+
+.wrapper {
+	@extend %wrapper;
+}
+
+/* top line */
+.top-line {
+	@extend %rnsbs;
+	@extend %h-padding;
+
+	background-color: $topLine_bg;
+
+	&__logo {
+		font-size: $base-fz * 1.5;
+		line-height: $base-lh * 2;
+		@extend %light-link;
+	}
+
+	&__log-wrap {
+		@extend %rnfec;
+	}
+
+	&__reg-btn {
+		margin-right: 15px;
+
+		font-size: $base-fz * 1;
+		line-height: $base-lh * 2;
+		@extend %light-link;
+	}
+
+	&__log-btn {
+		@extend %btn-default;
+	}
+}
+
+.fuck-line {
+	@extend %rnsbs;
+}

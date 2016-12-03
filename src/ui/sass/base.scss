@@ -2,6 +2,28 @@
 *        BASE         *
 ***********************/
 
+html {
+	box-sizing: border-box;
+}
+
+* {
+ 	box-sizing: inherit;
+}
+
+%wrapper {
+	max-width: 1170px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+%clearfix:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
 // -- row nowrap --
 
 // flex-start
@@ -456,4 +478,33 @@
 	flex-flow: column nowrap;
 	justify-content: space-around;
 	align-items: stretch;
+}
+
+// h-padding
+%h-padding {
+	padding: 0 $base-lh;
+}
+
+// light link
+%light-link {
+	color: darken( $light_link_c, 10% );
+
+	&:hover {
+		color: $light_link_c; 
+	}
+}
+
+// default btn
+%btn-default {
+	padding: 0 15px;
+
+	font-size: $base-fz * 1;
+	font-weight: bold;
+	line-height: $base-lh * 1.2;
+
+	background-color: darken( $btn_bg, 10% );
+
+	&:hover {
+		background-color: $btn_bg;
+	}
 }
