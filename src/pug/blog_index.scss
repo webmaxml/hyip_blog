@@ -1,0 +1,74 @@
+/* wrapper */
+.wrapper {
+	position: relative;
+	z-index: 0;
+
+	width: 100%;
+
+	background-color: $c_main_bg;
+
+	&__link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+
+		display: block;
+		width: 100%;
+		height: 1080px;
+
+		background: $c_text url("/img/ad_bg.jpg") no-repeat top center;
+
+		&::after {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			display: block;
+			content: "";
+
+			width: 100%;
+			height: 100px;
+
+			background: $c_link_bg_transition;
+		}
+	}
+}
+
+/* header */
+.header {
+	@extend %wrapper;
+	@extend %h_paddings;
+	@extend %rwsbs;
+
+	padding-top: $base-lh;
+
+	&__logo {
+		font-family: $ff_logo;
+		font-size: $fz3;
+		line-height: $base-lh * 2;
+		color: #fff;
+		text-transform: uppercase;
+	}
+
+	&__logo-accent {
+		color: $c_accent;
+	}
+
+	&__log-wrap {
+		@extend %rnfsc;
+	} 
+
+	&__reg {
+		@extend %light_link;
+
+		margin-right: $base-lh;
+
+		font-size: $fz5;
+		line-height: $base-lh * 2;
+	}
+
+	&__log {
+		@extend %small_btn;
+	}
+}

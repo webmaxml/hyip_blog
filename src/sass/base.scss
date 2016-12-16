@@ -11,11 +11,9 @@ html {
 }
 
 %wrapper {
-	max-width: 1170px;
+	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 15px;
-	padding-right: 15px;
 }
 
 %clearfix:after {
@@ -480,31 +478,43 @@ html {
 	align-items: stretch;
 }
 
-// h-padding
-%h-padding {
-	padding: 0 $base-lh;
+
+/* h_paddings */
+
+%h_paddings {
+	padding-left: $base-lh;
+	padding-right: $base-lh;
 }
 
-// light link
-%light-link {
-	color: darken( $light_link_c, 10% );
+
+/* light_link */
+
+%light_link {
+	font-family: $ff_header;
+	color: $c_links;
+
+	transition: .3s;
 
 	&:hover {
-		color: $light_link_c; 
+		color: #fff;
 	}
 }
 
-// default btn
-%btn-default {
-	padding: 0 15px;
+/* small_btn */
+%small_btn {
+	padding-left: $base-lh;
+	padding-right: $base-lh;
 
-	font-size: $base-fz * 1;
-	font-weight: bold;
-	line-height: $base-lh * 1.2;
+	font-family: $ff_header;
+	font-size: $fz5;
+	line-height: 32px;
+	color: #fff;
 
-	background-color: darken( $btn_bg, 10% );
+	background-color: $c_accent;
+
+	transition: .3s;
 
 	&:hover {
-		background-color: $btn_bg;
+		background-color: $c_text;
 	}
 }

@@ -1,0 +1,13 @@
+/**********************
+*        FONTS        *
+***********************/
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontAwesome.eot');
+  src: url('../fonts/fontAwesome.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('../fonts/fontAwesome.woff') format('woff'), url('../fonts/fontAwesome.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@include my-font( 'linux-biolinum', $ttf: true );

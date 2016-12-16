@@ -1,0 +1,32 @@
+$base-fz: 16px;
+$base-lh: 22px;
+
+// colors
+$c_accent: #ff5b24;  // оранжевый
+$c_sub_accent: #58cf60;  // зеленый
+$c_text: #2f2f2f; // темно серый
+$c_sub_text: #999999; // серый
+$c_links: #cccccc; // светло серый
+$c_block_bg: #fff;
+$c_main_bg: #eeeeee; // чуть желтоватый
+$c_star: #ffcd34; // оранжевый
+$c_dead: #ff2c2c; // красный
+
+$c_twitter: #01B9F5;
+
+$c_link_bg_transition: linear-gradient( to top, $c_main_bg, transparent );
+ 
+// font family
+$ff_logo: 'linux-biolinum', sans-serif;
+$ff_header: serif;
+$ff_text: sans-serif;
+
+// font size
+$fz1: $base-fz * 2.074;
+$fz2: $base-fz * 1.728;
+$fz3: $base-fz * 1.44;
+$fz4: $base-fz * 1.2;
+$fz5: $base-fz;
+$fz6: $base-fz * 0.833;
+$fz7: $base-fz * 0.694;
+$fz8: $base-fz * 0.579;

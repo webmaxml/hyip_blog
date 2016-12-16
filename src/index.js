@@ -1,10 +1,5 @@
-// deps
-import 'babel-polyfill';
+import './sass/index.scss';
 import container from './services';
 
-// init app
-let app = container.get( 'app' );
-app.init();
-
-
-
+let App = container.get( 'app' );
+App.init();

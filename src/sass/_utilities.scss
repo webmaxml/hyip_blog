@@ -5,32 +5,32 @@
 		font-family: "#{$name}";
 		$result: "";
 		@if $eot == true {
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.eot"),';
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.eot?#iefix") format("embedded-opentype")';
+			$result: $result + 'url("../fonts/#{$name}.eot"),';
+			$result: $result + 'url("../fonts/#{$name}.eot?#iefix") format("embedded-opentype")';
 		}
 		@if $otf == true {
 			@if $result != "" {
 				$result: $result + ',';
 			}
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.otf") format("opentype")';
+			$result: $result + 'url("../fonts/#{$name}.otf") format("opentype")';
 		}
 		@if $ttf == true {
 			@if $result != "" {
 				$result: $result + ',';
 			}
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.ttf") format("truetype")';
+			$result: $result + 'url("../fonts/#{$name}.ttf") format("truetype")';
 		}
 		@if $woff == true {
 			@if $result != "" {
 				$result: $result + ',';
 			}
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.woff") format("woff")';
+			$result: $result + 'url("../fonts/#{$name}.woff") format("woff")';
 		}
 		@if $woff2 == true {
 			@if $result != "" {
 				$result: $result + ',';
 			}
-			$result: $result + 'url("../fonts/#{$name}/#{$name}.woff2") format("woff2")';
+			$result: $result + 'url("../fonts/#{$name}.woff2") format("woff2")';
 		}
 		src: #{$result};
 		font-weight: $weight;
