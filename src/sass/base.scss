@@ -500,6 +500,7 @@ html {
 	}
 }
 
+
 /* small_btn */
 %small_btn {
 	padding-left: $base-lh;
@@ -516,5 +517,30 @@ html {
 
 	&:hover {
 		background-color: $c_text;
+	}
+}
+
+/* form_input */
+%form_input {
+	padding-left: 15px;
+	padding-right: 15px;
+
+	font-family: $ff_text;
+	font-size: $fz5;
+	line-height: $base-lh;
+	color: $c_text;
+
+	background-color: $c_links;
+	box-shadow: inset 0.8px 0.6px 1px $c_sub_text;
+
+	&::placeholder {
+		font-family: $ff_header;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_sub_text;
+	}
+
+	&:focus::placeholder {
+		opacity: 0;
 	}
 }
