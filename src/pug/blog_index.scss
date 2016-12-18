@@ -170,3 +170,25 @@
 	}
 
 }
+
+/* main */
+.main {
+	@extend %wrapper;
+	@extend %rnfss;
+
+	margin-top: $base-lh;
+}
+
+/* post */
+.post {
+	width: getWidthFromCols( 8 );
+}
+
+/* sidebar */
+.sidebar {
+	width: getWidthFromCols( 4 );
+	height: 1000px;
+	padding-left: $base-lh;
+
+	background-color: red;
+}

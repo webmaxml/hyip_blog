@@ -12,7 +12,10 @@ $c_main_bg: #eeeeee; // чуть желтоватый
 $c_star: #ffcd34; // оранжевый
 $c_dead: #ff2c2c; // красный
 
+$c_vk: #5075A5;
+$c_facebook: #3B5998;
 $c_twitter: #01B9F5;
+$c_google: #D44132;
 
 $c_link_bg_transition: linear-gradient( to top, $c_main_bg, transparent );
  
@@ -27,6 +30,6 @@ $fz2: $base-fz * 1.728; // 28px
 $fz3: $base-fz * 1.44;	// 23px
 $fz4: $base-fz * 1.2;	// 19px
 $fz5: $base-fz;			// 16px
-$fz6: $base-fz * 0.833;	// 13px
+$fz6: 12px;
 $fz7: $base-fz * 0.694;	// 11px
 $fz8: $base-fz * 0.579;	// 9px

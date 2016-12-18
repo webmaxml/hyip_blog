@@ -1,0 +1,150 @@
+/* post-box */
+.post-box {
+
+	&__item {
+		@extend %rnfss;
+		@extend %block_shadow;
+
+		overflow: hidden;
+
+		height: $base-lh * 15;
+		margin-bottom: $base-lh;
+	}
+
+	&__item-thumbnail {
+		width: 300px + $base-lh * 2;
+		padding: $base-lh;
+
+		background-color: $c_text;
+	}
+
+	&__item-img {
+		display: block;
+	}
+
+	&__item-social {
+		@extend %rnfss;
+
+		margin-top: $base-lh;
+	}
+
+	&__item-social-item {
+		flex-grow: 1;
+	}
+
+	&__item-social-link-vk,
+	&__item-social-link-facebook,
+	&__item-social-link-twitter,
+	&__item-social-link-google {
+		position: relative;
+		z-index: 0;
+
+		display: block;
+		overflow: hidden;
+
+		text-align: center;
+
+		&::before {
+			position: absolute;
+			z-index: -1;
+
+			display: block;
+			content: '';
+
+			width: 100%;
+			height: 100%;
+
+			transition: .3s;
+		}
+	}
+
+	&__item-social-link-vk:hover::before { background-color: $c_vk; }
+	&__item-social-link-facebook:hover::before { background-color: $c_facebook; }
+	&__item-social-link-twitter:hover::before { background-color: $c_twitter; }
+	&__item-social-link-google:hover::before { background-color: $c_google; }
+
+	&__item-social-icon {
+		font-size: $fz4;
+		line-height: $base-lh * 2;
+		color: #fff;
+	}
+
+	&__item-info {
+		position: relative;
+
+		padding: $base-lh;
+
+		background-color: #fff; 
+	}
+
+	&__item-header-link {
+		font-family: $ff_header;
+		font-size: 21;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+
+		&:hover {
+			color: lighten( $c_text, 20% );
+		}
+	}
+
+	&__item-meta-info {
+		@extend %rwfss;
+
+		margin: $base-lh / 2 0;
+	}
+
+	&__item-meta-item {
+		margin-right: 12px;
+	}
+
+	&__item-meta-text, 
+	&__item-meta-link {
+		font-family: $ff_header;
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_sub_text;
+	}
+
+	&__item-meta-link {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&__item-meta-icon {
+		margin-right: 5px;
+
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh;
+	}
+
+	&__item-excerpt {
+		font-family: $ff_text;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_text;
+	}
+
+	&__item-btn-wrap {
+		@extend %rnfes;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		width: 100%;
+		padding: $base-lh;
+
+		background: #fff;
+	}
+
+	&__item-btn {
+		@extend %large_btn;
+	}
+}

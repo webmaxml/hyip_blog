@@ -37,3 +37,9 @@
 		font-style: $style;
 	}
 }
+
+$columns: 12;
+
+@function getWidthFromCols($cols) {
+    @return unquote( ( $cols / $columns ) * 100 + "%" );
+}

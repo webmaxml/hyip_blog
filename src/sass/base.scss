@@ -520,6 +520,25 @@ html {
 	}
 }
 
+/* large_btn */
+%large_btn {
+	padding-left: $base-lh * 2;
+	padding-right: $base-lh * 2;
+
+	font-family: $ff_header;
+	font-size: $fz4;
+	line-height: $base-lh * 2;
+	color: #fff;
+
+	background-color: $c_accent;
+
+	transition: .3s;
+
+	&:hover {
+		background-color: $c_text;
+	}
+}
+
 /* form_input */
 %form_input {
 	padding-left: 15px;
@@ -543,4 +562,9 @@ html {
 	&:focus::placeholder {
 		opacity: 0;
 	}
+}
+
+/* block_shadow */
+%block_shadow {
+	box-shadow: 0 1px 1px $c_links;
 }
