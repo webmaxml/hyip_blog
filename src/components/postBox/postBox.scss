@@ -3,12 +3,11 @@
 
 	&__item {
 		@extend %rnfss;
-		@extend %block_shadow;
+		@extend %container_block;
 
 		overflow: hidden;
 
 		height: $base-lh * 15;
-		margin-bottom: $base-lh;
 	}
 
 	&__item-thumbnail {
@@ -90,13 +89,9 @@
 	}
 
 	&__item-meta-info {
-		@extend %rwfss;
+		@extend %rwsbs;
 
 		margin: $base-lh / 2 0;
-	}
-
-	&__item-meta-item {
-		margin-right: 12px;
 	}
 
 	&__item-meta-text, 

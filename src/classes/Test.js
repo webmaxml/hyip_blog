@@ -1,13 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-// react components rendering
+// init components
 import '../components/slider/slider';
+import { Tabs } from '../components/tabs/tabs';
+
+let tabs = new Tabs();
 
 
 export class Test {
 
-	constructor() {}
+	constructor() {
+
+	}
 
 	init() {
 

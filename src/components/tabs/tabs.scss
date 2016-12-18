@@ -1,0 +1,58 @@
+/* tabs */
+.tabs {
+	@extend %container_block;
+
+	background-color: #fff;
+
+	&__btn-box {
+		@extend %rnfss;
+	}
+
+	&__btn-item {
+		flex-grow: 1;
+	}
+
+	&__btn {
+		position: relative;
+
+		width: 100%;
+		border: 1px solid $c_main_bg;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh * 2;
+		color: $c_text;
+
+		&::after {
+			position: absolute;
+			top: -1px;
+			left: 0;
+
+			display: block;
+			content: '';
+
+			width: 100%;
+			height: 0px;
+
+			background-color: $c_accent;
+		}
+
+		&:hover::after,
+		&.tabs__btn--active::after { height: 2px; }
+	}
+
+	&__pane-item {
+		display: none;
+		padding: $base-lh;
+
+		background-color: green;
+
+		font-size: $fz2;
+		color: #fff;
+
+		&.tabs__pane-item--active {
+			display: block;
+		}
+	}
+}

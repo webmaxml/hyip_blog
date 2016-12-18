@@ -564,7 +564,9 @@ html {
 	}
 }
 
-/* block_shadow */
-%block_shadow {
+/* container_block*/
+%container_block {
+	margin-bottom: $base-lh;
+
 	box-shadow: 0 1px 1px $c_links;
 }

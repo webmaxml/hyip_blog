@@ -189,6 +189,42 @@
 	width: getWidthFromCols( 4 );
 	height: 1000px;
 	padding-left: $base-lh;
+}
 
-	background-color: red;
+/* categories */
+.categories {
+	@extend %container_block;
+
+	padding: $base-lh;
+
+	background-color: #fff;
+
+	&:hover {
+	
+		.sectionHeader__line-left::after,
+		.sectionHeader__line-right::after {
+			width: 100%;
+		}
+	}
+
+	&__item-box {
+		margin-top: $base-lh;
+	}
+
+	&__item-link {
+		display: block;
+
+		font-family: $ff_header;
+		font-size: $fz5;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+		text-align: center;
+
+		transition: .3s;
+
+		&:hover {
+			color: $c_accent;
+		}
+	}	
 }

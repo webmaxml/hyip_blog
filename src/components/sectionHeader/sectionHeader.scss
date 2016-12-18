@@ -1,0 +1,53 @@
+/* sectionHeader */
+.sectionHeader {
+	@extend %rncc;
+
+	&__text {
+		margin: 0 10px;
+
+		font-family: $ff_header;
+		font-size: $fz4;
+		line-height: $base-lh;
+		font-weight: bold;
+		color: $c_text;
+	}
+
+	&__line-left, &__line-right {
+		position: relative;
+
+		width: $base-lh * 2;
+		height: 1px;
+
+		background-color: $c_links;
+
+		&::after {
+			position: absolute;
+			top: 0;
+
+			display: block;
+			content: '';
+
+			width: 0;
+			height: 1px;
+
+			background-color: $c_accent;
+
+			transition: .3s;
+		}
+	}
+
+	&__line-left::after { left: 0; }
+	&__line-right::after { right: 0; }
+}
+
+/* put this in section container
+
+&:hover {
+	
+	.sectionHeader__line-left::after,
+	.sectionHeader__line-right::after {
+		width: 100%;
+	}
+}
+
+*/
