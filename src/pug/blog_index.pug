@@ -41,6 +41,9 @@ html
 			main.main
 				section.post
 					include ../components/postBox/postBox.pug
+					// loader
+					.loader
+						button.loader__btn( type="button" ) Загрузить еще
 				aside.sidebar
 					// categories
 					.categories
@@ -66,8 +69,35 @@ html
 							input.subscribe__input( type="text" placeholder="Имя" )
 							input.subscribe__input( type="text" placeholder="Email" )
 							button.subscribe__submit Подписаться
-
-
+			// footer
+			footer.footer
+				.footer__about
+					h2.footer__header О сайте
+					p.footer__text Большое количество хайпов не позволяет легко и точно следить за своими инвестициями. Цель 
+						a.footer__text-link( href="/" ) Hyipodrom.com 
+						| – помочь контролировать ваши вклады в хайпы и узнавать, какую прибыль они приносят. Ведение статистики потребует от вас минимальных действий, при этом все подсчеты ведутся онлайн в автоматическом режиме. Наш блог помогает постоянно быть в курсе последних новостей хайп-индустрии. А мониторинг является надежным помощником в правильном выборе проектов для инвестирования.
+				.footer__contact-form
+					h2.footer__header Обратная связь
+					form.footer__form
+						input.footer__input( type="text" placeholder="Имя" )
+						input.footer__input( type="text" placeholder="Email" )
+						textarea.footer__textarea( placeholder="Email" )
+						button.footer__submit Отправить
+				.footer__contacts
+					h2.footer__header Контакты
+					ul.footer__contact-list
+						li.footer__contact-item
+							i.fa.fa-envelope.footer__contact-icon
+							span.footer__contact-text hyipodrom@gmail.com
+						li.footer__contact-item
+							i.fa.fa-skype.footer__contact-icon
+							a.footer__contact-link( href="/" ) hyipodrom_me
+						li.footer__contact-item
+							i.fa.fa-vk.footer__contact-icon
+							a.footer__contact-link( href="/" ) hyipodrom_me
+	// up
+	button.up( type='button' )
+		i.fa.fa-chevron-up.up__icon
 
 
 

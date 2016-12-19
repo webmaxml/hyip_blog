@@ -11,7 +11,12 @@ let tabs = new Tabs();
 export class Test {
 
 	constructor() {
+		this.$up = $( document.getElementsByClassName( 'up' )[0] );
 
+		this.$up.on( 'click', function( e ) {
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+  			return false;
+		} )
 	}
 
 	init() {

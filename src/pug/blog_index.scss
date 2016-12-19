@@ -184,6 +184,17 @@
 	width: getWidthFromCols( 8 );
 }
 
+/* loader */
+.loader {
+	padding: $base-lh 0;
+
+	text-align: center;
+
+	&__btn {
+		@extend %large_btn;
+	}
+}
+
 /* sidebar */
 .sidebar {
 	width: getWidthFromCols( 4 );
@@ -260,5 +271,129 @@
 
 	&__submit {
 		@extend %large_btn;
+	}
+}
+
+/* footer */
+.footer {
+	@extend %wrapper;
+	@extend %rwfss;
+
+	margin-top: $base-lh;
+
+	background-color: $c_text;
+
+	&__about, &__contact-form, &__contacts {
+		width: getWidthFromCols( 4 );
+		padding: $base-lh;
+	}
+
+	&__header {
+		margin-bottom: $base-lh;
+
+		font-family: $ff_header;
+		font-size: $fz4;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: #fff;
+		text-align: center;
+	}
+
+	&__text-link {
+		font-family: $ff_text;
+		font-size: $fz5;
+		line-height: $base-lh; 
+		color: $c_accent;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}	
+	}
+
+	&__text {
+		font-family: $ff_text;
+		font-size: $fz5;
+		line-height: $base-lh; 
+		color: #fff;
+	}
+
+	&__form {
+		text-align: center;
+	}
+
+	&__input, &__textarea {
+		@extend %form_input;
+
+		width: 100%;
+		margin-bottom: $base-lh;
+	}
+
+	&__input { height: $base-lh * 2; }
+	&__textarea { 
+		height: $base-lh * 8;
+		padding-top: 15px; 
+		padding-bottom: 15px; 
+	}
+
+	&__submit {
+		@extend %large_btn;
+	}
+
+	&__contact-item {
+		margin-bottom: $base-lh;
+	}
+
+	&__contact-icon {
+		margin-right: 10px;
+
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_links;
+	}
+
+	&__contact-text {
+		font-family: $ff_header;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_links; 
+	}
+
+	&__contact-link {
+		font-family: $ff_header;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_accent;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		} 
+	}
+}
+
+/* up */
+.up {
+	@extend %rncc;
+
+	position: fixed;
+	right: 30px;
+	bottom: $base-lh;
+
+	width: $base-lh * 3;
+	height: $base-lh * 3;
+
+	background-color: $c_text;
+	opacity: .2;
+
+	transition: .3s;
+
+	&:hover {
+		opacity: 1;
+	}	
+
+	&__icon {
+		font-size: $fz2;
+		color: #fff;
 	}
 }
