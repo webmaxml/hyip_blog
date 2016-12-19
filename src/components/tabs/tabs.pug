@@ -1,3 +1,6 @@
+//- mixins
+include paneItem.pug
+
 // tabs
 .tabs
 	ul.tabs__btn-box
@@ -8,6 +11,39 @@
 		li.tabs__btn-item
 			button.tabs__btn( type="button" data-index=3 ) Комментируемые
 	ul.tabs__pane-box
-		li.tabs__pane-item( data-index=1 ) 1
-		li.tabs__pane-item( data-index=2 ) 2
-		li.tabs__pane-item( data-index=3 ) 3
+		li.tabs__pane-item( data-index=1 )
+			ul.tabs__list
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+				+paneItem( 'fa fa-calendar', '21.11.2016' )
+		li.tabs__pane-item( data-index=2 )
+			ul.tabs__list
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+				+paneItem( 'fa fa-eye', '546 просмотров' )
+		li.tabs__pane-item( data-index=3 )
+			ul.tabs__list
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )
+				+paneItem( 'fa fa-comments', '146 комментариев', true )

@@ -228,3 +228,37 @@
 		}
 	}	
 }
+
+/* subscribe */
+.subscribe {
+	@extend %container_block;
+
+	padding: $base-lh;
+
+	background-color: #fff;
+
+	&:hover {
+	
+		.sectionHeader__line-left::after,
+		.sectionHeader__line-right::after {
+			width: 100%;
+		}
+	}
+
+	&__form {
+		margin-top: $base-lh;
+		text-align: center;
+	}
+
+	&__input {
+		@extend %form_input;
+
+		width: 290px;
+		height: $base-lh * 2;
+		margin-bottom: $base-lh;
+	}
+
+	&__submit {
+		@extend %large_btn;
+	}
+}

@@ -1,0 +1,13 @@
+mixin paneItem( iconClass, metaText, isLink )
+	li.tabs__list-item
+		a.tabs__list-img-link( href="/" )
+			img.tabs__list-img( src=require( '../img/post_image.jpg' ) )
+		.tabs__list-info
+			h2.tabs__list-header
+				a.tabs__list-header-link( href="/" ) Hyipodrom.com - не просто TOP, а топовый во всём всего за год!
+			.tabs__list-meta-info
+				i( class=`${iconClass} tabs__list-meta-icon` )
+				if isLink
+					a.tabs__list-meta-link( href='/' )= metaText
+				else
+					span.tabs__list-meta-text= metaText
