@@ -6,10 +6,11 @@
 		margin: 0 10px;
 
 		font-family: $ff_header;
-		font-size: $fz4;
+		font-size: $fz6;
 		line-height: $base-lh;
 		font-weight: bold;
 		color: $c_text;
+		text-transform: uppercase;
 	}
 
 	&__line-left, &__line-right {

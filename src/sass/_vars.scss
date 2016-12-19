@@ -21,8 +21,8 @@ $c_link_bg_transition: linear-gradient( to top, $c_main_bg, transparent );
  
 // font family
 $ff_logo: 'linux-biolinum', sans-serif;
-$ff_header: serif;
-$ff_text: sans-serif;
+$ff_header: 'Roboto Slab', serif;
+$ff_text: 'Roboto', sans-serif;
 
 // font size
 $fz1: $base-fz * 2.074; // 33px
@@ -30,6 +30,6 @@ $fz2: $base-fz * 1.728; // 28px
 $fz3: $base-fz * 1.44;	// 23px
 $fz4: $base-fz * 1.2;	// 19px
 $fz5: $base-fz;			// 16px
-$fz6: 12px;
+$fz6: $base-fz * 0.833; // 13px
 $fz7: $base-fz * 0.694;	// 11px
 $fz8: $base-fz * 0.579;	// 9px

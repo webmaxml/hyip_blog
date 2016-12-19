@@ -67,6 +67,8 @@
 	}
 
 	&__list-info {
+		@extend %cnsbs;
+
 		margin-left: $base-lh;
 	}
 
@@ -86,7 +88,6 @@
 		margin-right: 5px;
 
 		font-size: $fz6;
-		font-weight: bold;
 		line-height: $base-lh;
 		color: $c_sub_text;
 	}
@@ -95,7 +96,6 @@
 	&__list-meta-link {
 		font-family: $ff_header;
 		font-size: $fz6;
-		font-weight: bold;
 		line-height: $base-lh;
 		color: $c_sub_text;
 	}

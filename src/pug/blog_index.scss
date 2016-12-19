@@ -47,7 +47,7 @@
 
 	&__logo {
 		font-family: $ff_logo;
-		font-size: $fz3;
+		font-size: $fz4;
 		line-height: $base-lh * 2;
 		color: #fff;
 		text-transform: uppercase;
@@ -66,7 +66,7 @@
 
 		margin-right: $base-lh;
 
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh * 2;
 	}
 
@@ -100,7 +100,7 @@
 		position: relative;
 
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh * 3;
 		color: $c_links;
 		text-transform: uppercase;
@@ -264,8 +264,8 @@
 	&__input {
 		@extend %form_input;
 
-		width: 290px;
-		height: $base-lh * 2;
+		width: 240px;
+		height: $base-lh * 1.5;
 		margin-bottom: $base-lh;
 	}
 
@@ -292,11 +292,12 @@
 		margin-bottom: $base-lh;
 
 		font-family: $ff_header;
-		font-size: $fz4;
+		font-size: $fz6;
 		font-weight: bold;
 		line-height: $base-lh;
 		color: #fff;
 		text-align: center;
+		text-transform: uppercase;
 	}
 
 	&__text-link {
@@ -325,13 +326,13 @@
 	&__input, &__textarea {
 		@extend %form_input;
 
-		width: 100%;
+		width: 80%;
 		margin-bottom: $base-lh;
 	}
 
-	&__input { height: $base-lh * 2; }
+	&__input { height: $base-lh * 1.5; }
 	&__textarea { 
-		height: $base-lh * 8;
+		height: $base-lh * 6;
 		padding-top: 15px; 
 		padding-bottom: 15px; 
 	}
@@ -341,27 +342,29 @@
 	}
 
 	&__contact-item {
-		margin-bottom: $base-lh;
+		
 	}
 
 	&__contact-icon {
+		width: 18px;
 		margin-right: 10px;
 
 		font-size: $fz5;
 		line-height: $base-lh;
 		color: $c_links;
+		text-align: center;
 	}
 
 	&__contact-text {
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_links; 
 	}
 
 	&__contact-link {
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_accent;
 		text-decoration: underline;
@@ -380,8 +383,8 @@
 	right: 30px;
 	bottom: $base-lh;
 
-	width: $base-lh * 3;
-	height: $base-lh * 3;
+	width: $base-lh * 2;
+	height: $base-lh * 2;
 
 	background-color: $c_text;
 	opacity: .2;
@@ -393,7 +396,7 @@
 	}	
 
 	&__icon {
-		font-size: $fz2;
+		font-size: $fz4;
 		color: #fff;
 	}
 }

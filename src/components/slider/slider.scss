@@ -52,30 +52,22 @@
 /* sliderItem */
 .sliderItem {
 
-	&__link {
-
-	}
-
-	&__img {
-
-	}
-
 	&__popup {
 		padding-bottom: $base-lh;
 
-		background-color: rgba(47, 47, 47, .9);
+		background-color: rgba(47, 47, 47, .95);
 
 		transform: translateY( -$base-lh * 2 );
 		transition: .3s;
 	}
 
 	&:hover &__popup {
-		transform: translateY( -$base-lh * 6 );
+		transform: translateY( -$base-lh * 5.5 );
 	}
 
 	&__header {
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh * 2;
 		color: #fff;
 		text-transform: uppercase;
@@ -95,13 +87,14 @@
 
 	&__info-title, &__info-value {
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh;
 		color: #fff;
 	}
 
 	&__info-value--investor {
-		font-size: $fz4;
+		font-size: $fz5;
+		font-weight: bold;
 		color: $c_sub_accent;
 	}
 }

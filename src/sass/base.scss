@@ -507,7 +507,7 @@ html {
 	padding-right: $base-lh;
 
 	font-family: $ff_header;
-	font-size: $fz5;
+	font-size: $fz6;
 	line-height: 32px;
 	color: #fff;
 
@@ -522,11 +522,11 @@ html {
 
 /* large_btn */
 %large_btn {
-	padding-left: $base-lh * 2;
-	padding-right: $base-lh * 2;
+	padding-left: $base-lh;
+	padding-right: $base-lh;
 
 	font-family: $ff_header;
-	font-size: $fz4;
+	font-size: $fz5;
 	line-height: $base-lh * 2;
 	color: #fff;
 
@@ -554,7 +554,7 @@ html {
 
 	&::placeholder {
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_sub_text;
 	}

@@ -2,29 +2,87 @@
 .post-box {
 
 	&__item {
-		@extend %rnfss;
 		@extend %container_block;
 
 		overflow: hidden;
 
-		height: $base-lh * 15;
+		max-height: 383px;
+
+		background-color: #fff;
+	}
+
+	&__header-wrap {
+		padding: $base-lh;
+	}
+
+	&__item-header-link {
+		font-family: $ff_header;
+		font-size: $fz3;
+		font-weight: bold;
+		line-height: $base-lh * 1.2;
+		color: $c_text;
+
+		&:hover {
+			color: lighten( $c_text, 20% );
+		}
+	}
+
+	&__item-meta-info {
+		@extend %rwfss;
+
+		margin-top: $base-lh * 0.5;
+	}
+
+	&__item-meta-text, 
+	&__item-meta-link {
+		margin-right: $base-lh;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_sub_text;
+	}
+
+	&__item-meta-link {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&__item-meta-icon {
+		margin-right: 5px;
+
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh;
+	}
+
+	&__info-wrap {
+		@extend %rnfss;
 	}
 
 	&__item-thumbnail {
-		width: 300px + $base-lh * 2;
-		padding: $base-lh;
+		padding-top: $base-lh;
+		padding-left: $base-lh;
+		padding-right: $base-lh;
+		padding-bottom: $base-lh * 0.5;
 
 		background-color: $c_text;
 	}
 
 	&__item-img {
 		display: block;
+
+		width: 240px;
+		height: 176px;
 	}
 
 	&__item-social {
 		@extend %rnfss;
 
-		margin-top: $base-lh;
+		margin-top: $base-lh * 0.5;
 	}
 
 	&__item-social-item {
@@ -63,63 +121,24 @@
 	&__item-social-link-google:hover::before { background-color: $c_google; }
 
 	&__item-social-icon {
-		font-size: $fz4;
-		line-height: $base-lh * 2;
+		font-size: $fz5;
+		line-height: $base-lh * 1.5;
 		color: #fff;
 	}
 
 	&__item-info {
-		position: relative;
+		@extend %cnsbs;
 
-		padding: $base-lh;
-
-		background-color: #fff; 
-	}
-
-	&__item-header-link {
-		font-family: $ff_header;
-		font-size: 21;
-		font-weight: bold;
-		line-height: $base-lh;
-		color: $c_text;
-
-		&:hover {
-			color: lighten( $c_text, 20% );
-		}
-	}
-
-	&__item-meta-info {
-		@extend %rwsbs;
-
-		margin: $base-lh / 2 0;
-	}
-
-	&__item-meta-text, 
-	&__item-meta-link {
-		font-family: $ff_header;
-		font-size: $fz6;
-		font-weight: bold;
-		line-height: $base-lh;
-		color: $c_sub_text;
-	}
-
-	&__item-meta-link {
-		text-decoration: underline;
-
-		&:hover {
-			text-decoration: none;
-		}
-	}
-
-	&__item-meta-icon {
-		margin-right: 5px;
-
-		font-size: $fz6;
-		font-weight: bold;
-		line-height: $base-lh;
+		padding-left: $base-lh; 
+		padding-right: $base-lh; 
+		padding-bottom: $base-lh; 
 	}
 
 	&__item-excerpt {
+		overflow: hidden;
+
+		max-height: $base-lh * 8;
+
 		font-family: $ff_text;
 		font-size: $fz5;
 		line-height: $base-lh;
@@ -129,12 +148,7 @@
 	&__item-btn-wrap {
 		@extend %rnfes;
 
-		position: absolute;
-		left: 0;
-		bottom: 0;
-
-		width: 100%;
-		padding: $base-lh;
+		margin-top: $base-lh * 0.5;
 
 		background: #fff;
 	}
