@@ -1,0 +1,30 @@
+/* up */
+.up {
+	@extend %rncc;
+
+	position: fixed;
+	right: 30px;
+	bottom: $base-lh;
+
+	width: $base-lh * 2;
+	height: $base-lh * 2;
+
+	background-color: $c_text;
+	opacity: 0;
+
+	transition: .3s;
+
+	&.up--active {
+		opacity: .2;
+	}
+
+	&:hover {
+		opacity: 1;
+	}	
+
+	&__icon {
+		font-size: $fz4;
+		color: #fff;
+	}
+
+}

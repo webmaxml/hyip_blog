@@ -1,0 +1,17 @@
+//- mixins
+include sliderItem.pug
+
+// slider
+section.slider
+	.slider__wrap
+		button.slider__prev-btn( type="button" )
+			i.fa.fa-chevron-left.slider__btn-icon
+		.slider__item-box
+			#slider
+				+sliderItem( require( '../img/slider_1.jpg' ), "MEETFREEMAN" )
+				+sliderItem( require( '../img/slider_2.jpg' ), "BLUE2000" )
+				+sliderItem( require( '../img/slider_3.jpg' ), "BITCOIN WORLD" )
+				+sliderItem( require( '../img/slider_4.jpg' ), "MEXEER" )
+				+sliderItem( require( '../img/slider_2.jpg' ), "BLUE2000" )
+		button.slider__next-btn( type="button" )
+			i.fa.fa-chevron-right.slider__btn-icon

@@ -35,8 +35,7 @@ html
 					input.main-menu__search-input( type="text" placeholder="Поиск" )
 					button.main-menu__search-btn
 						i.fa.fa-search.main-menu__search-icon
-			// slider
-			section#slider.slider
+			include ../components/slider/slider.pug
 			// main
 			main.main
 				section.post
@@ -95,9 +94,7 @@ html
 						li.footer__contact-item
 							i.fa.fa-vk.footer__contact-icon
 							a.footer__contact-link( href="/" ) hyipodrom_me
-	// up
-	button.up( type='button' )
-		i.fa.fa-chevron-up.up__icon
+	include ../components/upButton/upButton.pug
 
 
 
