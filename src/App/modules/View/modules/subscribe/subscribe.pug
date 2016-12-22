@@ -1,0 +1,9 @@
+include ../sectionHeader/sectionHeader.pug
+
+// subscribe
+.subscribe
+	+sectionHeader( 'Подписаться на рассылку' )
+	form.subscribe__form
+		input.subscribe__input( type="text" placeholder="Имя" )
+		input.subscribe__input( type="text" placeholder="Email" )
+		button.subscribe__submit Подписаться

@@ -1,3 +1,5 @@
+import './sass/index.scss';
+
 class ViewInterface {
 
 	constructor( service ) {

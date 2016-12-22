@@ -2,7 +2,7 @@
   "name": "hd",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --inline --history-api-fallback"
+    "start": "webpack-dev-server --inline"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

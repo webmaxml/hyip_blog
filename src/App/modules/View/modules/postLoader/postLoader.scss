@@ -1,0 +1,10 @@
+/* loader */
+.loader {
+	padding: $base-lh 0;
+
+	text-align: center;
+
+	&__btn {
+		@extend %large_btn;
+	}
+}

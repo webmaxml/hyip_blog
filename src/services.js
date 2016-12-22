@@ -1,12 +1,12 @@
 // deps
-import { ServiceContainer, ServiceLocator } from './classes/ServiceContainer';
+import { ServiceContainer, ServiceLocator } from './ServiceContainer';
 // services
-import { App } from './classes/App';
-import View from './components/ViewInterface';
+import AppInterface from './App/AppInterface';
+import ViewInterface from './App/modules/View/ViewInterface';
 // view components
-import UpButtonInterface from './components/upButton/UpButtonInterface';
-import TabsInterface from './components/tabs/TabsInterface';
-import SliderInterface from './components/slider/SliderInterface';
+import UpButtonInterface from './App/modules/View/modules/upButton/UpButtonInterface';
+import TabsInterface from './App/modules/View/modules/tabs/TabsInterface';
+import SliderInterface from './App/modules/View/modules/slider/SliderInterface';
 
 
 // instantiate container
@@ -15,8 +15,8 @@ let locator = new ServiceLocator( container );
 container.setLocator( locator );
 
 // services
-container.add( 'app', App );
-container.add( 'view', View );
+container.add( 'app', AppInterface );
+container.add( 'view', ViewInterface );
 
 // view components
 container.add( 'upButton', UpButtonInterface );

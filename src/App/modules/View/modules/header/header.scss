@@ -1,0 +1,37 @@
+/* header */
+.header {
+	@extend %wrapper;
+	@extend %h_paddings;
+	@extend %rwsbs;
+
+	padding-top: $base-lh;
+
+	&__logo {
+		font-family: $ff_logo;
+		font-size: $fz4;
+		line-height: $base-lh * 2;
+		color: #fff;
+		text-transform: uppercase;
+	}
+
+	&__logo-accent {
+		color: $c_accent;
+	}
+
+	&__log-wrap {
+		@extend %rnfsc;
+	} 
+
+	&__reg {
+		@extend %light_link;
+
+		margin-right: $base-lh;
+
+		font-size: $fz6;
+		line-height: $base-lh * 2;
+	}
+
+	&__log {
+		@extend %small_btn;
+	}
+}

@@ -17,7 +17,7 @@ class TabsInterface {
 			model
 		});
 
-		model.set({ activeIndex: 2 });
+		model.set({ activeIndex: 1 });
 	}
 
 }

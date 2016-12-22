@@ -1,4 +1,4 @@
-import util from '../utilities';
+import util from './utilities';
 
 /**
  * Contains all app services

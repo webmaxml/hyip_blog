@@ -1,0 +1,32 @@
+//- mixins
+include ../modules/head/head.pug
+
+html
+	head
+		+head( 'главная' )
+	body
+		// wrapper
+		div.wrapper
+			a.wrapper__link( href="#ad" )
+				img.wrapper__img( src=require( '../img/ad_bg.jpg' ) )
+			include ../modules/header/header.pug
+			include ../modules/mainMenu/mainMenu.pug
+			include ../modules/slider/slider.pug
+			// main
+			main.main
+				// post
+				section.post
+					include ../modules/postBox/postBox.pug
+					include ../modules/postLoader/postLoader.pug
+				// sidebar
+				aside.sidebar
+					include ../modules/categories/categories.pug
+					include ../modules/tabs/tabs.pug
+					include ../modules/subscribe/subscribe.pug
+			include ../modules/footer/footer.pug
+	include ../modules/upButton/upButton.pug
+
+
+
+
+		

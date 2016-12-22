@@ -1,6 +1,6 @@
 import { Test } from './Test';
 
-export class App {
+class AppInterface {
 
 	constructor( service ) {
 		this.service = service;
@@ -14,3 +14,4 @@ export class App {
 	}
 }
 
+export default AppInterface;

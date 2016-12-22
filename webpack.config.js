@@ -79,8 +79,12 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'tratata',
-            template: 'src/pug/index.pug'
+            filename: 'index.html',
+            template: 'src/App/modules/View/pug/blog_index.pug'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'post.html',
+            template: 'src/App/modules/View/pug/blog_item.pug'
         }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 
