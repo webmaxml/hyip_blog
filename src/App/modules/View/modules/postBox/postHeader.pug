@@ -3,7 +3,7 @@ mixin postHeader( text, setLink )
 	.postHeader
 		h1.postHeader__text
 			if setLink
-				a.postHeader__link( href="/post.html" )= text
+				a.postHeader__link( href="/post.html#post" )= text
 			else
 				= text
 		ul.postHeader__meta-info

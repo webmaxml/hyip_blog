@@ -18,8 +18,7 @@ li.commentsItem
 			p Investment Необычный проект на фоне многих, так как есть ограничение на минимальный вклад, ограничение на вывод, то есть отсеиваются все мелочные вкладчики. Есть определенный график, распорядок по начислению процентов, по выплатам. Очень интересно себя ведет администратор, никого не тянет, не рассказывает байки. У проекта все шансы пережить новый год.
 			p 3. iHands
 			p Интересный проект, грамотный администратор. Верится, что команда проекта так же, как и у предыдущих двух, не занимается обычным сбором денег, а пускает их в приумножающий оборот при помощи своих инструментов. Интересные планы. Думаю, что и этот проект переживет новый год.
-		.commentsItem__respond-wrap
-			button.commentsItem__respond-btn( type='button' ) Ответить
+		include commentsRespond.pug
 		ul.commentsItem__inner-box
 			li.commentsItem
 				.commentsItem__avatar
@@ -35,8 +34,7 @@ li.commentsItem
 						span.commentsItem__date 02.12.2016 20:55:44
 					.commentsItem__content
 						p Fuck you
-					.commentsItem__respond-wrap
-						button.commentsItem__respond-btn( type='button' ) Ответить
+					include commentsRespond.pug
 			li.commentsItem
 				.commentsItem__avatar
 					a.commentsItem__avatar-link( href="/" )
@@ -51,5 +49,4 @@ li.commentsItem
 						span.commentsItem__date 02.12.2016 20:55:44
 					.commentsItem__content
 						p Shut up
-					.commentsItem__respond-wrap
-						button.commentsItem__respond-btn( type='button' ) Ответить
+					include commentsRespond.pug

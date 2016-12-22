@@ -7,6 +7,7 @@ import ViewInterface from './App/modules/View/ViewInterface';
 import UpButtonInterface from './App/modules/View/modules/upButton/UpButtonInterface';
 import TabsInterface from './App/modules/View/modules/tabs/TabsInterface';
 import SliderInterface from './App/modules/View/modules/slider/SliderInterface';
+import CommentsInterface from './App/modules/View/modules/comments/CommentsInterface';
 
 
 // instantiate container
@@ -22,6 +23,7 @@ container.add( 'view', ViewInterface );
 container.add( 'upButton', UpButtonInterface );
 container.add( 'tabs', TabsInterface );
 container.add( 'slider', SliderInterface );
+container.add( 'comments', CommentsInterface );
 
 
 export default container;

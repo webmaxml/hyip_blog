@@ -29,11 +29,15 @@
 		background-color: $c_text;
 
 		& .commentsItem__name-link:hover,
-		& .commentsItem__respond-btn:hover {
+		& .commentsRespond__btn:hover {
 			color: #fff;
 		}
 
 		& .commentsItem__content {
+			color: #fff;
+		}
+
+		& .commentsForm__text {
 			color: #fff;
 		}
 	}
@@ -136,18 +140,85 @@
 			font-weight: bold;
 		}
 	}
+}
 
-	&__respond-wrap {
-		@extend %rnfes;
+/* commentsForm */
+.commentsForm {
+	@extend %container_block;
 
-		padding-bottom: $base-lh;
+	background-color: #fff;
+
+	padding-top: $base-lh;
+	padding-left: $base-lh;
+	padding-right: $base-lh;
+
+	&:hover {
+	
+		.sectionHeader__line-left::after,
+		.sectionHeader__line-right::after {
+			width: 100%;
+		}
 	}
 
-	&__respond-btn {
+	&__wrap {
+		overflow: hidden;
+
+		padding: $base-lh 0;
+
+		text-align: center;
+	}
+
+	&__text {
+		font-family: $ff_text;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_text;
+	}
+
+	&__link {
+		font-family: $ff_header;
+		line-height: $base-lh;
+		color: $c_accent;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&__input {
+		@extend %form_input;
+
+		width: 80%;
+		height: $base-lh * 8;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		margin: $base-lh 0;
+	}
+
+	&__submit {
+		@extend %large_btn;
+	}
+}
+
+/* commentsRespond */
+.commentsRespond {
+
+	& .commentsForm__wrap { display: none; }
+	& .commentsForm__text { font-size: $fz6; }
+
+	&__btn-wrap {
+		padding-bottom: $base-lh;
+
+		text-align: right;
+	}
+
+	&__btn {
 		font-family: $ff_header;
 		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_accent;
+		text-align: right;
 
 		transition: .3s;
 
