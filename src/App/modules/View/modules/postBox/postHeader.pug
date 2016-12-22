@@ -1,0 +1,25 @@
+mixin postHeader( text, setLink )
+	//postHeader
+	.postHeader
+		h1.postHeader__text
+			if setLink
+				a.postHeader__link( href="/post.html" )= text
+			else
+				= text
+		ul.postHeader__meta-info
+			li.postHeader__meta-item
+				a.postHeader__meta-link( href="/" )
+					i.fa.fa-list-ul.postHeader__meta-icon
+					| Новичкам
+			li.postHeader__meta-item
+				span.postHeader__meta-text
+					i.fa.fa-calendar.postHeader__meta-icon
+					| 12.11.2016
+			li.postHeader__meta-item
+				a.postHeader__meta-link( href="/post.html#comments" )
+					i.fa.fa-comments.postHeader__meta-icon
+					| 146 комментариев
+			li.postHeader__meta-item
+				span.postHeader__meta-text
+					i.fa.fa-eye.postHeader__meta-icon
+					| 546 просмотров

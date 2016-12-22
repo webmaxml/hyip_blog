@@ -4,37 +4,45 @@
 	&__item {
 		@extend %container_block;
 
-		overflow: hidden;
-
-		max-height: 383px;
+		position: relative;
 
 		background-color: #fff;
 	}
 
-	&__header-wrap {
-		padding: $base-lh;
+	&__info-wrap {
+		@extend %clearfix;
 	}
 
-	&__item-header-link {
+}
+
+
+/* postHeader */
+.postHeader {
+	padding: $base-lh;
+
+	&__text {
 		font-family: $ff_header;
 		font-size: $fz3;
 		font-weight: bold;
 		line-height: $base-lh * 1.2;
 		color: $c_text;
+	}
+
+	&__link {
 
 		&:hover {
 			color: lighten( $c_text, 20% );
 		}
 	}
 
-	&__item-meta-info {
+	&__meta-info {
 		@extend %rwfss;
 
 		margin-top: $base-lh * 0.5;
 	}
 
-	&__item-meta-text, 
-	&__item-meta-link {
+	&__meta-text,
+	&__meta-link {
 		margin-right: $base-lh;
 
 		font-family: $ff_header;
@@ -43,7 +51,7 @@
 		color: $c_sub_text;
 	}
 
-	&__item-meta-link {
+	&__meta-link {
 		text-decoration: underline;
 
 		&:hover {
@@ -51,48 +59,48 @@
 		}
 	}
 
-	&__item-meta-icon {
+	&__meta-icon {
 		margin-right: 5px;
 
 		font-size: $fz6;
 		font-weight: bold;
 		line-height: $base-lh;
 	}
+}
 
-	&__info-wrap {
-		@extend %rnfss;
-	}
+/* postThumbnail */
+.postThumbnail {
+	float: left;
 
-	&__item-thumbnail {
-		padding-top: $base-lh;
-		padding-left: $base-lh;
-		padding-right: $base-lh;
-		padding-bottom: $base-lh * 0.5;
+	padding-top: $base-lh;
+	padding-left: $base-lh;
+	padding-right: $base-lh;
+	padding-bottom: $base-lh * 0.5;
+	margin-right: $base-lh;
 
-		background-color: $c_text;
-	}
+	background-color: $c_text;
 
-	&__item-img {
+	&__img {
 		display: block;
 
 		width: 240px;
 		height: 176px;
 	}
 
-	&__item-social {
+	&__social {
 		@extend %rnfss;
 
 		margin-top: $base-lh * 0.5;
 	}
 
-	&__item-social-item {
+	&__social-item {
 		flex-grow: 1;
 	}
 
-	&__item-social-link-vk,
-	&__item-social-link-facebook,
-	&__item-social-link-twitter,
-	&__item-social-link-google {
+	&__social-link-vk,
+	&__social-link-facebook,
+	&__social-link-twitter,
+	&__social-link-google {
 		position: relative;
 		z-index: 0;
 
@@ -115,26 +123,25 @@
 		}
 	}
 
-	&__item-social-link-vk:hover::before { background-color: $c_vk; }
-	&__item-social-link-facebook:hover::before { background-color: $c_facebook; }
-	&__item-social-link-twitter:hover::before { background-color: $c_twitter; }
-	&__item-social-link-google:hover::before { background-color: $c_google; }
+	&__social-link-vk:hover::before { background-color: $c_vk; }
+	&__social-link-facebook:hover::before { background-color: $c_facebook; }
+	&__social-link-twitter:hover::before { background-color: $c_twitter; }
+	&__social-link-google:hover::before { background-color: $c_google; }
 
-	&__item-social-icon {
+	&__social-icon {
 		font-size: $fz5;
 		line-height: $base-lh * 1.5;
 		color: #fff;
 	}
+}
 
-	&__item-info {
-		@extend %cnsbs;
+/* postExcerpt */
+.postExcerpt {
+	padding-left: $base-lh; 
+	padding-right: $base-lh; 
+	padding-bottom: $base-lh; 
 
-		padding-left: $base-lh; 
-		padding-right: $base-lh; 
-		padding-bottom: $base-lh; 
-	}
-
-	&__item-excerpt {
+	&__text {
 		overflow: hidden;
 
 		max-height: $base-lh * 8;
@@ -145,15 +152,50 @@
 		color: $c_text;
 	}
 
-	&__item-btn-wrap {
-		@extend %rnfes;
+	&__btn {
+		@extend %large_btn;
 
-		margin-top: $base-lh * 0.5;
+		position: absolute;
+		right: $base-lh;
+		bottom: $base-lh;
+	}
+}
 
-		background: #fff;
+/* postContent */
+.postContent {
+	padding-left: $base-lh; 
+	padding-right: $base-lh; 
+	padding-bottom: $base-lh; 
+
+	font-family: $ff_text;
+	font-size: $fz5;
+	line-height: $base-lh;
+	color: $c_text; 
+
+	h2 {
+		font-family: $ff_header;
+		font-size: $fz4;
+		font-weight: bold;
 	}
 
-	&__item-btn {
-		@extend %large_btn;
+	img {
+		display: block;
+
+		width: 100%;
+		margin: $base-lh 0;
+	}
+
+	a {
+		font-family: $ff_header;
+		color: $c_accent;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	b {
+		font-weight: bold;
 	}
 }
