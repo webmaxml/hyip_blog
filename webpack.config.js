@@ -86,6 +86,10 @@ module.exports = {
             filename: 'post.html',
             template: 'src/App/modules/View/pug/blog_item.pug'
         }),
+        new HtmlWebpackPlugin({
+            filename: 'hyip_index.html',
+            template: 'src/App/modules/View/pug/hyip_index.pug'
+        }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 
         cssExtract,

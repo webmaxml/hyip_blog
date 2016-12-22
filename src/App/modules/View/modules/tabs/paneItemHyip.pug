@@ -1,0 +1,19 @@
+mixin paneItem( imgSrc, title, metaText, prefix, rating, dead )
+	li.paneItemHyip
+		if dead
+			a.paneItemHyip__img-link.paneItemHyip__img-link--dead( href="/" )
+				img.paneItemHyip__img( src=imgSrc )
+		else
+			a.paneItemHyip__img-link( href="/" )
+				img.paneItemHyip__img( src=imgSrc )
+		h2.paneItemHyip__header
+			a.paneItemHyip__header-link( href="/" )= title
+		.paneItemHyip__meta-text
+			if prefix
+				p.paneItemHyip__meta-prefix= prefix
+			p.paneItemHyip__meta-value
+				if rating
+					i.fa.fa-star.paneItemHyip__rate-icon
+					= metaText
+				else
+					= metaText

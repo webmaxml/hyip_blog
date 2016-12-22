@@ -1,8 +1,7 @@
 /**********************
 *     COMPONENTS      *
 ***********************/
-@import '../pug/blog_index';
-@import '../pug/blog_item';
+@import '../pug/common';
 @import '../modules/header/header';
 @import '../modules/mainMenu/mainMenu';
 @import '../modules/postLoader/postLoader';
@@ -14,5 +13,5 @@
 @import '../modules/sectionHeader/sectionHeader';
 @import '../modules/tabs/tabs';
 @import '../modules/upButton/upButton';
-@import '../modules/postItem/postItem';
 @import '../modules/comments/comments';
+@import '../modules/hyipBox/hyipBox';
