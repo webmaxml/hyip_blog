@@ -3,11 +3,15 @@
 
 }
 
-/* postItemExcerpt */
-.postItemExcerpt {
+/* hyipItemExcerpt */
+.hyipItemExcerpt {
 	@extend %container_block;
 
 	background-color: #fff;
+
+	&__info-wrap {
+		@extend %rnfss;
+	}
 }
 
 /* hyipHeader */
@@ -74,5 +78,111 @@
 		&:hover {
 			transform: scale(1.2);
 		}
+	}
+}
+
+/* hyipThumbnail */
+.hyipThumbnail {
+	padding-top: $base-lh;
+	padding-left: $base-lh;
+	padding-right: $base-lh;
+	padding-bottom: $base-lh * 0.5;
+	margin-right: $base-lh;
+
+	background-color: $c_text;
+
+	&__link.hyipThumbnail__link--dead {
+		@extend %dead_img;
+	}
+
+	&__img {
+		display: block;
+
+		width: 240px;
+		height: 176px;
+	}
+
+	&__status-wrap {
+		@extend %rncs;
+
+		padding-top: $base-lh * 0.5;
+	}
+
+	&__status-title {
+		margin-right: 5px;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: #fff;
+	}
+
+	&__status-alive,  
+	&__status-dead { 
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+	}
+
+	&__status-alive { color: $c_sub_accent;  }
+	&__status-dead { color: $c_dead;  }
+}
+
+/* hyipExcerpt */
+.hyipExcerpt {
+	width: 100%;
+	padding-right: $base-lh;
+	padding-bottom: $base-lh;
+
+	&__text {
+		@extend %rwcc;
+
+		overflow: hidden;
+
+		height: $base-lh * 5;
+
+		font-family: $ff_text;
+		font-size: $fz5;
+		line-height: $base-lh;
+		color: $c_text; 
+	}
+
+	&__deposits {
+		@extend %rnfss;
+
+		margin: $base-lh * 0.5 0;
+	}
+
+	&__deposit-item {
+		width: 100%;
+	}
+
+	&__deposit-header {
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_sub_text;
+		text-align: center; 
+	}
+
+	&__deposit-value {
+		font-family: $ff_header;
+		font-size: $fz5;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+		text-align: center; 
+
+		&.hyipExcerpt__deposit-value--investors {
+			color: $c_sub_accent;
+		}
+	}
+
+	&__btn-wrap {
+		@extend %rnfes;
+	}
+
+	&__btn {
+		@extend %large_btn;
 	}
 }

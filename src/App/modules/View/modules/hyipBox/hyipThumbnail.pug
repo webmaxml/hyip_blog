@@ -1,0 +1,15 @@
+//hyipThumbnail
+mixin hyipThumbnail( alive )
+	.hyipThumbnail
+		if alive
+			a.hyipThumbnail__link( href="/" )
+				img.hyipThumbnail__img( src=require( '../img/slider_1.jpg' ) )
+		else
+			a.hyipThumbnail__link.hyipThumbnail__link--dead( href="/" )
+				img.hyipThumbnail__img( src=require( '../img/slider_1.jpg' ) )
+		.hyipThumbnail__status-wrap
+			span.hyipThumbnail__status-title Статус:
+			if alive
+				span.hyipThumbnail__status-alive Жив
+			else
+				span.hyipThumbnail__status-dead Умер
