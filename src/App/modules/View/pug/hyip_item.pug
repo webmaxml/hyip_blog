@@ -3,7 +3,7 @@ include ../modules/head/head.pug
 
 html
 	head
-		+head( 'Хайпы' )
+		+head( 'Хайп' )
 	body
 		// wrapper
 		div.wrapper
@@ -16,10 +16,10 @@ html
 			main.main
 				// post
 				section#post.post
-					include ../modules/hyipBox/hyipBox.pug
-					include ../modules/postLoader/postLoader.pug
+					include ../modules/comments/comments.pug
 				// sidebar
 				aside.sidebar
+					include ../modules/hyipAbout/hyipAbout.pug
 					include ../modules/categories/categoriesHyip.pug
 					include ../modules/tabs/tabsHyip.pug
 			include ../modules/footer/footer.pug

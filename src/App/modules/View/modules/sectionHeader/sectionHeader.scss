@@ -11,6 +11,10 @@
 		font-weight: bold;
 		color: $c_text;
 		text-transform: uppercase;
+
+		&.sectionHeader__text--light {
+			color: #fff;
+		}
 	}
 
 	&__line-left, &__line-right {

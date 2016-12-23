@@ -1,5 +1,8 @@
-mixin sectionHeader( text )
+mixin sectionHeader( text, light )
 	.sectionHeader
 		.sectionHeader__line-left
-		h1.sectionHeader__text= text
+		if light
+			h1.sectionHeader__text.sectionHeader__text--light= text
+		else
+			h1.sectionHeader__text= text
 		.sectionHeader__line-right

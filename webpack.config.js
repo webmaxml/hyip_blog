@@ -90,6 +90,10 @@ module.exports = {
             filename: 'hyip_index.html',
             template: 'src/App/modules/View/pug/hyip_index.pug'
         }),
+        new HtmlWebpackPlugin({
+            filename: 'hyip.html',
+            template: 'src/App/modules/View/pug/hyip_item.pug'
+        }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 
         cssExtract,
