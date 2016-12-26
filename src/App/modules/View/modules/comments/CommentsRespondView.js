@@ -10,7 +10,8 @@ let CommentsRespondView = Backbone.View.extend({
 		this.$btn = this.$el.find( '.commentsRespond__btn' );
 		this.$form = this.$el.find( '.commentsForm__wrap' );
 
-		this.active = false;
+		this.listenTo( this.model, 'change:active', this.render );
+		this.listenTo( this.model, 'change:obj', this.test );
 	},
 
 	switchForm: function( e ) {
@@ -18,13 +19,22 @@ let CommentsRespondView = Backbone.View.extend({
 
 		if ( target !== this.$btn.get(0) ) { return; }
 
-		if ( this.active ) {
-			this.$form.fadeOut( 'fast' );
-			this.active = !this.active;
-		} else {
+		let active = this.model.get( 'active' );
+		this.model.set({ active: !active });
+	},
+
+	render: function( model, active ) {
+		if ( active ) {
 			this.$form.fadeIn( 'fast' );
-			this.active = !this.active;
+		} else {
+			this.$form.fadeOut( 'fast' );
 		}
+
+		return this;
+	},
+
+	test: function( model, value ) {
+		console.log( 'callback - ' + value.name );
 	}
 
 });

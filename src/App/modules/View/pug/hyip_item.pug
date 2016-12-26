@@ -1,5 +1,8 @@
 //- mixins
 include ../modules/head/head.pug
+//- states
+- var page = 'hyip';
+
 
 html
 	head
@@ -16,11 +19,13 @@ html
 			main.main
 				// post
 				section#post.post
+					include ../modules/hyipItem/hyipItem.pug
 					include ../modules/comments/comments.pug
 				// sidebar
 				aside.sidebar
 					include ../modules/hyipAbout/hyipAbout.pug
-					include ../modules/categories/categoriesHyip.pug
-					include ../modules/tabs/tabsHyip.pug
+					include ../modules/categories/categories.pug
+					include ../modules/tabs/tabs.pug
 			include ../modules/footer/footer.pug
 	include ../modules/upButton/upButton.pug
+	include ../modules/tooltip/tooltip.pug

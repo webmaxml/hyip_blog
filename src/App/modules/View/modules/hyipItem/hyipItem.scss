@@ -1,0 +1,117 @@
+/* hyipItem */
+.hyipItem {
+	@extend %container_block;
+
+	padding: $base-lh;
+
+	background-color: #fff;
+
+}
+
+/* hyipItemHeader */
+.hyipItemHeader {
+
+	&__text {
+		font-family: $ff_header;
+		font-size: $fz3;
+		font-weight: bold;
+		line-height: $base-lh * 1.2;
+		color: $c_text;
+		text-align: center;
+	}
+
+	&__meta-info {
+		@extend %rwcs;
+
+		margin-top: $base-lh * 0.5;
+	}
+
+	&__meta-text,
+	&__meta-link {
+		margin-right: $base-lh;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_sub_text;
+	}
+
+	&__meta-text.hyipHeader__meta-text--accent {
+		color: $c_text;
+	}
+
+	&__meta-link {
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&__meta-icon {
+		margin-right: 5px;
+
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh;
+	}
+
+	&__meta-btn { 
+		font-size: $fz5;
+		color: $c_star;
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}
+
+/* hyipItemMoney */
+.hyipItemMoney {
+	@extend %rnfss;
+
+	margin: $base-lh * 2 0;
+
+	&__item {
+		width: 100%;
+	}
+
+	&__title {
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_sub_text;
+		text-align: center;
+	}
+
+	&__value-wrap {
+		@extend %rncs;
+	}
+
+	&__value {
+		font-family: $ff_header;
+		font-size: $fz3;
+		line-height: $base-lh * 2;
+		color: $c_text;
+
+		&.hyipItemMoney__value--investors {
+			color: $c_sub_accent;
+		}
+	}
+
+	&__position-wrap {
+		position: relative;
+	}
+
+	&__icon-wrap {
+		position: absolute;
+		top: 11px;
+		right: -20px;
+	}
+
+	&__tooltip-icon {
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_accent;
+	}
+}

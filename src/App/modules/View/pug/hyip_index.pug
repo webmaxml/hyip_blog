@@ -1,5 +1,7 @@
 //- mixins
 include ../modules/head/head.pug
+//- states
+- var page = 'hyip';
 
 html
 	head
@@ -20,7 +22,8 @@ html
 					include ../modules/postLoader/postLoader.pug
 				// sidebar
 				aside.sidebar
-					include ../modules/categories/categoriesHyip.pug
-					include ../modules/tabs/tabsHyip.pug
+					include ../modules/categories/categories.pug
+					include ../modules/tabs/tabs.pug
 			include ../modules/footer/footer.pug
 	include ../modules/upButton/upButton.pug
+	include ../modules/tooltip/tooltip.pug

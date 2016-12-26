@@ -24,6 +24,7 @@
     "image-webpack-loader": "^1.8.0",
     "imports-loader": "^0.7.0",
     "isomorphic-fetch": "^2.2.1",
+    "javascript-state-machine": "^2.4.0",
     "node-sass": "^3.7.0",
     "owl.carousel": "^2.2.0",
     "postcss-loader": "^0.9.1",
@@ -50,6 +51,7 @@
     "sass-loader": "^3.2.0",
     "slick-carousel": "^1.6.0",
     "style-loader": "^0.13.1",
+    "tooltipster": "^4.1.6",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"

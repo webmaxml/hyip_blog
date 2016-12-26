@@ -1,0 +1,27 @@
+/* tooltip */
+.tooltips {
+	display: none;
+}
+
+/* depostiTooltip */
+.depostiTooltip {
+	width: 200px;
+
+	&__item {
+		@extend %rnsbs;
+	}
+
+	&__title {
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: #fff;
+	}
+
+	&__value {
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_sub_text;
+	}
+}

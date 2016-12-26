@@ -8,6 +8,7 @@ import UpButtonInterface from './App/modules/View/modules/upButton/UpButtonInter
 import TabsInterface from './App/modules/View/modules/tabs/TabsInterface';
 import SliderInterface from './App/modules/View/modules/slider/SliderInterface';
 import CommentsInterface from './App/modules/View/modules/comments/CommentsInterface';
+import TooltipInterface from './App/modules/View/modules/tooltip/TooltipInterface';
 
 
 // instantiate container
@@ -24,6 +25,7 @@ container.add( 'upButton', UpButtonInterface );
 container.add( 'tabs', TabsInterface );
 container.add( 'slider', SliderInterface );
 container.add( 'comments', CommentsInterface );
+container.add( 'tooltip', TooltipInterface );
 
 
 export default container;

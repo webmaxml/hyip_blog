@@ -1,12 +1,98 @@
+//- mixins
+
+mixin hyipHeader()
+	//hyipHeader
+	.hyipHeader
+		h1.hyipHeader__text
+			a.hyipHeader__link( href="/hyip.html" ) MEETFREEMAN
+		ul.hyipHeader__meta-info
+				li.hyipHeader__meta-item
+					a.hyipHeader__meta-link( href="/" )
+						i.fa.fa-list-ul.hyipHeader__meta-icon
+						| Рекомендуемые
+				li.hyipHeader__meta-item
+					span.hyipHeader__meta-text
+						i.fa.fa-calendar.hyipHeader__meta-icon
+						| 12.11.2016
+				li.hyipHeader__meta-item
+					a.hyipHeader__meta-link( href="/hyip.html#comments" )
+						i.fa.fa-comments.hyipHeader__meta-icon
+						| 29 комментариев
+				li.hyipHeader__meta-item
+					span.hyipHeader__meta-text.hyipHeader__meta-text--accent
+						button.hyipHeader__meta-btn( type="button" )
+							i.fa.fa-star.hyipHeader__meta-icon
+						| 149
+
+//------------------------------------------------------------------------------
+
+mixin hyipThumbnail( alive )
+	//hyipThumbnail
+	.hyipThumbnail
+		if alive
+			a.hyipThumbnail__link( href="/hyip.html" )
+				img.hyipThumbnail__img( src=require( '../img/slider_1.jpg' ) )
+		else
+			a.hyipThumbnail__link.hyipThumbnail__link--dead( href="/hyip.html" )
+				img.hyipThumbnail__img( src=require( '../img/slider_1.jpg' ) )
+		.hyipThumbnail__status-wrap
+			span.hyipThumbnail__status-title Статус:
+			if alive
+				span.hyipThumbnail__status-alive Жив
+			else
+				span.hyipThumbnail__status-dead Умер
+
+//------------------------------------------------------------------------------
+
+mixin hyipExcerpt()
+	//hyipExcerpt
+	.hyipExcerpt
+		.hyipExcerpt__text
+			.hyipExcerpt__text-wrap
+				p 1.8% в день на 20 дней
+				p 2.1% в день на 30 дней
+				p 2.4% в день на 40 дней
+				p 2.5% в день на 50 дней
+		ul.hyipExcerpt__deposits
+			li.hyipExcerpt__deposit-item
+				h3.hyipExcerpt__deposit-header Наш вклад
+				p.hyipExcerpt__deposit-value 720$
+			li.hyipExcerpt__deposit-item
+				h3.hyipExcerpt__deposit-header Ваш вклад
+				p.hyipExcerpt__deposit-value.hyipExcerpt__deposit-value--investors 320$
+			li.hyipExcerpt__deposit-item
+				h3.hyipExcerpt__deposit-header Страховка
+				p.hyipExcerpt__deposit-value 1000$
+		.hyipExcerpt__btn-wrap
+			a.hyipExcerpt__btn( href="/hyip.html" ) Подробнее
+
+//------------------------------------------------------------------------------
+
+mixin hyipItemExcerpt()
+	li.hyipItemExcerpt
+		+hyipHeader()
+		.hyipItemExcerpt__info-wrap
+			+hyipThumbnail( true )
+			+hyipExcerpt()
+
+mixin hyipItemExcerptDead()
+	li.hyipItemExcerpt
+		+hyipHeader()
+		.hyipItemExcerpt__info-wrap
+			+hyipThumbnail( false )
+			+hyipExcerpt()
+
+//------------------------------------------------------------------------------
+
 // hyipBox
 ul.hyip-box
-	include hyipItemExcerpt.pug
-	include hyipItemExcerptDead.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
-	include hyipItemExcerpt.pug
+	+hyipItemExcerpt()
+	+hyipItemExcerptDead()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()
+	+hyipItemExcerpt()

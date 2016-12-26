@@ -1,5 +1,9 @@
 //- mixins
 include ../modules/head/head.pug
+//- states
+- var page = 'blog';
+- var blogType = 'item';
+
 
 html
 	head
@@ -16,7 +20,7 @@ html
 			main.main
 				// post
 				section#post.post
-					include ../modules/postBox/postItemFull.pug
+					include ../modules/postBox/postBox.pug
 					include ../modules/comments/comments.pug
 				// sidebar
 				aside.sidebar
@@ -25,3 +29,4 @@ html
 					include ../modules/subscribe/subscribe.pug
 			include ../modules/footer/footer.pug
 	include ../modules/upButton/upButton.pug
+	include ../modules/tooltip/tooltip.pug

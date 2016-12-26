@@ -1,12 +1,127 @@
-// postBox
-ul.post-box
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
-	include postItemExcerpt.pug
+//- mixins
+
+mixin postHeader( text, setLink )
+	//postHeader
+	.postHeader
+		h1.postHeader__text
+			if setLink
+				a.postHeader__link( href="/post.html#post" )= text
+			else
+				= text
+		ul.postHeader__meta-info
+			li.postHeader__meta-item
+				a.postHeader__meta-link( href="/" )
+					i.fa.fa-list-ul.postHeader__meta-icon
+					| Новичкам
+			li.postHeader__meta-item
+				span.postHeader__meta-text
+					i.fa.fa-calendar.postHeader__meta-icon
+					| 12.11.2016
+			li.postHeader__meta-item
+				a.postHeader__meta-link( href="/post.html#comments" )
+					i.fa.fa-comments.postHeader__meta-icon
+					| 146 комментариев
+			li.postHeader__meta-item
+				span.postHeader__meta-text
+					i.fa.fa-eye.postHeader__meta-icon
+					| 546 просмотров
+
+//--------------------------------------------------------------------------
+
+mixin postThumbnail()
+	//postThumbnail
+	.postThumbnail
+		a.postThumbnail__link( href="/post.html#post" )
+			img.postThumbnail__img( src=require( '../img/post_image.jpg' ) )
+		ul.postThumbnail__social
+			li.postThumbnail__social-item
+				a.postThumbnail__social-link-vk( href="/" )
+					i.fa.fa-vk.postThumbnail__social-icon
+			li.postThumbnail__social-item
+				a.postThumbnail__social-link-facebook( href="/" )
+					i.fa.fa-facebook.postThumbnail__social-icon
+			li.postThumbnail__social-item
+				a.postThumbnail__social-link-twitter( href="/" )
+					i.fa.fa-twitter.postThumbnail__social-icon
+			li.postThumbnail__social-item
+				a.postThumbnail__social-link-google( href="/" )
+					i.fa.fa-google-plus.postThumbnail__social-icon
+
+//--------------------------------------------------------------------------
+
+mixin postExcerpt()
+	//postEscerpt
+	.postExcerpt
+		p.postExcerpt__text Предлагаю всем, кто читает этот блог, посмотреть на наши с Вами достижения! Конечно, главные здесь инвесторы и без Вас, это всё невозможно! Вы вместе с нами топы и всем здесь заправляете :) Впереди еще много времени, не словом, а делом :) Предлагаю всем, кто читает этот блог, посмотреть на наши с Вами достижения! Конечно, главные здесь инвесторы и без Вас, это всё невозможно!
+		a.postExcerpt__btn( href="/post.html#post" ) Читать
+
+//--------------------------------------------------------------------------
+
+mixin postItemExcerpt()
+	li.post-box__item
+		+postHeader( 'Hyipodrom.com - не просто TOP, а топовый во всём всего за год! Только факты, без флуда!', true )
+		.post-box__info-wrap
+			+postThumbnail()
+			+postExcerpt()
+
+//--------------------------------------------------------------------------
+
+mixin postContent()
+	//postContent
+	.postContent
+		p Предлагаю всем, кто читает этот блог, посмотреть на наши с Вами достижения! Конечно, главные здесь инвесторы и без Вас, это всё невозможно! Вы вместе с нами топы и всем здесь заправляете :) Впереди еще много времени, не словом, а делом :)
+		br
+		h2 1. Суточные входы в проекты
+		br
+		p Конечно, самый главный показатель, это какие суммы заходят в разные проекты. Другими словами - платежеспособность аудитории блога. Поэтому Вы здесь главные - читатели блога, а не как думают админы, что они и это печально :( И блог топовый, потому что у нас инвесторы топовые. И пока здесь есть все Вы, никто ничего сделать не может. А мы, вместе с Вами можем. Но об этом позже :) Со старта рефбеки не платили (и зря!), поэтому данных нет. Более-менее начали с января 2016 года. Поэтому скрин с этого момента.
+		img( src=require( '../img/post_img.png' ) )
+		p Так было в начале этого года, с блога входило примерно от 50$ до 500$ в день.
+		br
+		p Очевидно, когда есть успешные проекты и мало скамов, показатели входа наших инвесторов зашкаливают.
+		img( src=require( '../img/post_img.png' ) )
+		p Такие были входы в проекты, когда одновременно работали два успешных телеграм бота: 
+			a( href="/" ) Larawith.me
+			|  и 
+			a( href="/" ) Bots Family.
+		br
+		p
+			b За 9-10 дней с блога зашло 100 000$ в разные проекты!
+		br
+		p После их скама пошел спад. Инвесторы напуганы, остерегаются. Далее всё нормализуется. Заем начинают косить под успешные проекты разные скамеры и стуация становится еще хуже. Но как и мода, входы в проекты цикличны. Далее появляются новые гиганты и всё приходят в норму. Вот не было бы скамеров, все бы жили как короли. Вопрос, а зачем же мы боремся со всякой не честью!? Да чтобы всем здесь было хорошо!
+		br
+		h2 2. Аудитория блога
+		br
+		p Таких показателей ни у кого нет. У нас безграничное свое огненное ядро :)! После того, как мы потеряли домен, ровным счетом ничего не изменилось. Это невероятное достижение!
+		img( src=require( '../img/post_img.png' ) )
+		p Красная стрелка - там мы потеряли домен: hyipstat.me. И входы в проекты вообще не изменились! Сейчас в целом, ситуация напряженная, скоро новый год. Поэтому показатели входов скромнее, чем обычно. Да и крупных хороших проектов нет, остались гиганты старички: 
+			a( href="/" ) Razzleton
+			|, 
+			a( href="/" ) Xabo
+			|.
+
+//--------------------------------------------------------------------------
+
+//- content
+
+if ( blogType === 'index' )
+	// postBox
+	ul.post-box
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+		+postItemExcerpt()
+
+//--------------------------------------------------------------------------
+
+if ( blogType === 'item' )
+	.post-box__item
+		+postHeader( 'Hyipodrom.com - не просто TOP, а топовый во всём всего за год! Только факты, без флуда!', false )
+		.post-box__info-wrap
+			+postThumbnail()
+			+postContent()

@@ -1,4 +1,5 @@
 import CommentsRespondView from './CommentsRespondView';
+import CommentsRespondModel from './CommentsRespondModel';
 
 class CommentsInterface {
 
@@ -7,7 +8,8 @@ class CommentsInterface {
 		let $responds = $container.find( document.getElementsByClassName( 'commentsRespond' ) );
 
 		$responds.each( function() {
-			let view = new CommentsRespondView({ el: this });
+			let model = new CommentsRespondModel();
+			let view = new CommentsRespondView({ el: this, model });
 		} );
 	}
 

@@ -1,0 +1,56 @@
+//- mixins
+//- include ../tooltip/tooltip.pug
+
+mixin hyipItemHeader()
+	//hyipItemHeader
+	.hyipItemHeader
+		h1.hyipItemHeader__text MEETFREEMAN
+		ul.hyipItemHeader__meta-info
+				li.hyipItemHeader__meta-item
+					a.hyipItemHeader__meta-link( href="/" )
+						i.fa.fa-list-ul.hyipItemHeader__meta-icon
+						| Рекомендуемые
+				li.hyipItemHeader__meta-item
+					span.hyipItemHeader__meta-text
+						i.fa.fa-calendar.hyipItemHeader__meta-icon
+						| 12.11.2016
+				li.hyipItemHeader__meta-item
+					a.hyipItemHeader__meta-link( href="/post.html#comments" )
+						i.fa.fa-comments.hyipItemHeader__meta-icon
+						| 29 комментариев
+				li.hyipItemHeader__meta-item
+					span.hyipItemHeader__meta-text.hyipItemHeader__meta-text--accent
+						button.hyipItemHeader__meta-btn( type="button" )
+							i.fa.fa-star.hyipItemHeader__meta-icon
+						| 149
+
+//-----------------------------------------------------------------------------
+
+mixin hyipItemMoney 
+	//hyipItemMoney
+	ul.hyipItemMoney
+		li.hyipItemMoney__item
+			h3.hyipItemMoney__title Наш вклад
+			.hyipItemMoney__value-wrap
+				span.hyipItemMoney__value 200$
+		li.hyipItemMoney__item
+			h3.hyipItemMoney__title Ваш вклад
+			.hyipItemMoney__value-wrap
+				span.hyipItemMoney__value.hyipItemMoney__value--investors 300$
+				.hyipItemMoney__position-wrap
+					.hyipItemMoney__icon-wrap
+						i.fa.fa-list-ul.tooltip.hyipItemMoney__tooltip-icon( data-tooltip-content="#depositTooptip" )
+		li.hyipItemMoney__item
+			h3.hyipItemMoney__title Страховка
+			.hyipItemMoney__value-wrap
+				span.hyipItemMoney__value 1000$
+
+
+
+//-----------------------------------------------------------------------------
+
+
+//hyipItem
+.hyipItem
+	+hyipItemHeader()
+	+hyipItemMoney()

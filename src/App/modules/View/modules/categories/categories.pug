@@ -1,13 +1,36 @@
+//- mixins
 include ../sectionHeader/sectionHeader.pug
-include categoriesItem.pug
 
-// categories
-.categories
-	+sectionHeader( 'Разделы' )
-	ul.categories__item-box
-		+categoriesItem( 'Новичкам' )
-		+categoriesItem( 'Новости' )
-		+categoriesItem( 'Обзоры' )
-		+categoriesItem( 'Отсчеты' )
-		+categoriesItem( 'Интервью' )
-		+categoriesItem( 'Аналитика' )
+mixin categoriesItem( text )
+	li.categories__item
+			a.categories__item-link( href="/" )= text
+
+//-------------------------------------------
+
+//- categories
+
+if ( page === 'blog' )
+	// categories
+	.categories
+		+sectionHeader( 'Разделы' )
+		ul.categories__item-box
+			+categoriesItem( 'Новичкам' )
+			+categoriesItem( 'Новости' )
+			+categoriesItem( 'Обзоры' )
+			+categoriesItem( 'Отсчеты' )
+			+categoriesItem( 'Интервью' )
+			+categoriesItem( 'Аналитика' )
+
+//-------------------------------------------
+
+if ( page === 'hyip' )
+	// categories
+	.categories
+		+sectionHeader( 'Разделы' )
+		ul.categories__item-box
+			+categoriesItem( 'Рекомендумые' )
+			+categoriesItem( 'Низкодоходные' )
+			+categoriesItem( 'Среднедоходные' )
+			+categoriesItem( 'Высокодоходные' )
+			+categoriesItem( 'Со страховкой' )
+			+categoriesItem( 'Морг' )
