@@ -1,14 +1,29 @@
 .tooltips
-	ul#depositTooptip.depostiTooltip
-		li.depostiTooltip__item
-			span.depostiTooltip__title Кол-во вкладов
-			span.depostiTooltip__value 8
-		li.depostiTooltip__item
-			span.depostiTooltip__title Средний вклад
-			span.depostiTooltip__value 28.56$
-		li.depostiTooltip__item
-			span.depostiTooltip__title Мин.вклад
-			span.depostiTooltip__value 20$
-		li.depostiTooltip__item
-			span.depostiTooltip__title Макс.вклад
-			span.depostiTooltip__value 50$
+	ul#depositTooptip.depositTooltip
+		li.depositTooltip__item
+			span.depositTooltip__title Кол-во вкладов
+			span.depositTooltip__value 8
+		li.depositTooltip__item
+			span.depositTooltip__title Средний вклад
+			span.depositTooltip__value 28.56$
+		li.depositTooltip__item
+			span.depositTooltip__title Мин.вклад
+			span.depositTooltip__value 20$
+		li.depositTooltip__item
+			span.depositTooltip__title Макс.вклад
+			span.depositTooltip__value 50$
+	#plansTooltip.plansTooltip 
+		p Отображает виртуальное кол-во % в день независимо от периодичности начислений. 
+		p Например, для плана "150% через 30 дней", реальные начисления в размере 150% поступят через 30 дней, что составляет виртуальные 5% в день. 
+		p Также число зависит от наличия/отсутствия вклада в выплатах. 
+			span.plansTooltip__green Зеленые числа 
+			| - наличия вклада, 
+			span.plansTooltip__red красные 
+			| - отсутсвие. 
+		p Например, для плана "150% в течение 30 дней" при наличии вклада в выплатах число составит 
+			span.plansTooltip__green 5% 
+			| в день, при отсутствии: 
+			br 
+			| ( 150 - 100 ) / 30 = 
+			span.plansTooltip__red 1.6% 
+			| в день.

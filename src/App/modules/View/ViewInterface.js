@@ -13,6 +13,7 @@ class ViewInterface {
 			this.service.get( 'upButton' ).init();
 			this.service.get( 'comments' ).init();
 			this.service.get( 'tooltip' ).init();
+			this.service.get( 'hyipItem' ).init();
 		});
 	}
 

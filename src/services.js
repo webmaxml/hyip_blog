@@ -9,6 +9,7 @@ import TabsInterface from './App/modules/View/modules/tabs/TabsInterface';
 import SliderInterface from './App/modules/View/modules/slider/SliderInterface';
 import CommentsInterface from './App/modules/View/modules/comments/CommentsInterface';
 import TooltipInterface from './App/modules/View/modules/tooltip/TooltipInterface';
+import HyipItemInterface from './App/modules/View/modules/hyipItem/HyipItemInterface';
 
 
 // instantiate container
@@ -26,6 +27,7 @@ container.add( 'tabs', TabsInterface );
 container.add( 'slider', SliderInterface );
 container.add( 'comments', CommentsInterface );
 container.add( 'tooltip', TooltipInterface );
+container.add( 'hyipItem', HyipItemInterface );
 
 
 export default container;

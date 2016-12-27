@@ -1,5 +1,5 @@
 //- mixins
-//- include ../tooltip/tooltip.pug
+include ../sectionHeader/sectionHeader.pug
 
 mixin hyipItemHeader()
 	//hyipItemHeader
@@ -26,26 +26,106 @@ mixin hyipItemHeader()
 
 //-----------------------------------------------------------------------------
 
-mixin hyipItemMoney 
+mixin hyipItemMoney()
 	//hyipItemMoney
-	ul.hyipItemMoney
-		li.hyipItemMoney__item
-			h3.hyipItemMoney__title Наш вклад
-			.hyipItemMoney__value-wrap
-				span.hyipItemMoney__value 200$
-		li.hyipItemMoney__item
-			h3.hyipItemMoney__title Ваш вклад
-			.hyipItemMoney__value-wrap
-				span.hyipItemMoney__value.hyipItemMoney__value--investors 300$
-				.hyipItemMoney__position-wrap
-					.hyipItemMoney__icon-wrap
-						i.fa.fa-list-ul.tooltip.hyipItemMoney__tooltip-icon( data-tooltip-content="#depositTooptip" )
-		li.hyipItemMoney__item
-			h3.hyipItemMoney__title Страховка
-			.hyipItemMoney__value-wrap
-				span.hyipItemMoney__value 1000$
+	.hyipItemMoney
+		ul.hyipItemMoney__item-box
+			li.hyipItemMoney__item
+				h3.hyipItemMoney__title Наш вклад
+				.hyipItemMoney__value-wrap
+					span.hyipItemMoney__value 200$
+			li.hyipItemMoney__item
+				h3.hyipItemMoney__title Ваш вклад
+				.hyipItemMoney__value-wrap
+					span.hyipItemMoney__value.hyipItemMoney__value--investors 300$
+					.hyipItemMoney__position-wrap
+						.hyipItemMoney__icon-wrap
+							i.fa.fa-list-ul.tooltip.hyipItemMoney__tooltip-icon( data-tooltip-content="#depositTooptip" )
+			li.hyipItemMoney__item
+				h3.hyipItemMoney__title Страховка
+				.hyipItemMoney__value-wrap
+					span.hyipItemMoney__value 1000$
+		.hyipItemMoney__btn-wrap
+			button.hyipItemMoney__btn( type="button" ) Инвестировать
 
 
+
+//-----------------------------------------------------------------------------
+
+mixin hyipItemPlans()
+	//hyipItemPlans
+	.hyipItemPlans
+		+sectionHeader( 'Планы' )
+		table.hyipItemPlans__table
+			tr.hyipItemPlans__row
+				th.hyipItemPlans__header-cell Название
+				th.hyipItemPlans__header-cell % в день
+					i.fa.fa-question.tooltip.hyipItemPlans__tooltip-icon( data-tooltip-content="#plansTooltip" )
+				th.hyipItemPlans__header-cell Выплаты
+				th.hyipItemPlans__header-cell Дней
+				th.hyipItemPlans__header-cell Дней до 
+					br
+					| безубытка
+				th.hyipItemPlans__header-cell Мин.вклад
+				th.hyipItemPlans__header-cell Макс.вклад
+			tr.hyipItemPlans__row
+				td.hyipItemPlans__cell Silver
+				td.hyipItemPlans__cell.hyipItemPlans__cell--green 2
+				td.hyipItemPlans__cell ежедневно
+				td.hyipItemPlans__cell 75
+				td.hyipItemPlans__cell 50
+				td.hyipItemPlans__cell 10$
+				td.hyipItemPlans__cell 299$
+			tr.hyipItemPlans__row
+				td.hyipItemPlans__cell Gold
+				td.hyipItemPlans__cell.hyipItemPlans__cell--green 2.3
+				td.hyipItemPlans__cell ежедневно
+				td.hyipItemPlans__cell 77
+				td.hyipItemPlans__cell 44
+				td.hyipItemPlans__cell 300$
+				td.hyipItemPlans__cell 999$
+			tr.hyipItemPlans__row
+				td.hyipItemPlans__cell Platinum
+				td.hyipItemPlans__cell.hyipItemPlans__cell--red 1.1
+				td.hyipItemPlans__cell ежедневно
+				td.hyipItemPlans__cell 80
+				td.hyipItemPlans__cell 80
+				td.hyipItemPlans__cell 1000$
+				td.hyipItemPlans__cell 3000$
+
+//-----------------------------------------------------------------------------
+
+mixin hyipItemProfit()
+	//hyipItemProfit
+	.hyipItemProfit
+		+sectionHeader( 'Расчет прибыли' )
+		p.hyipItemProfit__text Для расчета прибыли выберите нужный план и вклад. Обратите внимание на то, что график учитывает наличие или отсутсвие вклада в выплатах. В последнем случае в конце срока присутствует скачок прибыли, означающий возврат вашего вклада
+		#chart.hyipItemProfit__chart
+		form.hyipItemProfit__form
+			.hyipItemProfit__form-wrap
+				.hyipItemProfit__label-wrap
+					label.hyipItemProfit__label( for="plan" ) План
+				.hyipItemProfit__select-wrap
+					select#plan.hyipItemProfit__select-input( name="plan" )
+					.hyipItemProfit__select
+						.hyipItemProfit__select-value
+						.hyipItemProfit__option-box
+						i.fa.fa-chevron-down.hyipItemProfit__select-icon
+			.hyipItemProfit__form-wrap
+				.hyipItemProfit__label-wrap
+					label.hyipItemProfit__label( for="deposit" ) Вклад
+				.hyipItemProfit__input-wrap
+					input#deposit.hyipItemProfit__input( type="text" name="deposit" )
+					i.fa.fa-dollar.hyipItemProfit__icon
+			.hyipItemProfit__form-wrap
+				.hyipItemProfit__label-wrap
+					span.hyipItemProfit__label с учетом рефбека
+				.hyipItemProfit__input-wrap
+					input#refback.hyipItemProfit__checkbox-input( type="checkbox" name="refback" )
+					label.hyipItemProfit__checkbox( for="refback" )
+						i.fa.fa-check.hyipItemProfit__checkbox-icon
+			.hyipItemProfit__btn-wrap
+				button.hyipItemProfit__submit Расчитать
 
 //-----------------------------------------------------------------------------
 
@@ -54,3 +134,5 @@ mixin hyipItemMoney
 .hyipItem
 	+hyipItemHeader()
 	+hyipItemMoney()
+	+hyipItemPlans()
+	+hyipItemProfit()

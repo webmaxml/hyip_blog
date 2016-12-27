@@ -4,7 +4,7 @@
 }
 
 /* depostiTooltip */
-.depostiTooltip {
+.depositTooltip {
 	width: 200px;
 
 	&__item {
@@ -24,4 +24,23 @@
 		line-height: $base-lh;
 		color: $c_sub_text;
 	}
+}
+
+/* plansTooltip */
+.plansTooltip {
+	width: 300px;
+
+	p {
+		font-family: $ff_text;
+		font-size: $fz6;
+		line-height: $base-lh * 0.8;
+		color: #fff;
+
+		&:not( :last-child ) {
+			margin-bottom: $base-lh * 0.8;
+		}
+	}
+
+	&__red { color: $c_dead; }
+	&__green { color: $c_sub_accent; }
 }
