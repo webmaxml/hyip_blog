@@ -1,0 +1,33 @@
+//- mixins
+include ../components/head/head.pug
+//- states
+- var page = 'blog';
+- var blogType = 'item';
+
+
+html
+	head
+		+head( 'Пост' )
+	body
+		// wrapper
+		div.wrapper
+			a.wrapper__link( href="#ad" )
+				img.wrapper__img( src=require( '../img/ad_bg.jpg' ) )
+			include ../components/header/header.pug
+			include ../components/mainMenu/mainMenu.pug
+			include ../components/slider/slider.pug
+			// main
+			main.main
+				// post
+				section#post.post
+					include ../components/postBox/postBox.pug
+					include ../components/comments/comments.pug
+				// sidebar
+				aside.sidebar
+					include ../components/categories/categories.pug
+					include ../components/tabs/tabs.pug
+					include ../components/subscribe/subscribe.pug
+			include ../components/footer/footer.pug
+		include ../components/upButton/upButton.pug
+		include ../components/tooltip/tooltip.pug
+		script( src='https://www.gstatic.com/charts/loader.js' )

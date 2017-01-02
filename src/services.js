@@ -1,33 +1,52 @@
 // deps
-import { ServiceContainer, ServiceLocator } from './ServiceContainer';
+import Bottle from 'bottlejs';
 // services
-import AppInterface from './App/AppInterface';
-import ViewInterface from './App/modules/View/ViewInterface';
-// view components
-import UpButtonInterface from './App/modules/View/modules/upButton/UpButtonInterface';
-import TabsInterface from './App/modules/View/modules/tabs/TabsInterface';
-import SliderInterface from './App/modules/View/modules/slider/SliderInterface';
-import CommentsInterface from './App/modules/View/modules/comments/CommentsInterface';
-import TooltipInterface from './App/modules/View/modules/tooltip/TooltipInterface';
-import HyipItemInterface from './App/modules/View/modules/hyipItem/HyipItemInterface';
+import RouterController from './ui/RouterController';
+import UIController from './ui/UIController';
+import DomainController from './domain/DomainController';
+import DomainFacade from './domain/DomainFacade';
+// ui components
+import Slider from './ui/components/slider/SliderController';
+import Tabs from './ui/components/tabs/TabsController';
+import Tooltip from './ui/components/tooltip/TooltipController';
+import UpButton from './ui/components/upButton/UpButtonController';
+import Comments from './ui/components/comments/CommentsController';
 
+import Profit from './ui/components/hyipItem/ProfitController';
+import ProfitChart from './ui/components/hyipItem/ProfitChartController';
+import ProfitForm from './ui/components/hyipItem/ProfitFormController';
+import ProfitFormSelect from './ui/components/hyipItem/ProfitFormSelectController';
+import ProfitFormInput from './ui/components/hyipItem/ProfitFormInputController';
+// domain components
+import PlansList from './domain/components/PlansList';
 
-// instantiate container
-let container = new ServiceContainer();
-let locator = new ServiceLocator( container );
-container.setLocator( locator );
+let bottle = new Bottle();
 
-// services
-container.add( 'app', AppInterface );
-container.add( 'view', ViewInterface );
+bottle.service( 'router', RouterController, 'uiController' );
 
-// view components
-container.add( 'upButton', UpButtonInterface );
-container.add( 'tabs', TabsInterface );
-container.add( 'slider', SliderInterface );
-container.add( 'comments', CommentsInterface );
-container.add( 'tooltip', TooltipInterface );
-container.add( 'hyipItem', HyipItemInterface );
+bottle.service( 'domainFacade', DomainFacade, 'domainController' );
 
+bottle.service( 'domainController', DomainController, 'plansList' );
+bottle.service( 'uiController', UIController, 
+				   'slider', 
+				   'tabs', 
+				   'tooltip',
+				   'upButton',
+				   'comments',
+				   'profit' );
 
-export default container;
+bottle.service( 'profit', Profit, 'domainFacade', 'profitChart', 'profitForm' );
+bottle.service( 'profitForm', ProfitForm, 'profitFormSelect', 'profitFormInput' );
+bottle.service( 'profitFormSelect', ProfitFormSelect );
+bottle.service( 'profitFormInput', ProfitFormInput );
+bottle.service( 'profitChart', ProfitChart );
+
+bottle.service( 'tooltip', Tooltip );
+bottle.service( 'slider', Slider );
+bottle.service( 'tabs', Tabs );
+bottle.service( 'comments', Comments );
+bottle.service( 'upButton', UpButton );
+
+bottle.service( 'plansList', PlansList );
+
+export default bottle;

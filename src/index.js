@@ -1,5 +1,5 @@
-import 'babel-polyfill';
-import container from './services';
+import './ui/sass/index.scss';
+import bottle from './services';
 
-let App = container.get( 'app' );
-App.init();
+// init router
+bottle.container.router;

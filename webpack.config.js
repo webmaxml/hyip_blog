@@ -18,7 +18,7 @@ module.exports = {
     debug: true,
 
     entry: {
-        app: "./src/index.js",
+        app: [ 'babel-polyfill', './src/index.js' ],
     },
 
     output: {
@@ -80,19 +80,19 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'src/App/modules/View/pug/blog_index.pug'
+            template: 'src/ui/pug/blog_index.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'post.html',
-            template: 'src/App/modules/View/pug/blog_item.pug'
+            template: 'src/ui/pug/blog_item.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'hyip_index.html',
-            template: 'src/App/modules/View/pug/hyip_index.pug'
+            template: 'src/ui/pug/hyip_index.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'hyip.html',
-            template: 'src/App/modules/View/pug/hyip_item.pug'
+            template: 'src/ui/pug/hyip_item.pug'
         }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 
