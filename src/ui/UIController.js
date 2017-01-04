@@ -1,12 +1,13 @@
 class UIController {
 
-	constructor( slider, tabs, tooltip, upButton, comments, profit ) {
+	constructor( slider, tabs, tooltip, upButton, comments, profit, modals ) {
 		this.slider = slider;
 		this.tabs = tabs;
 		this.tooltip = tooltip;
 		this.upButton = upButton;
 		this.comments = comments;
 		this.profit = profit;
+		this.modals = modals;
 	}
 
 	initCommon() {
@@ -14,6 +15,7 @@ class UIController {
 		this.tabs.init();
 		this.tooltip.init();
 		this.upButton.init();
+		this.modals.init();
 	}
 
 	initRoot() {

@@ -1,0 +1,38 @@
+// modals
+.modals
+	.modals__overlay( data-modal-window="refback" )
+		.refbackModal
+			button.modals__close( type='button' )
+				i.fa.fa-close.modals__close-icon
+			h1.refbackModal__header Заказать рефбек
+			p.refbackModal__text Для заказа рефбека, Вы должны зарегестрироваться в проекте по нашим партнерским ссылкам. Также обязательно ознакомтесь с 
+				a.refbackModal__link( href="/" ) правилами выплат рефбеков
+				|.
+			form.refbackModal__form
+				input.refbackModal__input( type='text' placeholder="Название проекта" )
+				input.refbackModal__input( type='text' placeholder="Логин в проекте" )
+				input.refbackModal__input( type='text' placeholder="Вклад, $" )
+				.refbackModal__select-wrap
+					select.refbackModal__select( name="paySystem" )
+						option( value="perfectMoney" ) PerfectMoney
+						option( value="payeer" ) Payeer
+						option( value="bitcoin" ) Bitcoin
+						option( value="advancedCash" ) Advanced Cach
+						option( value="qiwi" ) Qiwi
+						option( value="yandex" ) Яндекс.Деньги
+						option( value="nixMoney" ) NixMoney
+					.refbackModal__pseudo-select
+						.refbackModal__pseudo-select-value
+						i.fa.fa-chevron-down.refbackModal__pseudo-select-icon
+						ul.refbackModal__pseudo-option-box
+							li.refbackModal__pseudo-option( data-value="perfectMoney" ) PerfectMoney
+							li.refbackModal__pseudo-option( data-value="payeer" ) Payeer
+							li.refbackModal__pseudo-option( data-value="bitcoin" ) Bitcoin
+							li.refbackModal__pseudo-option( data-value="advancedCash" ) Advanced Cach
+							li.refbackModal__pseudo-option( data-value="qiwi" ) Qiwi
+							li.refbackModal__pseudo-option( data-value="yandex" ) Яндекс.Деньги
+							li.refbackModal__pseudo-option( data-value="nixMoney" ) NixMoney
+				input.refbackModal__input( type='text' placeholder="Номер кошелька" )
+				input.refbackModal__input( type='text' placeholder="Email" )
+				button.refbackModal__submit Заказать
+	.modals__overlay( data-modal-window="addHyip" )

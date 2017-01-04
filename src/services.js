@@ -18,6 +18,10 @@ import ProfitForm from './ui/components/hyipItem/ProfitFormController';
 import ProfitFormSelect from './ui/components/hyipItem/ProfitFormSelectController';
 import ProfitFormInput from './ui/components/hyipItem/ProfitFormInputController';
 import ProfitFormCheckbox from './ui/components/hyipItem/ProfitFormCheckboxController';
+
+import Modals from './ui/components/modals/ModalsController';
+import ModalsSelect from './ui/components/modals/ModalsSelectController';
+
 // domain components
 import PlansList from './domain/components/PlansList';
 
@@ -34,7 +38,8 @@ bottle.service( 'uiController', UIController,
 				   'tooltip',
 				   'upButton',
 				   'comments',
-				   'profit' );
+				   'profit',
+				   'modals' );
 
 bottle.service( 'profit', Profit, 'domainFacade', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 'profitFormSelect', 'profitFormInput', 'profitFormCheckbox' );
@@ -48,6 +53,8 @@ bottle.service( 'slider', Slider );
 bottle.service( 'tabs', Tabs );
 bottle.service( 'comments', Comments );
 bottle.service( 'upButton', UpButton );
+bottle.service( 'modals', Modals, 'modalsSelect' );
+bottle.service( 'modalsSelect', ModalsSelect );
 
 bottle.service( 'plansList', PlansList );
 
