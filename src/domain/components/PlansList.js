@@ -30,7 +30,7 @@ const plans = [
 		depositInPayments: false,
 		paymentsFrequency: 1,
 		period: 80,
-		refbackPercent: 5,
+		refbackPercent: 0,
 		minDeposit: 1000,
 		maxDeposit: 3000
 	}

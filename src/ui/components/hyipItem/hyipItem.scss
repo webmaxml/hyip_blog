@@ -347,6 +347,10 @@
 
 			& .hyipItemProfit__checkbox-icon { opacity: 1; }
 		}
+
+		.hyipItemProfit__checkbox-input:disabled + & {
+			background-color: #fff;
+		}
 	}
 
 	&__checkbox-icon {

@@ -50,16 +50,13 @@ class ProfitChartController {
 		};
 	}
 
-	createRows( plan, deposit ) {
+	createRows( plan, deposit, refback ) {
 		let rows = [];
-
-		// let refback = formData.refback === 'on' ? plan.refbackPercent : 0;
-		let refback = 0;
 
 		let money = -deposit;
 
 		if ( refback ) {
-			money += deposit * ( refback / 100 );
+			money += deposit * ( plan.refbackPercent / 100 );
 		};
 
 		for ( let i = 1; i < plan.period; i++ ) {
@@ -84,17 +81,17 @@ class ProfitChartController {
 		return rows;
 	}
 
-	createData( plan, deposit ) {
+	createData( plan, deposit, refback ) {
 		let data = new google.visualization.DataTable();
 		data.addColumn( 'number', 'Дни' );
 		data.addColumn( 'number', '$' );
-		data.addRows( this.createRows( plan, deposit ) );
+		data.addRows( this.createRows( plan, deposit, refback ) );
 
 		return data;
 	}
 
-	drawChart( plan, deposit ) {
-		let data = this.createData( plan, deposit );
+	drawChart( plan, deposit, refback ) {
+		let data = this.createData( plan, deposit, refback );
 		let options = this.getOptions();
 
 		this.chart.draw(data, options);

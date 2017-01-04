@@ -21,11 +21,12 @@ let FormView = Backbone.View.extend({
 
 class ProfitFormController {
 
-	constructor( select, input ) {
+	constructor( select, input, checkbox ) {
 		_.extend( this, Backbone.Events );
 
 		this.select = select;
 		this.input = input;
+		this.checkbox = checkbox;
 		this.parent = null;
 	}
 
@@ -38,6 +39,7 @@ class ProfitFormController {
 
 		this.select.init();
 		this.input.init();
+		this.checkbox.init();
 
 		let el = document.getElementsByClassName( 'hyipItemProfit__form' )[0];
 		this.view = new FormView({ el, controller: this });
@@ -49,6 +51,7 @@ class ProfitFormController {
 
 	resetActiveValues( plan ) {
 		this.input.setValues( plan );
+		this.checkbox.setValues( plan );
 	}
 
 	setActiveValues( plan, deposit ) {
@@ -59,8 +62,9 @@ class ProfitFormController {
 	submitForm() {
 		let activePlan = this.select.getActivePlan();
 		let deposit = this.input.getValue();
+		let refback = this.checkbox.getValue();
 
-		this.parent.setModule( activePlan, deposit );
+		this.parent.setModule( activePlan, deposit, refback );
 	}
 
 }

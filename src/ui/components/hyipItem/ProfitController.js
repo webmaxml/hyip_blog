@@ -35,9 +35,9 @@ class ProfitController {
 		this.form.setOptions( plans );
 	}
 
-	setModule( plan, deposit ) {
+	setModule( plan, deposit, refback ) {
 		this.form.setActiveValues( plan, deposit );
-		this.chart.drawChart( plan, deposit );
+		this.chart.drawChart( plan, deposit, refback );
 	}
 
 }
