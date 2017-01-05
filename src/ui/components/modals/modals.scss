@@ -44,7 +44,7 @@
 	bottom: 0;
 
 	width: 420px;
-	height: 550px;
+	height: $base-lh * 25;
 	padding: $base-lh;
 	margin: auto;
 
@@ -160,6 +160,58 @@
 
 			background-color: $c_text;
 		}
+	}
+
+	&__submit {
+		@extend %large_btn;
+	}
+}
+
+/* addHyipModal */
+.addHyipModal {
+	@extend %container_block;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	width: 420px;
+	height: $base-lh * 11.5;
+	padding: $base-lh;
+	margin: auto;
+
+	background-color: #fff;
+
+	&__header {
+		font-family: $ff_header;
+		font-size: $fz4;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+		text-align: center;
+	}
+
+	&__text {
+		margin: $base-lh 0;
+
+		font-family: $ff_text;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_text;
+	}
+
+	&__form {
+		text-align: center;
+	}
+
+	&__input {
+		@extend %form_input;
+
+		width: 80%;
+		height: $base-lh * 1.5;
+		margin-bottom: $base-lh;
 	}
 
 	&__submit {
