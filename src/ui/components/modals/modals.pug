@@ -44,3 +44,21 @@
 			form.addHyipModal__form
 				input.addHyipModal__input( type="text" placeholder="URL" )
 				button.addHyipModal__submit Добавить
+	.modals__overlay( data-modal-window="mobileMenu" )
+		.mobileMenuModal
+			button.modals__close( type='button' )
+				i.fa.fa-close.modals__close-icon
+			.mobileMenuModal__log-wrap
+				a.mobileMenuModal__reg( href='/' ) Регистрация
+				a.mobileMenuModal__log( href='/' ) Вход
+			ul.mobileMenuModal__nav
+				li.mobileMenuModal__nav-item 
+					a.mobileMenuModal__nav-link( href="/" ) Блог
+				li.mobileMenuModal__nav-item
+					a.mobileMenuModal__nav-link( href="/hyip_index.html"  ) Хайпы
+				li.mobileMenuModal__nav-item
+					button.mobileMenuModal__nav-link( type="button" data-modal-trigger="addHyip" ) Добавить хайп
+				li.mobileMenuModal__nav-item
+					button.mobileMenuModal__nav-link( type="button" data-modal-trigger="refback" ) Рефбек
+				li.mobileMenuModal__nav-item
+					a.mobileMenuModal__nav-link( href="/" ) Реклама

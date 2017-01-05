@@ -7,11 +7,15 @@
 		left: 0;
 
 		display: none;
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
 
 		width: 100%;
 		height: 100%;
 
 		background-color: rgba( 47, 47, 47, .95 );
+		opacity: 0;
 	}
 
 	&__close {
@@ -37,16 +41,10 @@
 .refbackModal {
 	@extend %container_block;
 
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	position: relative;
 
 	width: 420px;
-	height: $base-lh * 25;
 	padding: $base-lh;
-	margin: auto;
 
 	background-color: #fff;
 
@@ -171,16 +169,10 @@
 .addHyipModal {
 	@extend %container_block;
 
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+	position: relative;
 
 	width: 420px;
-	height: $base-lh * 11.5;
 	padding: $base-lh;
-	margin: auto;
 
 	background-color: #fff;
 
@@ -216,5 +208,72 @@
 
 	&__submit {
 		@extend %large_btn;
+	}
+}
+
+/* mobileMenuModal */
+.mobileMenuModal {
+	@extend %container_block;
+
+	position: relative;
+
+	width: 80%;
+	padding: $base-lh;
+
+	background-color: #fff;
+
+	&__log-wrap {
+		@extend %cnfsc;
+
+		margin-bottom: $base-lh;
+
+		@media ( min-width: 400px ) {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	&__reg {
+		font-family: $ff_header;
+		font-size: $fz6;
+		color: $c_text;
+		line-height: $base-lh * 2;
+
+		transition: .3s;
+
+		@media ( min-width: 400px ) {
+			margin-right: $base-lh;
+		}
+
+		&:hover {
+			color: $c_accent;
+		}
+	}
+
+	&__log {
+		@extend %small_btn;
+	}
+
+	&__nav-item {
+		@extend %rnfss;
+	}
+
+	&__nav-link {
+		width: 100%;
+
+		font-family: $ff_header;
+		font-size: $fz5;
+		font-weight: bold;
+		line-height: $base-lh* 2;
+		color: $c_text;
+		text-align: center;
+
+		transition: .3s;
+
+		&:hover {
+			color: $c_accent;
+		}
 	}
 }

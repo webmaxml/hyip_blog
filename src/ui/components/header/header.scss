@@ -5,6 +5,7 @@
 	@extend %rwsbs;
 
 	padding-top: $base-lh;
+	margin-bottom: $base-lh * 11;
 
 	&__logo {
 		font-family: $ff_logo;
@@ -25,13 +26,50 @@
 	&__reg {
 		@extend %light_link;
 
+		display: none;
+
 		margin-right: $base-lh;
 
 		font-size: $fz6;
 		line-height: $base-lh * 2;
+
+		@media ( min-width: 768px ) {
+			display: block;
+		}
 	}
 
 	&__log {
 		@extend %small_btn;
+
+		display: none;
+
+		@media ( min-width: 768px ) {
+			display: block;
+		}
+	}
+
+	&__mobile-menu {
+		@extend %rncc;
+
+		width: $base-lh * 2; 
+		height: $base-lh * 2; 
+
+		color: #fff;
+
+		background-color: $c_accent;
+
+		transition: .3s;
+
+		&:hover {
+			background-color: $c_text;
+		}
+
+		@media ( min-width: 768px ) {
+			display: none;
+		}
+	}
+
+	&__mobile-menu-icon {
+		font-size: $fz3;
 	}
 }

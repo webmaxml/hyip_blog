@@ -16,7 +16,27 @@ let SliderView = Backbone.View.extend({
 			arrows: false,
 			speed: 500,
 			slidesToShow: 4,
-			slidesToScroll: 1
+			slidesToScroll: 1,
+			responsive: [
+			    {
+					breakpoint: 1200,
+					settings: {
+						slidesToShow: 3
+					}
+			    },
+			    {
+					breakpoint: 900,
+					settings: {
+						slidesToShow: 2
+					}
+			    },
+			    {
+					breakpoint: 600,
+					settings: {
+						slidesToShow: 1
+					}
+			    }
+			]
 		});
 	},
 

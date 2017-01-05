@@ -1,5 +1,15 @@
 /* post-box */
 .post-box {
+	width: 100%;
+	margin: 0 auto;
+
+	@media ( min-width: 900px ) {
+		width: getWidthFromCols( 10 );
+	}
+
+	@media ( min-width: 1100px ) {
+		width: 100%;
+	}
 
 	&__item {
 		@extend %container_block;
@@ -11,6 +21,8 @@
 
 	&__info-wrap {
 		@extend %clearfix;
+
+		text-align: center;
 	}
 
 }
@@ -22,10 +34,14 @@
 
 	&__text {
 		font-family: $ff_header;
-		font-size: $fz3;
+		font-size: $fz4;
 		font-weight: bold;
 		line-height: $base-lh * 1.2;
 		color: $c_text;
+
+		@media ( min-width: 650px ) {
+			font-size: $fz3;
+		}
 	}
 
 	&__link {
@@ -36,9 +52,21 @@
 	}
 
 	&__meta-info {
-		@extend %rwfss;
+		@extend %rwcs;
 
 		margin-top: $base-lh * 0.5;
+
+		@media ( min-width: 650px ) {
+			justify-content: flex-start;
+		}
+	}
+
+	&__meta-item {
+		width: 100%;
+
+		@media ( min-width: 400px ) {
+			width: auto;
+		}
 	}
 
 	&__meta-text,
@@ -70,15 +98,23 @@
 
 /* postThumbnail */
 .postThumbnail {
-	float: left;
+	display: inline-block;
 
 	padding-top: $base-lh;
 	padding-left: $base-lh;
 	padding-right: $base-lh;
 	padding-bottom: $base-lh * 0.5;
-	margin-right: $base-lh;
-
+	
 	background-color: $c_text;
+
+	@media ( min-width: 650px ) {
+		float: left;
+
+		margin-right: $base-lh;
+	}
+
+	&__link {
+	}
 
 	&__img {
 		display: block;
@@ -90,7 +126,10 @@
 	&__social {
 		@extend %rnfss;
 
+		width: 100%;
 		margin-top: $base-lh * 0.5;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	&__social-item {
@@ -136,10 +175,21 @@
 }
 
 /* postExcerpt */
-.postExcerpt {
+.postExcerpt {	
+	padding-top: $base-lh; 
 	padding-left: $base-lh; 
 	padding-right: $base-lh; 
 	padding-bottom: $base-lh; 
+
+	@media ( min-width: 650px ) {
+		padding-top: 0; 
+	}
+
+	&__text-wrap {
+		@media ( min-width: 650px ) {
+			height: $base-lh * 8.5; 
+		}
+	}
 
 	&__text {
 		overflow: hidden;
@@ -150,14 +200,23 @@
 		font-size: $fz5;
 		line-height: $base-lh;
 		color: $c_text;
+		text-align: left;
+	}
+
+	&__btn-wrap {
+		@extend %rncs;
+
+		margin-top: $base-lh;
+
+		@media ( min-width: 650px ) {
+			justify-content: flex-end;
+
+			margin-top: 0;
+		}
 	}
 
 	&__btn {
 		@extend %large_btn;
-
-		position: absolute;
-		right: $base-lh;
-		bottom: $base-lh;
 	}
 }
 

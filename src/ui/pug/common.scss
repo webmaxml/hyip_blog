@@ -44,19 +44,28 @@
 /* main */
 .main {
 	@extend %wrapper;
-	@extend %rnfss;
+	@extend %rwcs;
 
 	margin-top: $base-lh;
+
 }
 
 /* post */
 .post {
-	width: getWidthFromCols( 8 );
+	width: 100%;
+
+	@media ( min-width: 1100px ) {
+		width: getWidthFromCols( 8 );
+	}
 }
 
 
 /* sidebar */
 .sidebar {
-	width: getWidthFromCols( 4 );
-	padding-left: $base-lh;
+	width: 100%;
+
+	@media ( min-width: 1100px ) {
+		width: getWidthFromCols( 4 );
+		padding-left: $base-lh;
+	}
 }

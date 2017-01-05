@@ -24,18 +24,24 @@ let ModalView = Backbone.View.extend({
 		let isOverlay = e.target === e.currentTarget;
 		let isCloseButton = e.target.classList.contains( 'modals__close' ) || 
 						    e.target.classList.contains( 'modals__close-icon' );
+		let isInnerTrigger = typeof e.target.dataset.modalTrigger !== 'undefined';
 
-		if ( isOverlay || isCloseButton ) {
+		if ( isOverlay || isCloseButton || isInnerTrigger ) {
 			let active = this.model.get( 'active' );
-			this.model.set({ active: !active });
+			this.model.set({ active: false });
 		}
 	},
 
 	render: function( model, active ) {
 		if ( active ) {
-			this.$el.fadeIn( 'fast' );
+			this.$el.css( 'display', 'flex' )
+			        .animate({
+			        	opacity: 1
+			        }, 'fast' );
 		} else {
-			this.$el.fadeOut( 'fast' );
+			this.$el.animate({ opacity: 0 }, 'fast', function() {
+				$( this ).css( 'display', 'none' );
+			} );
 		}
 	}
 
@@ -52,7 +58,7 @@ let TriggerView = Backbone.View.extend({
 
 	toggleActive: function( e ) {
 		let active = this.model.get( 'active' );
-		this.model.set({ active: !active });
+		this.model.set({ active: true });
 	}
 
 });
@@ -67,21 +73,25 @@ class ModalsController {
 	}
 
 	init() {
-		let $triggers = $( document.querySelectorAll( '[data-modal-trigger]' ) );
-		let $windowContainer = $( document.getElementsByClassName( 'modals' )[0] );
-
-		$triggers.each( function() {
-			let modalId = $( this ).data( 'modalTrigger' );
-			let $modalWindow = $windowContainer.find( `[data-modal-window=${modalId}]` );
-
-			let model = new Model();
-
-			let triggerView = new TriggerView({ el: this, model });
-			let modalView = new ModalView({ el: $modalWindow.get(0), model });
-			
-		} );
+		this.createModalSet( 'addHyip' );
+		this.createModalSet( 'refback' );
+		this.createModalSet( 'mobileMenu' );
 
 		this.select.init();
+	}
+
+	createModalSet( id ) {
+		let $windowContainer = $( document.getElementsByClassName( 'modals' )[0] );
+		let $triggers = $( document.querySelectorAll( `[data-modal-trigger=${id}]` ) );
+		let $modalWindow = $windowContainer.find( `[data-modal-window=${id}]` );
+
+		let model = new Model();
+
+		let modalView = new ModalView({ el: $modalWindow.get(0), model });
+
+		$triggers.each( function() {
+			let triggerView = new TriggerView({ el: this, model });
+		} );
 	}
 
 }

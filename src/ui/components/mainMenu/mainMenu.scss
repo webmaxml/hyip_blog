@@ -2,17 +2,29 @@
 .main-menu {
 	@extend %wrapper;
 	@extend %h_paddings;
-	@extend %rwfss;
-
-	margin-top: $base-lh * 11;
-
+	@extend %rncs;
+	
 	background-color: rgba(47, 47, 47, .5);
+
+	@media ( min-width: 768px ) {
+		justify-content: space-between;
+	}
 
 	&__nav {
 		@extend %rnsbs;
 
-		width: 50%;
-		margin-left: 25%;
+		display: none;
+
+		width: 65%;
+
+		@media ( min-width: 768px ) {
+			display: flex;
+		}
+
+		@media ( min-width: 980px ) {
+			width: 50%;
+			margin-left: 25%;
+		}
 	}
 
 	&__nav-item {
@@ -60,14 +72,27 @@
 	&__search {
 		@extend %rnfec;
 
-		width: 25%;
+		width: 80%;
+		height: $base-lh * 3;
+
+		@media ( min-width: 480px ) {
+			width: 50%;
+		}
+
+		@media ( min-width: 768px ) {
+			width: 25%;
+		}
 	}
 
 	&__search-input {
 		@extend %form_input;
 
-		width: 170px;
+		width: 100%;
 		height: 32px;
+
+		@media ( min-width: 980px ) {
+			width: 170px;
+		}
 	}
 
 	&__search-btn {

@@ -51,8 +51,14 @@
 
 /* sliderItem */
 .sliderItem {
+	text-align: center;
+
+	&__link {
+		display: inline-block;
+	}
 
 	&__popup {
+		width: 300px;
 		padding-bottom: $base-lh;
 
 		background-color: rgba(47, 47, 47, .95);

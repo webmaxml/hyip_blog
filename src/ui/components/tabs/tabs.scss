@@ -72,6 +72,12 @@
 		margin-left: $base-lh;
 	}
 
+	&__list-header {
+		overflow: hidden;
+
+		max-height: $base-lh * 3;
+	}
+
 	&__list-header-link {
 		font-family: $ff_header;
 		font-size: $fz5;
