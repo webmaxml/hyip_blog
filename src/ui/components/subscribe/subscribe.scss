@@ -15,14 +15,24 @@
 	}
 
 	&__form {
+		width: 100%;
 		margin-top: $base-lh;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: $base-lh;
+		padding-right: $base-lh;
 		text-align: center;
+
+		@media ( min-width: 420px ) {
+			width: 240px;
+			padding: 0;
+		}
 	}
 
 	&__input {
 		@extend %form_input;
 
-		width: 240px;
+		width: 100%;
 		height: $base-lh * 1.5;
 		margin-bottom: $base-lh;
 	}

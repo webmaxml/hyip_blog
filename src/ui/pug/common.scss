@@ -46,8 +46,16 @@
 	@extend %wrapper;
 	@extend %rwcs;
 
+	width: 100%;
 	margin-top: $base-lh;
 
+	@media ( min-width: 900px ) {
+		width: getWidthFromCols( 10 );
+	}
+
+	@media ( min-width: 1100px ) {
+		width: 100%;
+	}
 }
 
 /* post */

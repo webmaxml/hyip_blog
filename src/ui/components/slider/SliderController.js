@@ -1,5 +1,8 @@
 import Backbone from 'backbone';
 import 'slick-carousel';
+import loadTouchEvents from 'jquery-touch-events';
+loadTouchEvents( $ );
+
 
 let SliderView = Backbone.View.extend({
 
@@ -50,12 +53,58 @@ let SliderView = Backbone.View.extend({
 
 });
 
+//--------------------------------------------------------------------
+
+let SlideView = Backbone.View.extend({
+
+	events: {
+		mouseenter: 'showPopup',
+		mouseleave: 'hidePopup',
+		'tap .sliderItem__popup': 'togglePopup'
+	},
+
+	initialize: function() {
+		this.$popup = this.$el.find( '.sliderItem__popup' );
+		this.$popup.css( 'transform', 'translateY(-44px)' );
+		this.popupActive = false;
+	},
+
+	togglePopup: function( e ) {
+		e.preventDefault();
+
+		if ( this.popupActive ) {
+			this.hidePopup();
+			this.popupActive = false;
+		} else {
+			this.showPopup();
+			this.popupActive = true;
+		}
+	},
+
+	showPopup: function() {
+		this.$popup.css( 'transform', 'translateY(-121px)' );
+	},
+
+	hidePopup: function() {
+		this.$popup.css( 'transform', 'translateY(-44px)' );
+	},
+
+});
+
+
+//--------------------------------------------------------------------
+
 class SliderController {
 
 	init() {
-		let view = new SliderView({
-			el: document.getElementsByClassName( 'slider' )[0]
-		});
+		let slider = document.getElementsByClassName( 'slider' )[0];
+		let $slides = $( document.getElementById( 'slider' ) ).children();
+
+		$slides.each( function() {
+			let slideView = new SlideView({ el: this });
+		} );
+
+		let sliderView = new SliderView({ el: slider });
 	}
 
 }

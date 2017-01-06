@@ -63,12 +63,7 @@
 
 		background-color: rgba(47, 47, 47, .95);
 
-		transform: translateY( -$base-lh * 2 );
 		transition: .3s;
-	}
-
-	&:hover &__popup {
-		transform: translateY( -$base-lh * 5.5 );
 	}
 
 	&__img {
