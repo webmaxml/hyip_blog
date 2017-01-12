@@ -15,7 +15,7 @@ let SliderView = Backbone.View.extend({
 		this.$slider = this.$el.find( '#slider' );
 		this.$slider.slick({
 			dots: false,
-			infinite: true,
+			infinite: false,
 			arrows: false,
 			speed: 500,
 			slidesToShow: 4,

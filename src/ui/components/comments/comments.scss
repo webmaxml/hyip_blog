@@ -51,22 +51,42 @@
 		margin-right: $base-lh;
 	}
 
+	&__avatar-link {
+		@extend %rncs;
+	}
+
 	&__avatar-img {
 		display: block;
 
-		width: 44px;
-		height: 44px;
+		width: 22px;
+		height: 22px;
+
+		@media ( min-width: 480px ) {
+			width: 44px;
+			height: 44px;
+		}
 	}
 
 	&__rate-wrap {
-		text-align: center;
+		@extend %cnfsc;
+
+		@media ( min-width: 480px ) {
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: stretch;
+		}
 	}
 
 	&__rate-btn {
-		margin-right: 5px;
+		margin-top: $base-lh * 0.5;
 
 		font-size: $fz6;
 		color: $c_sub_accent;
+
+		@media ( min-width: 480px ) {
+			margin-top: 0;
+			margin-right: 5px;
+		}
 
 		&:hover {
 			color: darken( $c_sub_accent, 10% );
@@ -80,13 +100,19 @@
 	}
 
 	&__meta-header {
-		@extend %rnsbs;
+		@extend %cnfsfs;
+
+		@media ( min-width: 480px ) {
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			align-items: stretch;
+		}
 	}
 
 	&__name-link {
 		font-family: $ff_header;
-		font-size: $fz6;
-		line-height: $base-lh;
+		font-size: $fz7;
+		line-height: $base-lh * 0.8;
 		color: $c_accent;
 
 		transition: .3s;
@@ -94,13 +120,23 @@
 		&:hover {
 			color: $c_text;
 		}
+
+		@media ( min-width: 480px ) {
+			font-size: $fz6;
+			line-height: $base-lh;
+		}
 	}
 
 	&__date {
 		font-family: $ff_header;
-		font-size: $fz6;
-		line-height: $base-lh;
+		font-size: $fz7;
+		line-height: $base-lh * 0.8;
 		color: $c_sub_text;
+
+		@media ( min-width: 480px ) {
+			font-size: $fz6;
+			line-height: $base-lh;
+		}
 	}
 
 	&__body {
@@ -173,6 +209,11 @@
 		font-size: $fz5;
 		line-height: $base-lh;
 		color: $c_text;
+		text-align: left;
+
+		@media ( min-width: 480px ) {
+			text-align: center;
+		}
 	}
 
 	&__link {

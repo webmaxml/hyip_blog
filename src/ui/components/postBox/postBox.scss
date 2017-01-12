@@ -94,6 +94,7 @@
 	padding-left: $base-lh;
 	padding-right: $base-lh;
 	padding-bottom: $base-lh * 0.5;
+	margin-bottom: $base-lh;
 	
 	background-color: $c_text;
 
@@ -101,6 +102,7 @@
 		float: left;
 
 		margin-right: $base-lh;
+		margin-bottom: 0;
 	}
 
 
@@ -219,6 +221,7 @@
 	font-size: $fz5;
 	line-height: $base-lh;
 	color: $c_text; 
+	text-align: left;
 
 	h2 {
 		font-family: $ff_header;
