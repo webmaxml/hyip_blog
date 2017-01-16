@@ -21,22 +21,18 @@ let FormView = Backbone.View.extend({
 
 class ProfitFormController {
 
-	constructor( select, input, checkbox ) {
+	constructor( mediator, select, input, checkbox ) {
 		_.extend( this, Backbone.Events );
 
+		this.mediator = mediator;
 		this.select = select;
 		this.input = input;
 		this.checkbox = checkbox;
-		this.parent = null;
-	}
 
-	setParent( parent ) {
-		this.parent = parent;
+		this.listenTo( mediator, 'ui:profitFormSelect:changePlan', this.resetActiveValues );
 	}
 
 	init() {
-		this.select.setParent( this );
-
 		this.select.init();
 		this.input.init();
 		this.checkbox.init();
@@ -64,7 +60,8 @@ class ProfitFormController {
 		let deposit = this.input.getValue();
 		let refback = this.checkbox.getValue();
 
-		this.parent.setModule( activePlan, deposit, refback );
+		this.mediator.trigger( 'ui:profitForm:submit', activePlan, deposit, refback );
+
 	}
 
 }

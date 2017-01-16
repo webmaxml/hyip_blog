@@ -25,23 +25,25 @@ mixin paneItemBlog( metaText, iconClass  )
 
 mixin paneItemHyip( imgSrc, title, metaText, prefix )
 	li.paneItemHyip
-		if paneHyipDead
-			a.paneItemHyip__img-link.paneItemHyip__img-link--dead( href="/hyip.html" )
-				img.paneItemHyip__img( src=imgSrc )
-		else
-			a.paneItemHyip__img-link( href="/hyip.html" )
-				img.paneItemHyip__img( src=imgSrc )
-		h2.paneItemHyip__header
-			a.paneItemHyip__header-link( href="/hyip.html" )= title
-		.paneItemHyip__meta-text
-			if prefix
-				p.paneItemHyip__meta-prefix= prefix
-			p.paneItemHyip__meta-value
-				if paneHyipIsRating
-					i.fa.fa-star.paneItemHyip__rate-icon
-					= metaText
+		a.paneItemHyip__link( href="/hyip.html" )
+			.paneItemHyip__thumbnail-wrap
+				if paneHyipDead
+					.paneItemHyip__img-wrap.paneItemHyip__img-wrap--dead
+						img.paneItemHyip__img( src=imgSrc )
 				else
-					= metaText
+					.paneItemHyip__img-wrap
+						img.paneItemHyip__img( src=imgSrc )
+			.paneItemHyip__info-wrap
+				h2.paneItemHyip__header= title
+				.paneItemHyip__meta-text
+					if prefix
+						p.paneItemHyip__meta-prefix= prefix
+					p.paneItemHyip__meta-value
+						if paneHyipIsRating
+							i.fa.fa-star.paneItemHyip__rate-icon
+							= metaText
+						else
+							= metaText
 
 //---------------------------------------------------------------
 

@@ -13,7 +13,7 @@ let InputModel = Backbone.Model.extend({
 						 attrs.value <= attrs.maxValue;
 
 		if ( !validValue ) {
-			return 'Значение вклада должно быть число больше '+attrs.minValue+' и меньше '+attrs.maxValue;
+			return 'Значение вклада должно быть число от '+attrs.minValue+' до '+attrs.maxValue;
 		}
 	}					
 

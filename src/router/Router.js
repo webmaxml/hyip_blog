@@ -1,6 +1,6 @@
 import Backbone from 'backbone';
 
-let Router = Backbone.Router.extend({
+let MainRouter = Backbone.Router.extend({
 
 	routes: {
 		'': 'root',
@@ -32,33 +32,33 @@ let Router = Backbone.Router.extend({
 
 });
 
-class RouterController {
+class Router {
 
-	constructor( uiController ) {
-		this.uiController = uiController;
+	constructor( uiFacade ) {
+		this.uiFacade = uiFacade;
 
-		this.router = new Router({ controller: this });
+		this.router = new MainRouter({ controller: this });
 		Backbone.history.start({ pushState: true });
 	}
 
 	root() {
-		this.uiController.initRoot();
+		this.uiFacade.initRoot();
 	}
 
 	postItem() {
-		this.uiController.initPostItem();
+		this.uiFacade.initPostItem();
 	}
 
 
 	hyipIndex() {
-		this.uiController.initHyipIndex();
+		this.uiFacade.initHyipIndex();
 	}
 
 
 	hyipItem() {
-		this.uiController.initHyipItem();
+		this.uiFacade.initHyipItem();
 	}
 
 }
 
-export default RouterController;
+export default Router;

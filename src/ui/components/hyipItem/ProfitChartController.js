@@ -1,12 +1,12 @@
+import Backbone from 'backbone';
+
 class ProfitChartController {
 
-	constructor() {
-		this.chart = null;
-		this.parent = null;
-	}
+	constructor( mediator ) {
+		_.extend( this, Backbone.Events );
 
-	setParent( parent ) {
-		this.parent = parent;
+		this.mediator = mediator;
+		this.chart = null;
 	}
 
 	init() {
@@ -25,8 +25,7 @@ class ProfitChartController {
 	createChart() {
 		this.chart = new google.visualization.LineChart( document.getElementById( 'chart' ));
 
-		// change module state after loading & creating chart 
-		this.parent.initialize();
+		this.mediator.trigger( 'ui:profitChart:created' );
 	}
 
 	getOptions() {
@@ -60,7 +59,7 @@ class ProfitChartController {
 		};
 
 		for ( let i = 1; i < plan.period; i++ ) {
-			money += deposit * ( plan.percent / 100 );
+			money += +( deposit * ( plan.percent / 100 ) ).toFixed(2);
 
 			rows.push([ i, money ]);
 		};
@@ -68,11 +67,11 @@ class ProfitChartController {
 		// last day
 
 		if ( plan.depositInPayments ) {
-			money += deposit * ( plan.percent / 100 );
+			money += +( deposit * ( plan.percent / 100 ) ).toFixed(2);
 
 			rows.push([ plan.period, money ]);
 		} else {
-			money += deposit * ( plan.percent / 100 );
+			money += +( deposit * ( plan.percent / 100 ) ).toFixed(2);
 			money += deposit;
 
 			rows.push([ plan.period, money ]);

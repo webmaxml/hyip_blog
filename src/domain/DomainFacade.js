@@ -1,11 +1,11 @@
 class DomainFacade {
 
-	constructor( controller ) {
-		this.controller = controller;
+	constructor( plansList ) {
+		this.plansList = plansList;
 	}
 
-	retrievePlans( cb ) {
-		this.controller.retrievePlans( cb );
+	loadPlans() {
+		this.plansList.loadPlans();
 	}
 
 }

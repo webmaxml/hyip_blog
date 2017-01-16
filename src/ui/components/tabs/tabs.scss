@@ -140,15 +140,31 @@
 
 /* paneItemHyip */
 .paneItemHyip {
-	@extend %rnsbc;
-
+	
 	&:not( :last-child ) {
 		margin-bottom: $base-lh;
 	}
 
-	&__img-link {
+	&__link {
+		@extend %rnfss;
 
-		&.paneItemHyip__img-link--dead {
+		&:hover .paneItemHyip__header { color: $c_accent; }
+	}
+
+	&__thumbnail-wrap {
+		@extend %rnfss;
+
+		margin-right: $base-lh;
+
+		@media ( min-width: 450px ) {
+			width: getWidthFromCols( 4 );
+			margin-right: 0;
+		}
+	}
+
+	&__img-wrap {
+
+		&.paneItemHyip__img-wrap--dead {
 			@extend %dead_img;
 		}
 	}
@@ -160,24 +176,62 @@
 		height: 66px;
 	}
 
-	&__header-link {
+	&__info-wrap {
+		@extend %cncfs;
+
+		width: 100%;
+
+		@media ( min-width: 450px ) {
+			flex-flow: row nowrap;
+			justify-content: flex-start;
+			align-items: center;
+
+			width: getWidthFromCols( 8 );
+		}
+	}
+
+	&__header {
+		@extend %rnfsc;
+
+		width: 100%;
+
 		font-family: $ff_header;
-		font-size: $fz5;
+		font-size: $fz6;
 		font-weight: bold;
 		line-height: $base-lh;
 		color: $c_text;
 
-		&:hover {
-			color: lighten( $c_text, 20% );
+		transition: .3s;
+
+		@media ( min-width: 450px ) {
+			justify-content: center;
 		}
 	}
 
 	&__meta-text {
+		@extend %rnfsc;
+
+		width: 100%;
+
 		font-family: $ff_header;
 		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_sub_text;
 		text-align: center;
+
+		@media ( min-width: 450px ) {
+			flex-flow: column nowrap;
+			justify-content: center;
+			align-items: flex-end;
+		}
+	}
+
+	&__meta-prefix {
+		margin-right: 4px;
+
+		@media ( min-width: 450px ) {
+			margin-right: 0;
+		}
 	}
 
 	&__rate-icon {

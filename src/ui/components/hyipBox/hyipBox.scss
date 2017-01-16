@@ -1,8 +1,3 @@
-/* .hyip-box */
-.hyip-box {
-
-}
-
 /* hyipItemExcerpt */
 .hyipItemExcerpt {
 	@extend %container_block;
@@ -10,7 +5,11 @@
 	background-color: #fff;
 
 	&__info-wrap {
-		@extend %rnfss;
+		@extend %rwfss;
+
+		@media ( min-width: 650px ) {
+			flex-flow: row nowrap;
+		}
 	}
 }
 
@@ -21,11 +20,15 @@
 
 	&__text {
 		font-family: $ff_header;
-		font-size: $fz3;
+		font-size: $fz4;
 		font-weight: bold;
 		line-height: $base-lh * 1.2;
 		color: $c_text;
 		text-align: center;
+
+		@media ( min-width: 650px ) {
+			font-size: $fz3;
+		}
 	}
 
 	&__link {
@@ -39,6 +42,14 @@
 		@extend %rwcs;
 
 		margin-top: $base-lh * 0.5;
+	}
+
+	&__meta-item {
+		width: 100%;
+
+		@media ( min-width: 420px ) {
+			width: auto;
+		}
 	}
 
 	&__meta-text,
@@ -83,23 +94,36 @@
 
 /* hyipThumbnail */
 .hyipThumbnail {
+	width: 100%;
 	padding-top: $base-lh;
 	padding-left: $base-lh;
 	padding-right: $base-lh;
 	padding-bottom: $base-lh * 0.5;
-	margin-right: $base-lh;
-
+	
 	background-color: $c_text;
 
-	&__link.hyipThumbnail__link--dead {
-		@extend %dead_img;
+	@media ( min-width: 650px ) {
+		width: auto;
+		margin-right: $base-lh;
+	}
+
+	&__link {
+		display: block;
+
+		width: 240px;
+		height: 176px;
+		margin: 0 auto;
+
+		&.hyipThumbnail__link--dead {
+			@extend %dead_img;
+		}
 	}
 
 	&__img {
 		display: block;
 
-		width: 240px;
-		height: 176px;
+		max-width: 100%;
+		max-height: 100%;
 	}
 
 	&__status-wrap {
@@ -131,8 +155,11 @@
 /* hyipExcerpt */
 .hyipExcerpt {
 	width: 100%;
-	padding-right: $base-lh;
 	padding-bottom: $base-lh;
+
+	@media ( min-width: 650px ) {
+		padding-right: $base-lh;
+	}
 
 	&__text {
 		@extend %rwcc;
@@ -179,7 +206,11 @@
 	}
 
 	&__btn-wrap {
-		@extend %rnfes;
+		@extend %rncs;
+
+		@media ( min-width: 650px ) {
+			justify-content: flex-end;
+		}
 	}
 
 	&__btn {

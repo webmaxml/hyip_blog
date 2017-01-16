@@ -38,8 +38,12 @@ const plans = [
 
 class PlansList {
 
-	retrievePlans( cb ) {
-		cb( plans );
+	constructor( mediator ) {
+		this.mediator = mediator;
+	}
+
+	loadPlans() {
+		this.mediator.trigger( 'domain:plansList:loaded', plans );
 	}
 
 }

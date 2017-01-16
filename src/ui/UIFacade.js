@@ -1,4 +1,4 @@
-class UIController {
+class UIFacade {
 
 	constructor( slider, tabs, tooltip, upButton, comments, profit, modals ) {
 		this.slider = slider;
@@ -43,4 +43,4 @@ class UIController {
 
 }
 
-export default UIController;
+export default UIFacade;

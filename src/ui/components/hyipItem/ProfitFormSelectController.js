@@ -93,15 +93,12 @@ let SelectView = Backbone.View.extend({
 
 class ProfitFormSelectController {
 
-	constructor( form ) {
+	constructor( mediator ) {
 		_.extend( this, Backbone.Events );
 
-		this.parent = null;
+		this.mediator = mediator;
 	}
 
-	setParent( parent ) {
-		this.parent = parent;
-	}
 
 	init() {
 		let el = document.getElementsByClassName( 'hyipItemProfit__select-wrap' )[0];
@@ -125,7 +122,7 @@ class ProfitFormSelectController {
 	}
 
 	changeActivePlan( model, activePlan ) {
-		this.parent.resetActiveValues( activePlan );
+		this.mediator.trigger( 'ui:profitFormSelect:changePlan', activePlan );
 	}
 
 }
