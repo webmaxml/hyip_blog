@@ -1,10 +1,14 @@
 /* hyipAbout */
 .hyipAbout {
-	@extend %container_block;
+	float: right;
 
-	padding: $base-lh;
+	width: 100%;
+	margin-bottom: $base-lh;
 
-	background-color: $c_text;
+	@media ( min-width: 1100px ) {
+		width: getWidthFromCols( 4 );
+		padding-left: $base-lh;
+	}
 
 	&:hover {
 	
@@ -13,10 +17,33 @@
 			width: 100%;
 		}
 	}
+
+	&__wrap {
+		padding: $base-lh 0;
+
+		background-color: $c_text;
+	}
+
+	&__body-wrap {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-items: center;
+
+		@media ( min-width: 650px ) {
+			flex-flow: row nowrap;
+		}
+
+		@media ( min-width: 1100px ) {
+			flex-flow: column nowrap;
+		}
+	}
 }
 
 /* hyipAboutThumbnail */
 .hyipAboutThumbnail {
+
+	width: 100%;
 
 	&__img-wrap {
 		margin: $base-lh auto 0 auto;
@@ -57,6 +84,17 @@
 
 /* hyipAboutInfo */
 .hyipAboutInfo {
+
+	width: 100%;
+	padding: 0 $base-lh;
+	
+	// @media ( min-width: 650px ) {
+	// 	padding-left: $base-lh;
+	// }
+
+	// @media ( min-width: 1100px ) {
+	// 	padding-left: 0;
+	// }
 
 	&__item {
 		@extend %rnsbs;

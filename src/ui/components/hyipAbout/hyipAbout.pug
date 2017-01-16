@@ -50,6 +50,8 @@ mixin hyipAboutInfo()
 
 //hyipAbout
 .hyipAbout
-	+sectionHeader( 'О проекте', true )
-	+hyipAboutThumbnail()
-	+hyipAboutInfo()
+	.hyipAbout__wrap
+		+sectionHeader( 'О проекте', true )
+		.hyipAbout__body-wrap
+			+hyipAboutThumbnail()
+			+hyipAboutInfo()
