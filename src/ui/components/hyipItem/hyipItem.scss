@@ -15,17 +15,29 @@
 
 	&__text {
 		font-family: $ff_header;
-		font-size: $fz3;
+		font-size: $fz4;
 		font-weight: bold;
 		line-height: $base-lh * 1.2;
 		color: $c_text;
 		text-align: center;
+
+		@media ( min-width: 650px ) {
+			font-size: $fz3;
+		}
 	}
 
 	&__meta-info {
 		@extend %rwcs;
 
 		margin-top: $base-lh * 0.5;
+	}
+
+	&__meta-item {
+		width: 100%;
+
+		@media ( min-width: 420px ) {
+			width: auto;
+		}
 	}
 
 	&__meta-text,
@@ -85,10 +97,14 @@
 
 	&__title {
 		font-family: $ff_header;
-		font-size: $fz6;
+		font-size: $fz7;
 		line-height: $base-lh;
 		color: $c_sub_text;
 		text-align: center;
+
+		@media ( min-width: 420px ) {
+			font-size: $fz6;
+		}
 	}
 
 	&__value-wrap {
@@ -97,9 +113,13 @@
 
 	&__value {
 		font-family: $ff_text;
-		font-size: $fz3;
+		font-size: $fz4;
 		line-height: $base-lh * 2;
 		color: $c_text;
+
+		@media ( min-width: 420px ) {
+			font-size: $fz3;
+		}
 
 		&.hyipItemMoney__value--investors {
 			color: $c_sub_accent;
@@ -144,10 +164,26 @@
 		}
 	}
 
+	&__table-wrap {
+		overflow-x: scroll;
+
+		@media ( min-width: 700px + $base-lh * 2 ) {
+			overflow: visible;
+		}
+	}
+
 	&__table {
-		width: 100%;
+		width: 600px;
 		border-collapse: collapse;
 		margin-top: $base-lh;
+
+		@media ( min-width: 420px ) {
+			width: 700px;
+		}
+
+		@media ( min-width: 700px + $base-lh * 2 ) {
+			width: 100%;
+		}
 	}
 
 	&__row {
@@ -159,10 +195,14 @@
 		vertical-align: middle;
 
 		font-family: $ff_header;
-		font-size: $fz6;
+		font-size: $fz7;
 		line-height: $base-lh * 0.8;
 		color: $c_sub_text;
 		text-align: center;
+
+		@media ( min-width: 420px ) {
+			font-size: $fz6;
+		}
 	}
 
 	&__cell {
@@ -170,11 +210,15 @@
 		vertical-align: middle;
 
 		font-family: $ff_text;
-		font-size: $fz5;
+		font-size: $fz6;
 		font-weight: bold;
 		line-height: $base-lh;
 		color: $c_text;
 		text-align: center;
+
+		@media ( min-width: 420px ) {
+			font-size: $fz5;
+		}
 
 		&.hyipItemPlans__cell--green { color: $c_sub_accent; }
 		&.hyipItemPlans__cell--red { color: $c_dead; }
@@ -206,42 +250,89 @@
 		margin: $base-lh 0;
 
 		font-family: $ff_text;
-		font-size: $fz5;
+		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_text;
+
+		@media ( min-width: 420px ) {
+			font-size: $fz5;
+		}
+	}
+
+	&__chart-wrap {
+		overflow-x: scroll;
+
+		@media ( min-width: 700px + $base-lh * 2 ) {
+			overflow: visible;
+		}
 	}
 
 	&__chart {
+		width: 700px;
+		height: $base-lh * 10;
 		margin-bottom: $base-lh;
+
+		@media ( min-width: 700px + $base-lh * 2 ) {
+			width: 100%;
+		}
 	}
 
 	/* ------------------------------- */
 
 	&__form-wrap {
-		@extend %rncs;
+		@extend %rwcs;
 
-		height: $base-lh * 2;
+		// @media ( min-width: 420px ) {
+		// 	height: $base-lh * 2;
+		// }
 	}
 
 	&__label-wrap {
-		@extend %rnfec;
+		@extend %rncc;
 
-		width: 41%;
-		padding-right: $base-lh;
+		width: 100%;
+		height: $base-lh * 2;
+		
+		@media ( min-width: 420px ) {
+			justify-content: flex-end;
+
+			width: 41%;
+			padding-right: $base-lh;
+		}
 	}
 
 	&__input-wrap,
 	&__select-wrap {
-		@extend %rnfsc;
+		@extend %rncc;
 
-		width: 59%;	
+		width: 100%;	
+
+		@media ( min-width: 420px ) {
+			justify-content: flex-start;
+
+			width: 59%;	
+		}
+	}
+
+	&__input#deposit { 
+		margin-left: 15px; 
+
+		@media ( min-width: 420px ) {
+			margin-left: 0;
+		}
 	}
 
 	&__btn-wrap {
-		@extend %rnfss;
+		@extend %rncs;
 
-		margin-left: 41%;
-		margin-top: $base-lh * 0.5;
+		margin-top: $base-lh;
+
+		@media ( min-width: 420px ) {
+			justify-content: flex-start;
+
+			margin-top: $base-lh * 0.5;
+			margin-left: 41%;
+		}
 	}
 
 	/* ------------------------------- */

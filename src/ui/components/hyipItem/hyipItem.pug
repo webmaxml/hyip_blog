@@ -56,42 +56,43 @@ mixin hyipItemPlans()
 	//hyipItemPlans
 	.hyipItemPlans
 		+sectionHeader( 'Планы' )
-		table.hyipItemPlans__table
-			tr.hyipItemPlans__row
-				th.hyipItemPlans__header-cell Название
-				th.hyipItemPlans__header-cell % в день
-					i.fa.fa-question.tooltip.hyipItemPlans__tooltip-icon( data-tooltip-content="#plansTooltip" )
-				th.hyipItemPlans__header-cell Выплаты
-				th.hyipItemPlans__header-cell Дней
-				th.hyipItemPlans__header-cell Дней до 
-					br
-					| безубытка
-				th.hyipItemPlans__header-cell Мин.вклад
-				th.hyipItemPlans__header-cell Макс.вклад
-			tr.hyipItemPlans__row
-				td.hyipItemPlans__cell Silver
-				td.hyipItemPlans__cell.hyipItemPlans__cell--green 2
-				td.hyipItemPlans__cell ежедневно
-				td.hyipItemPlans__cell 75
-				td.hyipItemPlans__cell 50
-				td.hyipItemPlans__cell 10$
-				td.hyipItemPlans__cell 299$
-			tr.hyipItemPlans__row
-				td.hyipItemPlans__cell Gold
-				td.hyipItemPlans__cell.hyipItemPlans__cell--green 2.3
-				td.hyipItemPlans__cell ежедневно
-				td.hyipItemPlans__cell 77
-				td.hyipItemPlans__cell 44
-				td.hyipItemPlans__cell 300$
-				td.hyipItemPlans__cell 999$
-			tr.hyipItemPlans__row
-				td.hyipItemPlans__cell Platinum
-				td.hyipItemPlans__cell.hyipItemPlans__cell--red 1.1
-				td.hyipItemPlans__cell ежедневно
-				td.hyipItemPlans__cell 80
-				td.hyipItemPlans__cell 80
-				td.hyipItemPlans__cell 1000$
-				td.hyipItemPlans__cell 3000$
+		.hyipItemPlans__table-wrap
+			table.hyipItemPlans__table
+				tr.hyipItemPlans__row
+					th.hyipItemPlans__header-cell Название
+					th.hyipItemPlans__header-cell % в день
+						i.fa.fa-question.tooltip.hyipItemPlans__tooltip-icon( data-tooltip-content="#plansTooltip" )
+					th.hyipItemPlans__header-cell Выплаты
+					th.hyipItemPlans__header-cell Дней
+					th.hyipItemPlans__header-cell Дней до 
+						br
+						| безубытка
+					th.hyipItemPlans__header-cell Мин.вклад
+					th.hyipItemPlans__header-cell Макс.вклад
+				tr.hyipItemPlans__row
+					td.hyipItemPlans__cell Silver
+					td.hyipItemPlans__cell.hyipItemPlans__cell--green 2
+					td.hyipItemPlans__cell ежедневно
+					td.hyipItemPlans__cell 75
+					td.hyipItemPlans__cell 50
+					td.hyipItemPlans__cell 10$
+					td.hyipItemPlans__cell 299$
+				tr.hyipItemPlans__row
+					td.hyipItemPlans__cell Gold
+					td.hyipItemPlans__cell.hyipItemPlans__cell--green 2.3
+					td.hyipItemPlans__cell ежедневно
+					td.hyipItemPlans__cell 77
+					td.hyipItemPlans__cell 44
+					td.hyipItemPlans__cell 300$
+					td.hyipItemPlans__cell 999$
+				tr.hyipItemPlans__row
+					td.hyipItemPlans__cell Platinum
+					td.hyipItemPlans__cell.hyipItemPlans__cell--red 1.1
+					td.hyipItemPlans__cell ежедневно
+					td.hyipItemPlans__cell 80
+					td.hyipItemPlans__cell 80
+					td.hyipItemPlans__cell 1000$
+					td.hyipItemPlans__cell 3000$
 
 //-----------------------------------------------------------------------------
 
@@ -100,7 +101,8 @@ mixin hyipItemProfit()
 	.hyipItemProfit
 		+sectionHeader( 'Расчет прибыли' )
 		p.hyipItemProfit__text Для расчета прибыли выберите нужный план и вклад. Обратите внимание на то, что график учитывает наличие или отсутсвие вклада в выплатах. В последнем случае в конце срока присутствует скачок прибыли, означающий возврат вашего вклада
-		#chart.hyipItemProfit__chart
+		.hyipItemProfit__chart-wrap
+			#chart.hyipItemProfit__chart
 		form.hyipItemProfit__form
 			.hyipItemProfit__form-wrap
 				.hyipItemProfit__label-wrap
