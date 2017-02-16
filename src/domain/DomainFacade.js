@@ -1,11 +1,16 @@
 class DomainFacade {
 
-	constructor( plansList ) {
+	constructor( plansList, user ) {
 		this.plansList = plansList;
+		this.user = user;
 	}
 
 	loadPlans() {
 		this.plansList.loadPlans();
+	}
+
+	isUserRegistered() {
+		return this.user.isRegistered();
 	}
 
 }

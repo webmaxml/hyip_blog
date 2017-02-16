@@ -19,33 +19,89 @@
 		color: $c_accent;
 	}
 
-	&__log-wrap {
-		@extend %rnfsc;
+	&__position-wrap {
+		@extend %rncs;
+
+		width: 100%;
+
+		@media ( min-width: 768px ) {
+			width: auto;
+		}
+	}
+
+	&__userPanel-wrap {
+		position: relative;
+	}
+
+	&__user-wrap {
+		@extend %rncc;
+	} 
+
+	&__reg-wrap {
+		@extend %cnfsc;
+
+		@media ( min-width: 768px ) {
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+		}
 	} 
 
 	&__reg {
 		@extend %light_link;
 
-		display: none;
-
-		margin-right: $base-lh;
-
 		font-size: $fz6;
 		line-height: $base-lh * 2;
 
 		@media ( min-width: 768px ) {
-			display: block;
+			margin-right: $base-lh;
 		}
 	}
 
 	&__log {
 		@extend %small_btn;
+	}
+
+	&__user-name {
+		margin-right: $base-lh * 0.5;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh * 2;
+		color: #fff;
+
+		transition: .3s;
+
+		&:hover {
+			color: $c_accent;
+		}
+	}
+
+	&__user-avatar {
+		width: $base-lh;
+		height: $base-lh;
+	}
+
+	&__user-popup {
+		position: absolute;
+		top: $base-lh * 2;
+		right: 0;
 
 		display: none;
 
-		@media ( min-width: 768px ) {
-			display: block;
-		}
+		padding: $base-lh * 0.5;
+
+		background-color: $c_text;
+	}
+
+	&__user-popup-link {
+		@extend %light_link;
+
+		display: block;
+
+		font-size: $fz6;
+		line-height: $base-lh;
+		white-space: nowrap;
 	}
 
 	&__mobile-menu {

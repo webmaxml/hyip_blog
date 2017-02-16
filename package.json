@@ -27,6 +27,7 @@
     "isomorphic-fetch": "^2.2.1",
     "javascript-state-machine": "^2.4.0",
     "jquery-touch-events": "^1.0.7",
+    "jquery-validation": "^1.16.0",
     "node-sass": "^3.7.0",
     "owl.carousel": "^2.2.0",
     "postcss-loader": "^0.9.1",

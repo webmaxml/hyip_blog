@@ -19,7 +19,7 @@ let ButtonsView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.activeClassName = 'tabs__btn--active';
+		this.activeClassName = 'userCabinetTabs__btn--active';
 
 		this.listenTo( this.model, 'change:activeIndex', this.render );
 	},
@@ -59,7 +59,7 @@ let ButtonsView = Backbone.View.extend({
 let PanesView = Backbone.View.extend({
 
 	initialize: function() {
-		this.activeClassName = 'tabs__pane-item--active';
+		this.activeClassName = 'userCabinetPanes__item--active';
 
 		this.listenTo( this.model, 'change:activeIndex', this.render );
 	},
@@ -87,17 +87,17 @@ let PanesView = Backbone.View.extend({
 
 //----------------------------------------------------------
 
-class TabsController {
+class UserTabsController {
 
 	init() {
 		let model = new TabsModel();
 
 		let buttonsView = new ButtonsView({ 
-			el: document.getElementsByClassName( 'tabs__btn-box' )[0],
+			el: document.getElementsByClassName( 'userCabinetTabs' )[0],
 			model
 		});
 		let panesView = new PanesView({ 
-			el: document.getElementsByClassName( 'tabs__pane-box' )[0],
+			el: document.getElementsByClassName( 'userCabinetPanes' )[0],
 			model
 		});
 
@@ -106,4 +106,4 @@ class TabsController {
 	
 }
 
-export default TabsController;
+export default UserTabsController;

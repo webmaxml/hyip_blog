@@ -7,6 +7,7 @@ let MainRouter = Backbone.Router.extend({
 		'post.html': 'postItem',
 		'hyip_index.html': 'hyipIndex',
 		'hyip.html': 'hyipItem',
+		'user.html': 'user',
 
 	},
 
@@ -29,6 +30,10 @@ let MainRouter = Backbone.Router.extend({
 	hyipItem: function() {
 		this.controller.hyipItem();
 	},
+
+	user: function() {
+		this.controller.user();
+	}
 
 });
 
@@ -57,6 +62,10 @@ class Router {
 
 	hyipItem() {
 		this.uiFacade.initHyipItem();
+	}
+
+	user() {
+		this.uiFacade.initUser();
 	}
 
 }

@@ -1,6 +1,15 @@
 class UIFacade {
 
-	constructor( slider, tabs, tooltip, upButton, comments, profit, modals ) {
+	constructor( slider, 
+				 tabs, 
+				 tooltip, 
+				 upButton, 
+				 comments, 
+				 profit, 
+				 modals, 
+				 userPanel,
+				 userTabs,
+				 registration ) {
 		this.slider = slider;
 		this.tabs = tabs;
 		this.tooltip = tooltip;
@@ -8,6 +17,9 @@ class UIFacade {
 		this.comments = comments;
 		this.profit = profit;
 		this.modals = modals;
+		this.userPanel = userPanel;
+		this.userTabs = userTabs;
+		this.registration = registration;
 	}
 
 	initCommon() {
@@ -16,6 +28,8 @@ class UIFacade {
 		this.tooltip.init();
 		this.upButton.init();
 		this.modals.init();
+		this.userPanel.init();
+		this.registration.init();
 	}
 
 	initRoot() {
@@ -35,6 +49,11 @@ class UIFacade {
 
 	initHyipIndex() {
 		this.initCommon();
+	}
+
+	initUser() {
+		this.initCommon();
+		this.userTabs.init();
 	}
 
 	setPlans( plans ) {

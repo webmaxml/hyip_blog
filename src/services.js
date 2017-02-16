@@ -14,6 +14,10 @@ import Tabs from './ui/components/tabs/TabsController';
 import Tooltip from './ui/components/tooltip/TooltipController';
 import UpButton from './ui/components/upButton/UpButtonController';
 import Comments from './ui/components/comments/CommentsController';
+import UserPanel from './ui/components/header/UserPanelController';
+import UserTabs from './ui/components/userCabinet/UserTabsController';
+import RegistrationForm from './ui/jsComponents/registrationForm/RegistrationFormController';
+import RegistrationLogin from './ui/jsComponents/registrationForm/RegistrationLoginController';
 // profit component
 import Profit from './ui/components/hyipItem/Profit';
 import ProfitChart from './ui/components/hyipItem/ProfitChartController';
@@ -28,6 +32,7 @@ import ModalsSelect from './ui/components/modals/ModalsSelectController';
 /************************ Domain components **************************/
 
 import PlansList from './domain/components/PlansList';
+import User from './domain/components/User';
 
 
 let bottle = new Bottle();
@@ -42,8 +47,13 @@ bottle.service( 'uiFacade', UIFacade,
 				   'upButton',
 				   'comments',
 				   'profit',
-				   'modals' );
-bottle.service( 'domainFacade', DomainFacade, 'plansList' );
+				   'modals',
+				   'userPanel',
+				   'userTabs',
+				   'registrationForm' );
+bottle.service( 'domainFacade', DomainFacade, 
+				   'plansList',
+				   'user' );
 bottle.service( 'mediator', Mediator );
 
 /************************ UI components **************************/
@@ -53,6 +63,10 @@ bottle.service( 'slider', Slider );
 bottle.service( 'tabs', Tabs );
 bottle.service( 'comments', Comments );
 bottle.service( 'upButton', UpButton );
+bottle.service( 'userPanel', UserPanel, 'domainFacade' );
+bottle.service( 'userTabs', UserTabs );
+bottle.service( 'registrationForm', RegistrationForm, 'domainFacade', 'registrationLogin' );
+bottle.service( 'registrationLogin', RegistrationLogin );
 // profit component
 bottle.service( 'profit', Profit, 'domainFacade', 'mediator', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 
@@ -71,5 +85,6 @@ bottle.service( 'modalsSelect', ModalsSelect );
 /************************ Domain components **************************/
 
 bottle.service( 'plansList', PlansList, 'mediator' );
+bottle.service( 'user', User );
 
 export default bottle;

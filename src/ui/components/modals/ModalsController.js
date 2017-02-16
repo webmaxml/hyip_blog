@@ -76,6 +76,7 @@ class ModalsController {
 		this.createModalSet( 'addHyip' );
 		this.createModalSet( 'refback' );
 		this.createModalSet( 'mobileMenu' );
+		this.createModalSet( 'registration' );
 
 		this.select.init();
 	}

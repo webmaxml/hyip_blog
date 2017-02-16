@@ -15,7 +15,7 @@ let cssLoader = NODE_ENV === 'development' ? 'style!css!postcss!resolve-url!sass
 
 module.exports = {
 
-    debug: true,
+    debug: false,
 
     entry: {
         app: [ 'babel-polyfill', './src/index.js' ],
@@ -93,6 +93,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'hyip.html',
             template: 'src/ui/pug/hyip_item.pug'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'user.html',
+            template: 'src/ui/pug/user_page.pug'
         }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 
