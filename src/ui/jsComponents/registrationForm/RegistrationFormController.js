@@ -1,18 +1,37 @@
 import Backbone from 'backbone';
-import globalData from '../../../globalData';
 import 'jquery-validation';
+
+if ( process.env.NODE_ENV === 'development' ) {
+	let globalData = require( '../../../globalData' );
+}
 
 //----------------------------------------------------------
 
 let View = Backbone.View.extend({
 
 	initialize: function() {
+		this.$loader = this.$el.find( '.regModal__loader-wrap' );
+
+		let $loader = this.$loader;
+		let loaderActiveClass = 'regModal__loader-wrap--active';
+
 		this.$el.validate({
 			submitHandler: function( form, event ) {
-				console.log( 'submitting' );
-			},
-			invalidHandler: function( event, validator ) {
-				console.log( 'invalid sibmitting' );
+				$loader.addClass( loaderActiveClass );
+
+				$.ajax({
+					url: globalData.ajaxUrl,
+					type: 'POST',
+					dataType: 'json',
+					data: 'action=hyip_reg&' + $( form ).serialize(),
+					success: function( data ) {
+						$loader.removeClass( loaderActiveClass );
+						console.log( data );
+					},
+					error: function( xhr, status, error ) {
+						console.log( error );
+					}
+				});
 			},
 			rules: {
 				login: {
@@ -57,23 +76,6 @@ let View = Backbone.View.extend({
 			wrapper: 'li'
 		});
 	},
-
-	// submitHandler: function( e ) {
-	// 	e.preventDefault();
-
-	// 	$.ajax({
-	// 		url: globalData.ajaxUrl,
-	// 		type: 'POST',
-	// 		dataType: 'json',
-	// 		data: 'action=hyip_reg&' + this.$el.serialize(),
-	// 		success: function( data ) {
-	// 			console.log( data );
-	// 		},
-	// 		error: function( xhr, status, error ) {
-	// 			console.log( error );
-	// 		}
-	// 	});
-	// }
 
 });
 

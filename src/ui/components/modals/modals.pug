@@ -71,14 +71,14 @@ mixin scopeTranseferer
 				i.fa.fa-close.modals__close-icon
 			h1.regModal__header Регистрация
 			form.regModal__form( method="post" action="" )
-				span.regModal__required-label *
-				input#regLogin.regModal__input( type="text" name="login" placeholder="Логин" )
-				span.regModal__required-label *
-				input#regEmail.regModal__input( type="email" name="email" placeholder="Email" )
-				span.regModal__required-label *
-				input#regPwd.regModal__input( type="password" name="password" placeholder="Пароль" )
-				span.regModal__required-label *
-				input#regPwdRepeat.regModal__input( type="password" name="password_repeat" placeholder="Повтор пароля" )
+				.regModal__input-wrap
+					input#regLogin.regModal__input( type="text" name="login" placeholder="Логин" )
+				.regModal__input-wrap
+					input#regEmail.regModal__input( type="email" name="email" placeholder="Email" )
+				.regModal__input-wrap
+					input#regPwd.regModal__input( type="password" name="password" placeholder="Пароль" )
+				.regModal__input-wrap
+					input#regPwdRepeat.regModal__input( type="password" name="password_repeat" placeholder="Повтор пароля" )
 				ul#regErrorContainer.regModal__error-container
 				.regModal__submit-wrap
 					button.regModal__submit Регистрация

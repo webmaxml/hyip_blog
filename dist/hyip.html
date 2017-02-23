@@ -14,7 +14,9 @@
       <header class="header"><a class="header__logo" href="/"> <b class="header__logo-accent">hyip</b>odrom</a>
         <button class="header__mobile-menu" type="button" data-modal-trigger="mobileMenu"><i class="fa fa-bars header__mobile-menu-icon"></i></button>
         <div class="header__position-wrap">
-          <div class="header__reg-wrap"><a class="header__reg" href="/user.html">Регистрация</a><a class="header__log" href="/user.html">Вход</a></div>
+          <div class="header__reg-wrap">
+            <button class="header__reg" type="button" data-modal-trigger="registration">Регистрация</button><a class="header__log" href="/user.html">Вход</a>
+          </div>
         </div>
       </header>
 <!-- main-menu-->
@@ -985,6 +987,32 @@
             </li>
             <li class="mobileMenuModal__nav-item"><a class="mobileMenuModal__nav-link" href="/">Реклама</a></li>
           </ul>
+        </div>
+      </div>
+      <div class="modals__overlay" data-modal-window="registration">
+        <div class="regModal">
+          <button class="modals__close" type="button"><i class="fa fa-close modals__close-icon"></i></button>
+          <h1 class="regModal__header">Регистрация</h1>
+          <form class="regModal__form" method="post" action="">
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regLogin" type="text" name="login" placeholder="Логин">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regEmail" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regPwd" type="password" name="password" placeholder="Пароль">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regPwdRepeat" type="password" name="password_repeat" placeholder="Повтор пароля">
+            </div>
+            <ul class="regModal__error-container" id="regErrorContainer"></ul>
+            <div class="regModal__submit-wrap">
+              <button class="regModal__submit">Регистрация
+                <div class="regModal__loader-wrap"><img class="regModal__loader" src="/img/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a" alt="Загрузка..."></div>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

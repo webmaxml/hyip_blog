@@ -1,7 +1,10 @@
 /* wrapper */
 .wrapper {
 	position: relative;
+	// making z-stacking context root
 	z-index: 0;
+
+	overflow: hidden;
 
 	width: 100%;
 
@@ -11,11 +14,10 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		// making the link fall behind the blocks
 		z-index: -1;
 
-		// display: block;
-		@extend %rncs;
-		overflow: hidden;
+		display: block;
 
 		width: 100%;
 		height: 980px;
@@ -23,6 +25,10 @@
 		text-align: center;
 
 		background-color: $c_text;
+		background-repeat: no-repeat;
+		background-position: 50% 0%;
+		background-size: auto;
+	
 
 		&::after {
 			position: absolute;

@@ -262,6 +262,32 @@
           </ul>
         </div>
       </div>
+      <div class="modals__overlay" data-modal-window="registration">
+        <div class="regModal">
+          <button class="modals__close" type="button"><i class="fa fa-close modals__close-icon"></i></button>
+          <h1 class="regModal__header">Регистрация</h1>
+          <form class="regModal__form" method="post" action="">
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regLogin" type="text" name="login" placeholder="Логин">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regEmail" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regPwd" type="password" name="password" placeholder="Пароль">
+            </div>
+            <div class="regModal__input-wrap">
+              <input class="regModal__input" id="regPwdRepeat" type="password" name="password_repeat" placeholder="Повтор пароля">
+            </div>
+            <ul class="regModal__error-container" id="regErrorContainer"></ul>
+            <div class="regModal__submit-wrap">
+              <button class="regModal__submit">Регистрация
+                <div class="regModal__loader-wrap"><img class="regModal__loader" src="/img/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a" alt="Загрузка..."></div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript" src="/app.min.js"></script></body>

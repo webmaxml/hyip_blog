@@ -3,7 +3,7 @@ import Backbone from 'backbone';
 let MainRouter = Backbone.Router.extend({
 
 	routes: {
-		'': 'root',
+		'/': 'root',
 		'post.html': 'postItem',
 		'hyip_index.html': 'hyipIndex',
 		'hyip.html': 'hyipItem',
@@ -12,10 +12,12 @@ let MainRouter = Backbone.Router.extend({
 	},
 
 	initialize: function( attrs ) {
+		console.log( 'router init' );
 		this.controller = attrs.controller;
 	},
 
 	root: function() {
+		console.log( 'root init' );
 		this.controller.root();
 	},
 

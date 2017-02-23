@@ -564,6 +564,25 @@ html {
 	}
 }
 
+/* require_input */
+%require_input {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: -10px;
+
+		display: block;
+		content: '*';
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh * 1.5;
+		color: $c_dead;
+	}
+}
+
 /* container_block*/
 %container_block {
 	margin-bottom: $base-lh;
