@@ -27,7 +27,6 @@ let ModalView = Backbone.View.extend({
 		let isInnerTrigger = typeof e.target.dataset.modalTrigger !== 'undefined';
 
 		if ( isOverlay || isCloseButton || isInnerTrigger ) {
-			let active = this.model.get( 'active' );
 			this.model.set({ active: false });
 		}
 	},
@@ -57,7 +56,6 @@ let TriggerView = Backbone.View.extend({
 	},
 
 	toggleActive: function( e ) {
-		let active = this.model.get( 'active' );
 		this.model.set({ active: true });
 	}
 
@@ -77,6 +75,7 @@ class ModalsController {
 		this.createModalSet( 'refback' );
 		this.createModalSet( 'mobileMenu' );
 		this.createModalSet( 'registration' );
+		this.createModalSet( 'login' );
 
 		this.select.init();
 	}

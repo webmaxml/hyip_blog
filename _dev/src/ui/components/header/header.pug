@@ -21,7 +21,7 @@ if ( page === 'user' )
 					li.header__user-popup-item
 						a.header__user-popup-link( href="/user.html" ) Личный кабинет
 					li.header__user-popup-item
-						a.header__user-popup-link( href="/" ) Выход
+						button#logout.header__user-popup-link( type="button" ) Выход
 		
 else
 	// header
@@ -34,5 +34,5 @@ else
 		.header__position-wrap
 			.header__reg-wrap
 				button.header__reg( type='button' data-modal-trigger="registration" ) Регистрация
-				a.header__log( href='/user.html' ) Вход
+				button.header__log( type='button' data-modal-trigger="login" ) Вход
 			

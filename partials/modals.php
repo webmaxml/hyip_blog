@@ -1,3 +1,12 @@
+<?php  
+
+// template vars
+$registration_nonce_action = 'hyip_registration';
+$login_nonce_action = 'hyip_logining';
+
+$ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a';
+
+?>
 <div class="modals">
 
     <div class="modals__overlay" data-modal-window="refback">
@@ -84,28 +93,61 @@
             </button>
             <h1 class="regModal__header">Регистрация</h1>
             <form class="regModal__form" method="post" action="">
-                <?php wp_nonce_field( 'hyip_reg' ); ?>
-                <div class="regModal__input-wrap">
+                <?php wp_nonce_field( $registration_nonce_action ); ?>
+                <div class="regModal__input-wrap regModal__input-wrap--require">
                     <input class="regModal__input" id="regLogin" type="text" name="login" placeholder="Логин">
                 </div>
-                <div class="regModal__input-wrap">
+                <div class="regModal__input-wrap regModal__input-wrap--require">
                     <input class="regModal__input" id="regEmail" type="email" name="email" placeholder="Email">
                 </div>
-                <div class="regModal__input-wrap">
+                <div class="regModal__input-wrap regModal__input-wrap--require">
                     <input class="regModal__input" id="regPwd" type="password" name="password" placeholder="Пароль">
                 </div>
-                <div class="regModal__input-wrap">
+                <div class="regModal__input-wrap regModal__input-wrap--require">
                     <input class="regModal__input" id="regPwdRepeat" type="password" name="password_repeat" placeholder="Повтор пароля">
                 </div>
                 <ul class="regModal__error-container" id="regErrorContainer"></ul>
                 <div class="regModal__submit-wrap">
                     <button class="regModal__submit">Регистрация
                         <div class="regModal__loader-wrap">
-                            <img class="regModal__loader" src=<?php echo get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a'?> alt="Загрузка...">
+                            <img class="regModal__loader" src=<?php echo $ajax_loader_src; ?> alt="Загрузка...">
                         </div>
                     </button>
                 </div>
-                <div id="responseErrorContainer" class="regModal__res-error-container"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modals__overlay" data-modal-window="login">
+        <div class="loginModal">
+            <button class="modals__close" type='button'>
+                <i class="fa fa-close modals__close-icon"></i>
+            </button>
+            <h1 class="regModal__header">Вход</h1> 
+            <form action="" method="post" class="loginModal__form">
+                <?php wp_nonce_field( $login_nonce_action ); ?>
+                <div class="loginModal__input-wrap loginModal__input-wrap--require">
+                    <input type="text" class="loginModal__input" name="login" placeholder="Логин">
+                </div>
+                <div class="loginModal__input-wrap loginModal__input-wrap--require">
+                    <input type="password" class="loginModal__input" name="password" placeholder="Пароль">
+                </div>
+                <div class="loginModal__checkbox-wrap">
+                    <input type="checkbox" id="loginRememberme" class="loginModal__checkbox" name="rememberme">
+                    <label for="loginRememberme" class="loginModal__checkbox-label">
+                        <div class="loginModal__checkbox-fake">
+                            <i class="fa fa-check loginModal__checkbox-icon"></i>
+                        </div>Запомнить меня
+                    </label>
+                </div>
+                <ul id="loginErrorContainer" class="loginModal__error-container"></ul>
+                <div class="loginModal__submit-wrap">
+                    <button class="loginModal__submit">Вход 
+                        <span class="loginModal__loader-wrap">
+                            <img class="regModal__loader" src=<?php echo $ajax_loader_src; ?> alt="Загрузка...">
+                        </span>
+                    </button> 
+                </div>
             </form>
         </div>
     </div>

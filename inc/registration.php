@@ -1,9 +1,11 @@
 <?php
 
 class Hyip_Register {
+
+	private $ajax_action = 'hyip_reg';
 	
 	private $nonce_field_name = '_wpnonce';
-	private $action = 'hyip_reg';
+	private $nonce_action = 'hyip_registration';
 
 	private $login_field_name = 'login';
 	private $pwd_field_name = 'password';
@@ -13,22 +15,20 @@ class Hyip_Register {
 	private $pwd = '';
 	private $email = '';
 
-	private $general_error = 'Ошибка регистрации';
+	private $creating_error = 'Ошибка создания нового пользователя';
+	private $login_error = 'Ошибка авторизации пользователя';
+	private $verify_error = 'Ошибка верификации формы';
 	private $not_full_creds_error = 'Неполные данные для регистрации. Необходимы логин, email и пароль';
 	private $login_exist_error = 'Пользователь с таким логином уже существует';
 
-	private $success_reg_redirect;
-
 	function __construct() {
-		$this->success_reg_redirect = home_url();
-
-		add_action( 'wp_ajax_' . $this->action, array( $this, 'register_user' ) );
+		add_action( 'wp_ajax_nopriv_' . $this->ajax_action, array( $this, 'register_user' ) );
 	}
 
 	function is_nonce_verified() {
 		$nonce = isset( $_POST[ $this->nonce_field_name ] ) ? 
 				 $_POST[ $this->nonce_field_name ] : '';
-		$nonce_verified = wp_verify_nonce( $nonce, $this->action );
+		$nonce_verified = wp_verify_nonce( $nonce, $this->nonce_action );
 
 		return $nonce_verified;
 	}
@@ -48,7 +48,7 @@ class Hyip_Register {
 		$this->email = '';
 	}
 
-	function is_creds_exist() {
+	function is_creds_full() {
 		return $this->login && $this->pwd && $this->email;
 	}
 
@@ -57,19 +57,36 @@ class Hyip_Register {
 	}
 
 	function register_user() {
-		if ( !$this->is_nonce_verified() ) { wp_send_json_error( $this->general_error ); }
+		if ( !$this->is_nonce_verified() ) { wp_send_json_error( $this->verify_error ); }
 
 		$this->write_creds();
 
-		if ( !$this->is_creds_exist() ) { wp_send_json_error( $this->not_full_creds_error ); }
+		if ( !$this->is_creds_full() ) { wp_send_json_error( $this->not_full_creds_error ); }
 		if ( !$this->is_login_free() ) { wp_send_json_error( $this->login_exist_error ); }
 
-		$user = wp_create_user( $this->login, $this->pwd, $this->email );
+		$this->create_user();
+		$this->login_user();
 		$this->reset_creds();
 
-		if ( is_wp_error( $user ) ) { wp_send_json_error( $this->general_error ); }
+		wp_send_json_success();
+	}
 
-		wp_send_json_success( $this->success_reg_redirect );
+	function create_user() {
+		$user = wp_create_user( $this->login, $this->pwd, $this->email );
+		
+		if ( is_wp_error( $user ) ) { wp_send_json_error( $this->creating_error ); }
+	}
+
+	function login_user() {
+		$creds = array(
+			'user_login' => $this->login,
+			'user_password' => $this->pwd,
+			'remember' => true
+		);
+
+		$user = wp_signon( $creds, false );
+
+		if ( is_wp_error( $user ) ) { wp_send_json_error( $this->login_error ); }
 	}
 }
 

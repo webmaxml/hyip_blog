@@ -15,7 +15,8 @@
         <button class="header__mobile-menu" type="button" data-modal-trigger="mobileMenu"><i class="fa fa-bars header__mobile-menu-icon"></i></button>
         <div class="header__position-wrap">
           <div class="header__reg-wrap">
-            <button class="header__reg" type="button" data-modal-trigger="registration">Регистрация</button><a class="header__log" href="/user.html">Вход</a>
+            <button class="header__reg" type="button" data-modal-trigger="registration">Регистрация</button>
+            <button class="header__log" type="button" data-modal-trigger="login">Вход</button>
           </div>
         </div>
       </header>
@@ -967,16 +968,16 @@
           <button class="modals__close" type="button"><i class="fa fa-close modals__close-icon"></i></button>
           <h1 class="regModal__header">Регистрация</h1>
           <form class="regModal__form" method="post" action="">
-            <div class="regModal__input-wrap">
+            <div class="regModal__input-wrap regModal__input-wrap--require">
               <input class="regModal__input" id="regLogin" type="text" name="login" placeholder="Логин">
             </div>
-            <div class="regModal__input-wrap">
+            <div class="regModal__input-wrap regModal__input-wrap--require">
               <input class="regModal__input" id="regEmail" type="email" name="email" placeholder="Email">
             </div>
-            <div class="regModal__input-wrap">
+            <div class="regModal__input-wrap regModal__input-wrap--require">
               <input class="regModal__input" id="regPwd" type="password" name="password" placeholder="Пароль">
             </div>
-            <div class="regModal__input-wrap">
+            <div class="regModal__input-wrap regModal__input-wrap--require">
               <input class="regModal__input" id="regPwdRepeat" type="password" name="password_repeat" placeholder="Повтор пароля">
             </div>
             <ul class="regModal__error-container" id="regErrorContainer"></ul>
@@ -985,11 +986,46 @@
                 <div class="regModal__loader-wrap"><img class="regModal__loader" src="/img/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a" alt="Загрузка..."></div>
               </button>
             </div>
-            <div class="regModal__res_error-container" id="responseErrorContainer"></div>
+            <div class="regModal__res-error-container" id="responseErrorContainer"></div>
+          </form>
+        </div>
+      </div>
+      <div class="modals__overlay" data-modal-window="login">
+        <div class="loginModal">
+          <button class="modals__close" type="button"><i class="fa fa-close modals__close-icon"></i></button>
+          <h1 class="regModal__header">Вход</h1>
+          <form class="loginModal__form" method="post" action="">
+            <div class="loginModal__input-wrap loginModal__input-wrap--require">
+              <input class="loginModal__input" type="text" name="login" placeholder="Логин">
+            </div>
+            <div class="loginModal__input-wrap loginModal__input-wrap--require">
+              <input class="loginModal__input" type="password" name="password" placeholder="Пароль">
+            </div>
+            <div class="loginModal__checkbox-wrap">
+              <input class="loginModal__checkbox" id="loginRememberme" type="checkbox" name="rememberme">
+              <label class="loginModal__checkbox-label" for="loginRememberme">
+                <div class="loginModal__checkbox-fake"><i class="fa fa-check loginModal__checkbox-icon"></i></div>Запомнить меня
+              </label>
+            </div>
+            <ul class="loginModal__error-container" id="loginErrorContainer"></ul>
+            <div class="loginModal__submit-wrap">
+              <button class="loginModal__submit">Вход
+                <div class="loginModal__loader-wrap"><img class="loginModal__loader" src="/img/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a" alt="Загрузка..."></div>
+              </button>
+            </div>
           </form>
         </div>
       </div>
     </div>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+  var globalData = {
+  	ajaxUrl: "http://hyip.webmaxml.ru/wp-admin/admin-ajax.php",
+  	user: {
+  		registered: false,
+  		login: 'Keanu Reeves'
+  	}
+  };
+</script>
   <script type="text/javascript" src="/app.min.js"></script></body>
 </html><script src="http://localhost:8196/socket.io/socket.io.js"></script><script>var socket = io.connect("http://localhost:8196");socket.on("reload", function(){window.location.reload()});</script>

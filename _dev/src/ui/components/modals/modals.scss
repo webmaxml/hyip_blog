@@ -297,21 +297,15 @@
 	}
 
 	&__input-wrap {
-		@extend %require_input;
 		width: 100%;
 
 		@media ( min-width: 480px ) {
 			width: 80%;
 		}
-	}
 
-	&__required-label {
-		float: left;
-
-		font-family: $ff_header;
-		font-size: $fz6;
-		line-height: $base-lh * 1.5;
-		color: $c_dead;
+		&.regModal__input-wrap--require {
+			@extend %require_input;
+		}
 	}
 
 	&__input {
@@ -359,6 +353,152 @@
 	}
 
 	&__error-container {
+		// this block is totally operated by jquery validation plugin
+		// in order to not see it by default:
+		display: none;
+
+		width: 100%;
+		margin-bottom: $base-lh;
+
+		@media ( min-width: 480px ) {
+			width: 80%;
+		}
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_dead; 
+	}
+}
+
+/* loginModal */
+.loginModal {
+	@extend %container_block;
+
+	position: relative;
+
+	width: 90%;
+	padding: $base-lh;
+
+	background-color: #fff;
+
+	@media ( min-width: 480px ) {
+		width: 420px;
+	}
+
+	&__header {
+		margin-bottom: $base-lh;
+
+		font-family: $ff_header;
+		font-size: $fz4;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+		text-align: center;
+	}
+
+	&__form {
+		@extend %cnfsc;
+	}
+
+	&__input-wrap {
+		width: 100%;
+
+		@media ( min-width: 480px ) {
+			width: 80%;
+		}
+
+		&.loginModal__input-wrap--require {
+			@extend %require_input;
+		}
+	}
+
+	&__input {
+		@extend %form_input;
+
+		width: 100%;
+		height: $base-lh * 1.5;
+		margin-bottom: $base-lh;
+		border: 1px solid transparent;
+
+		&.loginModal__input--error { 
+			border: 1px solid $c_dead; 
+			box-shadow: inset 0.8px 0.6px 1px $c_dead;
+		}
+
+		&.loginModal__input--valid { 
+			border: 1px solid $c_sub_accent;
+			box-shadow: inset 0.8px 0.6px 1px $c_sub_accent; 
+		}
+	}
+
+	&__checkbox-wrap {
+		@extend %rnfsc;
+
+		width: 100%;
+		margin-bottom: $base-lh;
+
+		@media ( min-width: 480px ) {
+			width: 80%;
+		}
+	}
+
+	&__checkbox {
+		display: none;
+
+
+	}
+
+	&__checkbox-fake {
+		@extend %rncc;
+
+		width: $base-lh;
+		height: $base-lh;
+		margin-right: 10px;
+
+		background-color: $c_links;
+		box-shadow: inset 0.8px 0.6px 1px $c_sub_text;
+	}
+
+	&__checkbox-icon {
+		font-size: $fz4;
+		color: $c_text;
+
+		opacity: 0;
+
+		.loginModal__checkbox:checked ~ .loginModal__checkbox-label & {
+			opacity: 1;
+		}
+	}
+
+	&__checkbox-label {
+		@extend %rnfsc;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		font-weight: bold;
+		line-height: $base-lh;
+		color: $c_text;
+
+		user-select: none; 
+		cursor: pointer;
+	}
+
+	&__submit-wrap {
+		text-align: center;
+	}
+
+	&__submit {
+		@extend %large_btn;
+
+		position: relative;
+	}
+
+	&__error-container {
+		// this block is totally operated by jquery validation plugin
+		// in order to not see it by default:
+		display: none;
+		
 		width: 100%;
 		margin-bottom: $base-lh;
 
@@ -372,17 +512,18 @@
 		color: $c_dead; 
 	}
 
-	&__res-error-container {
-		width: 100%;
-		margin-top: $base-lh;
+	&__loader-wrap {
+		display: none;
+		flex-flow: row nowrap;
+		justify-content: flex-start;
+		align-items: center;
 
-		@media ( min-width: 480px ) {
-			width: 80%;
-		}
+		position: absolute;
+		top: 0;
+		right: -50px;
 
-		font-family: $ff_header;
-		font-size: $fz6;
-		line-height: $base-lh;
-		color: $c_dead; 
+		height: $base-lh * 2;
+
+		&.loginModal__loader-wrap--active { display: flex; }
 	}
 }

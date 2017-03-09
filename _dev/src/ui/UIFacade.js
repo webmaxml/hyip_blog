@@ -9,7 +9,8 @@ class UIFacade {
 				 modals, 
 				 userPanel,
 				 userTabs,
-				 registration ) {
+				 registration,
+				 login ) {
 		this.slider = slider;
 		this.tabs = tabs;
 		this.tooltip = tooltip;
@@ -20,6 +21,7 @@ class UIFacade {
 		this.userPanel = userPanel;
 		this.userTabs = userTabs;
 		this.registration = registration;
+		this.login = login;
 	}
 
 	initCommon() {
@@ -30,6 +32,7 @@ class UIFacade {
 		this.modals.init();
 		this.userPanel.init();
 		this.registration.init();
+		this.login.init();
 	}
 
 	initRoot() {

@@ -8,6 +8,8 @@ class Hyip_Theme_Setup {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'init', array( $this, 'set_users_options' ) );
+		add_action( 'widgets_init', array( $this, 'remove_default_widgets' ) );
+		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
 	}
 
 	function remove_default_actions() {
@@ -21,6 +23,21 @@ class Hyip_Theme_Setup {
 		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 		remove_action( 'template_redirect', 'rest_output_link_header', 11);
+	}
+
+	function remove_default_widgets() {
+		unregister_widget( 'WP_Nav_Menu_Widget' );
+		unregister_widget( 'WP_Widget_Archives' );
+		unregister_widget( 'WP_Widget_Calendar' );
+		unregister_widget( 'WP_Widget_Categories' );
+		unregister_widget( 'WP_Widget_Links' );
+		unregister_widget( 'WP_Widget_Meta' );
+		unregister_widget( 'WP_Widget_Pages' );
+		unregister_widget( 'WP_Widget_Recent_Comments' );
+		unregister_widget( 'WP_Widget_Recent_Posts' );
+		unregister_widget( 'WP_Widget_RSS' );
+		unregister_widget( 'WP_Widget_Search' );
+		unregister_widget( 'WP_Widget_Tag_Cloud' );
 	}
 
 	function add_theme_support() {
@@ -69,6 +86,13 @@ class Hyip_Theme_Setup {
 			wp_redirect( home_url() );
 			exit;
 		}
+	}
+
+	function register_theme_sidebars() {
+		register_sidebar( array(
+			'name' => 'Logo Sidebar',
+			'id' => 'logo_sidebar'
+		) );
 	}
 
 }

@@ -17,7 +17,7 @@ let View = Backbone.View.extend({
 	events: {
 		mouseenter: 'togglePopup',
 		mouseleave: 'togglePopup',
-		'tap [data-entity="user"]': 'togglePopup',
+		'tap [data-entity="user"]': 'togglePopup'
 	},
 
 	initialize: function() {

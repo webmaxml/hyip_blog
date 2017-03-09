@@ -7,40 +7,20 @@ let View = Backbone.View.extend({
 
 	initialize: function() {
 		this.$loader = this.$el.find( '.regModal__loader-wrap' );
-		this.$errorContainer = this.$el.find( '#responseErrorContainer' );
+		this.$errorContainer = this.$el.find( '#regErrorContainer' );
+		this.loaderActiveClass = 'regModal__loader-wrap--active';
+		this.ajaxAction = 'hyip_reg';
 
-		let $loader = this.$loader;
-		let $errorContainer = this.$errorContainer;
-		let loaderActiveClass = 'regModal__loader-wrap--active';
+		this.submitHandler = this.submitHandler.bind( this );
+		this.ajaxSuccess = this.ajaxSuccess.bind( this );
+		this.ajaxError = this.ajaxError.bind( this );
 
+		this.setValidation();
+	},
+
+	setValidation: function() {
 		this.$el.validate({
-			submitHandler: function( form, event ) {
-				$loader.addClass( loaderActiveClass );
-
-				$.ajax({
-					url: globalData.ajaxUrl,
-					type: 'POST',
-					dataType: 'json',
-					data: 'action=hyip_reg&' + $( form ).serialize(),
-					success: function( data ) {
-						$loader.removeClass( loaderActiveClass );
-						
-						// we get redirect url with success reg
-						// and error string with error
-						if ( data.success ) {
-							window.location.href = data.data;
-						} else {
-							console.log( data.data );
-							$errorContainer.text( data.data );
-						}
-					},
-					error: function( xhr, status, error ) {
-						$loader.removeClass( loaderActiveClass );
-						console.log( status );
-						console.log( error );
-					}
-				});
-			},
+			submitHandler: this.submitHandler,
 			rules: {
 				login: {
 					required: true,
@@ -52,7 +32,7 @@ let View = Backbone.View.extend({
 				},
 				password: {
 					required: true,
-					minlength: 8
+					minlength: 6
 				},
 				password_repeat: {
 					required: true,
@@ -85,6 +65,38 @@ let View = Backbone.View.extend({
 		});
 	},
 
+	submitHandler: function( form, event ) {
+		this.$loader.addClass( this.loaderActiveClass );
+
+		$.ajax({
+			url: globalData.ajaxUrl,
+			type: 'POST',
+			dataType: 'json',
+			data: 'action=' + this.ajaxAction + '&' + this.$el.serialize(),
+			success: this.ajaxSuccess,
+			error: this.ajaxError
+		});
+	},
+
+	ajaxSuccess: function( data ) {
+		this.$loader.removeClass( this.loaderActiveClass );
+		
+		if ( data.success ) {
+			location.reload( true );
+		} else {
+			this.$errorContainer.html(
+				'<li><label class-"regModal__input--error">*' + data.data + '</label></li>'
+			).css( 'display', 'block' );
+
+		}
+	},
+
+	ajaxError: function( xhr, status, error ) {
+		this.$loader.removeClass( this.loaderActiveClass );
+		console.log( status );
+		console.log( error );
+	}
+
 });
 
 //-------------------------------------------------------
@@ -93,15 +105,18 @@ class RegistrationFormController {
 
 	constructor( domainFacade ) {
 		this.domainFacade = domainFacade;
+		this.isUserNotRegistered = !this.domainFacade.isUserRegistered();
 	}
 
 	init() {
-		if ( this.domainFacade.isUserRegistered() ) { return; }
+		if ( this.isUserNotRegistered ) { 
+			this.createComponent();
+		}
+	}
 
+	createComponent() {
 		let form = document.getElementsByClassName( 'regModal__form' )[0];
-
 		let view = new View({ el: form });
-
 	}
 
 }

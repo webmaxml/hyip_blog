@@ -10,6 +10,11 @@ $hyip_config = array(
 									'id' => 8
 								 )
 			   ),
+	'service' => array(
+					'logo' => array(
+									'id' => 15
+							  )
+				 ),
 );
 
 ?>

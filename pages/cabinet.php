@@ -1,6 +1,4 @@
-<?php 
-/* Template Name: Cabinet */
+<?php /* Template Name: Cabinet */ ?>
 
-	echo 'cabinet';
+<pre><?php print_r( get_permalink($leavename = false) ); ?></pre>
 
-?>

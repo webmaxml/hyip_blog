@@ -16,7 +16,8 @@ import UpButton from './ui/components/upButton/UpButtonController';
 import Comments from './ui/components/comments/CommentsController';
 import UserPanel from './ui/components/header/UserPanelController';
 import UserTabs from './ui/components/userCabinet/UserTabsController';
-import RegistrationForm from './ui/jsComponents/registrationForm/RegistrationFormController';
+import RegistrationForm from './ui/jsComponents/RegistrationFormController';
+import LoginForm from './ui/jsComponents/LoginFormController';
 // profit component
 import Profit from './ui/components/hyipItem/Profit';
 import ProfitChart from './ui/components/hyipItem/ProfitChartController';
@@ -49,7 +50,8 @@ bottle.service( 'uiFacade', UIFacade,
 				   'modals',
 				   'userPanel',
 				   'userTabs',
-				   'registrationForm' );
+				   'registrationForm',
+				   'loginForm' );
 bottle.service( 'domainFacade', DomainFacade, 
 				   'plansList',
 				   'user' );
@@ -65,6 +67,7 @@ bottle.service( 'upButton', UpButton );
 bottle.service( 'userPanel', UserPanel, 'domainFacade' );
 bottle.service( 'userTabs', UserTabs );
 bottle.service( 'registrationForm', RegistrationForm, 'domainFacade' );
+bottle.service( 'loginForm', LoginForm, 'domainFacade' );
 // profit component
 bottle.service( 'profit', Profit, 'domainFacade', 'mediator', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 
