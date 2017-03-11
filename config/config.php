@@ -15,6 +15,14 @@ $hyip_config = array(
 									'id' => 15
 							  )
 				 ),
+	'menu_items' => array(
+						'add_hyip' => array(
+										'id' => 24
+									  ),
+						'refback' => array(
+										'id' => 25
+									 )
+					)
 );
 
 ?>

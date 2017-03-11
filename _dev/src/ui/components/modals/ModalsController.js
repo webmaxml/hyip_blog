@@ -56,6 +56,8 @@ let TriggerView = Backbone.View.extend({
 	},
 
 	toggleActive: function( e ) {
+		e.preventDefault();
+
 		this.model.set({ active: true });
 	}
 

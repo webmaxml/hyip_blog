@@ -10,6 +10,8 @@ class Hyip_Theme_Setup {
 		add_action( 'init', array( $this, 'set_users_options' ) );
 		add_action( 'widgets_init', array( $this, 'remove_default_widgets' ) );
 		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
+
+		add_filter( 'nav_menu_link_attributes', array( $this, 'set_menu_link_attrs' ), 10, 3 );
 	}
 
 	function remove_default_actions() {
@@ -43,6 +45,8 @@ class Hyip_Theme_Setup {
 	function add_theme_support() {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
+
+		register_nav_menu( 'main_menu', 'Главное меню' );
 	}
 
 	function add_scripts() {
@@ -93,6 +97,29 @@ class Hyip_Theme_Setup {
 			'name' => 'Logo Sidebar',
 			'id' => 'logo_sidebar'
 		) );
+	}
+
+	function set_menu_link_attrs( $atts, $item ) {
+
+		$atts['class'] = 'main-menu__nav-link';
+
+		global $hyip_config;
+
+		$item_id = $item->ID;
+		$add_hyip_id = $hyip_config[ 'menu_items' ][ 'add_hyip' ][ 'id' ];
+		$refback_id = $hyip_config[ 'menu_items' ][ 'refback' ][ 'id' ];
+
+		if ( $item_id === $add_hyip_id ) {
+			$atts['href'] = '#';
+			$atts['data-modal-trigger'] = 'addHyip';
+		}
+
+		if ( $item_id === $refback_id ) {
+			$atts['href'] = '#';
+			$atts['data-modal-trigger'] = 'refback';
+		}
+
+		return $atts;
 	}
 
 }
