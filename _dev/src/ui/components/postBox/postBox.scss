@@ -54,37 +54,43 @@
 	}
 
 	&__meta-item {
+		@extend %rnfss;
+
 		width: 100%;
 
-		@media ( min-width: 420px ) {
-			width: auto;
-		}
-	}
-
-	&__meta-text,
-	&__meta-link {
 		margin-right: $base-lh;
 
 		font-family: $ff_header;
 		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_sub_text;
-	}
 
-	&__meta-link {
-		text-decoration: underline;
+		@media ( min-width: 420px ) {
+			width: auto;
+		}
 
-		&:hover {
-			text-decoration: none;
+		& a, & span {
+			margin-left: 7px;
+		}
+
+		& a {
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
 		}
 	}
 
-	&__meta-icon {
-		margin-right: 5px;
+	.post-categories {
+		@extend %rnfss;
+	}
 
+	&__meta-icon {
 		font-size: $fz6;
 		font-weight: bold;
 		line-height: $base-lh;
+		color: $c_sub_text;
 	}
 }
 

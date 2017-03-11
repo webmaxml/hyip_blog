@@ -12,6 +12,7 @@ class Hyip_Theme_Setup {
 		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
 
 		add_filter( 'nav_menu_link_attributes', array( $this, 'set_menu_link_attrs' ), 10, 3 );
+		add_filter( 'excerpt_length', array( $this, 'set_custom_excerpt_length' ), 999 );
 	}
 
 	function remove_default_actions() {
@@ -25,6 +26,10 @@ class Hyip_Theme_Setup {
 		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 		remove_action( 'template_redirect', 'rest_output_link_header', 11);
+		remove_action( 'the_excerpt', 'wpautop' );
+		remove_action( 'the_excerpt', 'convert_smilies' );
+		remove_action( 'the_content', 'convert_smilies', 20 );
+		remove_action( 'the_content', 'wpautop' );
 	}
 
 	function remove_default_widgets() {
@@ -122,7 +127,13 @@ class Hyip_Theme_Setup {
 		return $atts;
 	}
 
+	function set_custom_excerpt_length( $length ) {
+	    return 100;
+	}
+
 }
+
+
 
 $hyip_theme_setup = new Hyip_Theme_Setup;
 
