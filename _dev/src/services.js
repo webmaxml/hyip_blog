@@ -40,7 +40,7 @@ let bottle = new Bottle();
 
 /************************ Subsystems **************************/
 
-bottle.service( 'router', Router, 'uiFacade' );
+bottle.service( 'router', Router, 'uiFacade', 'mediator' );
 bottle.service( 'uiFacade', UIFacade, 
 				   'domainFacade',
 				   'slider', 
@@ -71,7 +71,7 @@ bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );
 bottle.service( 'registrationForm', RegistrationForm );
 bottle.service( 'loginForm', LoginForm );
-bottle.service( 'postLoader', PostLoader );
+bottle.service( 'postLoader', PostLoader, 'mediator' );
 // profit component
 bottle.service( 'profit', Profit, 'domainFacade', 'mediator', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 

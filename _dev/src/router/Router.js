@@ -10,6 +10,7 @@ let devRoutes = {
 
 let prodRoutes = {
 	'hyip/': 'root',
+	'hyip/page/:pageNum/': 'root',
 	'hyip/article/*slug': 'postItem',
 	'hyip_index.html': 'hyipIndex',
 	'hyip.html': 'hyipItem',
@@ -27,8 +28,8 @@ let MainRouter = Backbone.Router.extend({
 		this.controller = attrs.controller;
 	},
 
-	root: function() {
-		this.controller.root();
+	root: function( pageNum ) {
+		this.controller.root( pageNum );
 	},
 
 	postItem: function( slug ) {
@@ -51,15 +52,24 @@ let MainRouter = Backbone.Router.extend({
 
 class Router {
 
-	constructor( uiFacade ) {
+	constructor( uiFacade, mediator ) {
 		this.uiFacade = uiFacade;
+		this.mediator = mediator;
+
+		_.extend( this, Backbone.Events );
 
 		this.router = new MainRouter({ controller: this });
 		Backbone.history.start({ pushState: true });
+
+		this.listenTo( this.mediator, 'changeArticleUrl', this.changeArticleUrl );
 	}
 
-	root() {
-		this.uiFacade.initRoot();
+	root( pageNum ) {
+		if ( !pageNum ) { 
+			pageNum = 1; 
+		};
+
+		this.uiFacade.initRoot( +pageNum );
 	}
 
 	postItem() {
@@ -78,6 +88,10 @@ class Router {
 
 	user() {
 		this.uiFacade.initUser();
+	}
+
+	changeArticleUrl( url ) {
+		this.router.navigate( 'hyip/' + url );
 	}
 
 }

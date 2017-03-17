@@ -3,8 +3,8 @@ import Backbone from 'backbone';
 let Model = Backbone.Model.extend({
 
 	defaults: {
-		currentPage: 1,
-		maxPages: +globalData.articlesNumPages,
+		currentPage: null,
+		maxPages: null,
 		loading: false
 	}
 
@@ -24,8 +24,6 @@ let ButtonView = Backbone.View.extend({
 		this.loadingClass = 'loader__btn--loading';
 
 		this.listenTo( this.model, 'change:loading', this.renderLoading );
-
-		this.show();
 	},
 
 	submitHandler: function( e ) {
@@ -68,24 +66,27 @@ let PostContainerView = Backbone.View.extend({
 
 class PostLoaderController {
 
-	constructor() {
-		this.ajaxAction = 'post_loader';
-		this.hasMultiplePages = +globalData.articlesNumPages > 1;
+	constructor( mediator ) {
+		this.mediator = mediator;
 
-		this.ajaxSend = this.ajaxSend.bind( this );
+		this.ajaxAction = 'post_loader';
+		this.initAjaxAction = 'init_post_loader';
+
+		this.initialAjaxSuccess = this.initialAjaxSuccess.bind( this );
 		this.ajaxSuccess = this.ajaxSuccess.bind( this );
 		this.ajaxError = this.ajaxError.bind( this );
 	}
 
-	init() {
-		if ( this.hasMultiplePages ) {
-			let button = document.getElementsByClassName( 'loader__btn' )[0];
-			let postContainer = document.getElementsByClassName( 'post-box' )[0];
+	init( pageNum ) {
+		let button = document.getElementsByClassName( 'loader__btn' )[0];
+		let postContainer = document.getElementsByClassName( 'post-box' )[0];
 
-			let model = this.model = new Model();
-			let buttonView = this.buttonView =  new ButtonView({ el: button, model, controller: this });
-			let postContainerView = this.postContainerView = new PostContainerView({ el: postContainer, model });
-		}
+		let model = this.model = new Model({ currentPage: pageNum });
+
+		let buttonView = this.buttonView =  new ButtonView({ el: button, model, controller: this });
+		let postContainerView = this.postContainerView = new PostContainerView({ el: postContainer, model });
+
+		this.initialAjaxSend( pageNum );
 	}
 
 	isLastPage() {
@@ -98,6 +99,29 @@ class PostLoaderController {
 	incrementPage() {
 		let currentPage = this.model.get( 'currentPage' );
 		this.model.set({ currentPage: ++currentPage });
+	}
+
+	changeUrl() {
+		let currentPage = this.model.get( 'currentPage' );
+		let url = 'page/' + currentPage + '/';
+
+		this.mediator.trigger( 'changeArticleUrl', url );
+	}
+
+	initialAjaxSend( pageNum ) {
+		this.model.set({ loading: true });
+
+		$.ajax({
+			url: globalData.ajaxUrl,
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				action: this.initAjaxAction,
+				initPage: pageNum
+			},
+			success: this.initialAjaxSuccess,
+			error: this.ajaxError
+		});
 	}
 
 	ajaxSend() {
@@ -120,11 +144,25 @@ class PostLoaderController {
 		});
 	}
 
+	initialAjaxSuccess( data ) {
+		this.model.set({ loading: false });
+
+		this.postContainerView.renderNewPosts( data.data.html );
+		
+		this.model.set({ maxPages: data.data.maxNumPages });
+
+		if ( !this.isLastPage() ) {
+			this.buttonView.show();
+		}
+	}
+
 	ajaxSuccess( data ) {
 		this.model.set({ loading: false });
-		this.postContainerView.renderNewPosts( data.data );
-		this.incrementPage();
 
+		this.postContainerView.renderNewPosts( data.data.html );
+		this.incrementPage();
+		this.changeUrl();
+		
 		if ( this.isLastPage() ) {
 			this.buttonView.hide();
 		}

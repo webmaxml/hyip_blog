@@ -72,24 +72,9 @@ class Hyip_Theme_Setup {
 
 		//-------------------------------------------------
 
-		global $articles_query;
-		global $hyip_config;
-
-		$is_article_index = is_page( $hyip_config[ 'pages' ][ 'article_index' ][ 'id' ] );
-		$is_hyip_index = is_page( $hyip_config[ 'pages' ][ 'hyip_index' ][ 'id' ] );
-
-		$articles_num_pages = false;
-
-		if ( $is_article_index ) {
-			$articles_num_pages = $articles_query->max_num_pages;
-		}
-
-		//-------------------------------------------------
-
 		wp_localize_script( 'script', 'globalData', array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'user' => $user_data,
-				'articlesNumPages' => $articles_num_pages
+				'user' => $user_data
 		) );
 	}
 

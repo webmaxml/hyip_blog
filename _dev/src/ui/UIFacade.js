@@ -44,9 +44,9 @@ class UIFacade {
 	
 	}
 
-	initRoot() {
+	initRoot( pageNum ) {
 		this.initCommon();
-		this.postLoader.init();
+		this.postLoader.init( pageNum );
 	}
 
 	initPostItem() {
