@@ -84,24 +84,12 @@ let View = Backbone.View.extend({
 
 //-------------------------------------------------------
 
-class RegistrationFormController {
-
-	constructor( domainFacade ) {
-		this.domainFacade = domainFacade;
-		this.isUserNotRegistered = !this.domainFacade.isUserRegistered();
-	}
+class LoginFormController {
 
 	init() {
-		if ( this.isUserNotRegistered ) { 
-			this.createComponent();
-		}
-	}
-
-	createComponent() {
 		let form = document.getElementsByClassName( 'loginModal__form' )[0];
 		let view = new View({ el: form });
 	}
-
 }
 
-export default RegistrationFormController;
+export default LoginFormController;

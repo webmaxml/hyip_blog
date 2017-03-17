@@ -1,43 +1,23 @@
-<?php
+<?php /* Template Name: Выборка статей */
 
-$articles_args = array(
-	'post_type' => 'article',
-	'posts_per_page' => 2,
-);
+// template vars
+$ajax_loader_src = get_template_directory_uri() . '/assets/loader.gif';
 
-$articles_query = new WP_Query( $articles_args );
+?>
 
-require 'config/config.php';
-require 'inc/theme_setup.php';
-require 'inc/registration.php';
-require 'inc/login.php';
-require 'widgets/Logo.php';
+<?php get_header(); ?>
 
-function get_comments_string( $comments_num ) {
-	switch ( $comments_num ) {
-		case 0:
-			return '0 комментариев';
-		case 1:
-			return '1 комментарий';
-		default:
-			return $comments_num . ' комментариев';
-	}
-}
+<!-- BEGIN POST -->
+<section class="post" id="post">
 
-function hyip_post_loading() {
-	$currentPage = isset( $_POST[ 'currentPage' ] ) ? $_POST[ 'currentPage' ] : false;
+<?php 
 
-	global $articles_args;
-	$articles_args[ 'paged' ] = ++$currentPage;
+	if ( $articles_query->have_posts() ) { 
 
-	$query = new WP_Query( $articles_args );
+		echo '<ul class="post-box blog">';
 
-	ob_start();
-
-	if ( $query->have_posts() ) { 
-
-		while ( $query->have_posts() ) {
-			$query->the_post(); ?>
+		while ( $articles_query->have_posts() ) {
+			$articles_query->the_post(); ?>
 
 			<li class="post-box__item">
 
@@ -125,15 +105,21 @@ function hyip_post_loading() {
 
 		<?php }
 
+		echo '</ul>';
+
 		wp_reset_postdata();
-	} 
+	} ?>
 
-	$result = ob_get_contents();
-	ob_end_clean();
-	wp_send_json_success( $result );
-}
+	<!-- loader-->
+	<div class="loader">
+		<button class="loader__btn" type="button">
+			<span class="loader__text">Загрузить еще</span>
+			<img class="loader__img" src=<?php echo $ajax_loader_src; ?> alt="Загрузка...">
+		</button>
+	</div>
 
-add_action( 'wp_ajax_post_loader', 'hyip_post_loading' );
+<!-- END POST -->
+</section>
 
-
-?>
+<?php get_footer(); ?>
+   	

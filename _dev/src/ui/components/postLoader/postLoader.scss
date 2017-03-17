@@ -1,5 +1,7 @@
 /* loader */
 .loader {
+	@extend %rncs;
+
 	padding-top: $base-lh;
 	padding-bottom: $base-lh * 2;
 
@@ -7,5 +9,26 @@
 
 	&__btn {
 		@extend %large_btn;
+		@extend %rncc;
+
+		display: none;
+
+		width: 166px;
+		height: $base-lh * 2;
+
+		&.loader__btn--active { display: flex; }
+		&.loader__btn--loading { 
+
+			& .loader__text { display: none; }
+			& .loader__img { display: block; }
+		}
+	}
+
+	&__text {
+		line-height: $base-lh;
+	}
+
+	&__img {
+		display: none;
 	}
 }

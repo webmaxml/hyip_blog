@@ -6,10 +6,10 @@ $hyip_config = array(
 						'thumbnail_size' => 'full'
 				    ),
 	'pages' => array(
-					'cabinet' => array(
-									'id' => 8
-								 )
-			   ),
+					'cabinet' => array( 'id' => 8 ),
+					'article_index' => array( 'id' => 33 ),
+					'hyip_index' => array( 'id' => 36 )
+			   ),  
 	'service' => array(
 					'logo' => array(
 									'id' => 15

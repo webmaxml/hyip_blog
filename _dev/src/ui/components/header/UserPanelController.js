@@ -50,16 +50,10 @@ let View = Backbone.View.extend({
 
 class UserPanelController {
 
-	constructor( domainFacade ) {
-		this.domainFacade = domainFacade;
-	}
-
 	init() {
-		if ( this.domainFacade.isUserRegistered() ) { 
-			let panel = document.getElementsByClassName( 'header__userPanel-wrap' )[0];
-			let panelModel = new Model();
-			let panelView = new View({ el: panel, model: panelModel });
-		}
+		let panel = document.getElementsByClassName( 'header__userPanel-wrap' )[0];
+		let panelModel = new Model();
+		let panelView = new View({ el: panel, model: panelModel });
 	}
 	
 }

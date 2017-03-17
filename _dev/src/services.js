@@ -18,6 +18,7 @@ import UserPanel from './ui/components/header/UserPanelController';
 import UserTabs from './ui/components/userCabinet/UserTabsController';
 import RegistrationForm from './ui/jsComponents/RegistrationFormController';
 import LoginForm from './ui/jsComponents/LoginFormController';
+import PostLoader from './ui/jsComponents/PostLoaderController';
 // profit component
 import Profit from './ui/components/hyipItem/Profit';
 import ProfitChart from './ui/components/hyipItem/ProfitChartController';
@@ -41,6 +42,7 @@ let bottle = new Bottle();
 
 bottle.service( 'router', Router, 'uiFacade' );
 bottle.service( 'uiFacade', UIFacade, 
+				   'domainFacade',
 				   'slider', 
 				   'tabs', 
 				   'tooltip',
@@ -51,7 +53,8 @@ bottle.service( 'uiFacade', UIFacade,
 				   'userPanel',
 				   'userTabs',
 				   'registrationForm',
-				   'loginForm' );
+				   'loginForm',
+				   'postLoader' );
 bottle.service( 'domainFacade', DomainFacade, 
 				   'plansList',
 				   'user' );
@@ -64,10 +67,11 @@ bottle.service( 'slider', Slider );
 bottle.service( 'tabs', Tabs );
 bottle.service( 'comments', Comments );
 bottle.service( 'upButton', UpButton );
-bottle.service( 'userPanel', UserPanel, 'domainFacade' );
+bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );
-bottle.service( 'registrationForm', RegistrationForm, 'domainFacade' );
-bottle.service( 'loginForm', LoginForm, 'domainFacade' );
+bottle.service( 'registrationForm', RegistrationForm );
+bottle.service( 'loginForm', LoginForm );
+bottle.service( 'postLoader', PostLoader );
 // profit component
 bottle.service( 'profit', Profit, 'domainFacade', 'mediator', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 

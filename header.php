@@ -89,7 +89,7 @@ $user_cabinet_url = get_page_link( $hyip_config['pages']['cabinet']['id'] );
 
 	        </div>
 
-      </header>
+      	</header>
 
 		<nav class="main-menu">
 
@@ -112,3 +112,6 @@ $user_cabinet_url = get_page_link( $hyip_config['pages']['cabinet']['id'] );
 				</button>
 			</form>
 		</nav>
+
+		<!-- BEGIN MAIN -->
+		<main class="main">

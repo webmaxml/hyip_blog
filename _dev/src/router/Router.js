@@ -10,7 +10,7 @@ let devRoutes = {
 
 let prodRoutes = {
 	'hyip/': 'root',
-	'post.html': 'postItem',
+	'hyip/article/*slug': 'postItem',
 	'hyip_index.html': 'hyipIndex',
 	'hyip.html': 'hyipItem',
 	'user.html': 'user',
@@ -31,7 +31,7 @@ let MainRouter = Backbone.Router.extend({
 		this.controller.root();
 	},
 
-	postItem: function() {
+	postItem: function( slug ) {
 		this.controller.postItem();
 	},
 

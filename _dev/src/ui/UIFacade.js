@@ -1,6 +1,7 @@
 class UIFacade {
 
-	constructor( slider, 
+	constructor( domainFacade,
+				 slider, 
 				 tabs, 
 				 tooltip, 
 				 upButton, 
@@ -10,7 +11,9 @@ class UIFacade {
 				 userPanel,
 				 userTabs,
 				 registration,
-				 login ) {
+				 login,
+				 postLoader ) {
+		this.domainFacade = domainFacade;
 		this.slider = slider;
 		this.tabs = tabs;
 		this.tooltip = tooltip;
@@ -22,6 +25,7 @@ class UIFacade {
 		this.userTabs = userTabs;
 		this.registration = registration;
 		this.login = login;
+		this.postLoader = postLoader;
 	}
 
 	initCommon() {
@@ -30,13 +34,19 @@ class UIFacade {
 		this.tooltip.init();
 		this.upButton.init();
 		this.modals.init();
-		this.userPanel.init();
-		this.registration.init();
-		this.login.init();
+
+		if ( this.domainFacade.isUserRegistered() ) {
+			this.userPanel.init();
+		} else {
+			this.registration.init();
+			this.login.init();
+		}
+	
 	}
 
 	initRoot() {
 		this.initCommon();
+		this.postLoader.init();
 	}
 
 	initPostItem() {
