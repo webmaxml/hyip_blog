@@ -60,6 +60,8 @@ class Hyip_Theme_Setup {
 	}
 
 	function include_data_in_scripts() {
+		global $hyip_articles;
+
 		$user = is_user_logged_in() ? wp_get_current_user() : false;
 		$user_data = array(
 			'registered' => false
@@ -74,7 +76,8 @@ class Hyip_Theme_Setup {
 
 		wp_localize_script( 'script', 'globalData', array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'user' => $user_data
+				'user' => $user_data,
+				'articlesMaxPages' => $hyip_articles->get_max_pages()
 		) );
 	}
 

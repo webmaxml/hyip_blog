@@ -2,6 +2,7 @@
 
 // template vars
 $ajax_loader_src = get_template_directory_uri() . '/assets/loader.gif';
+$page = get_query_var( 'page' ) > 1 ? get_query_var( 'page' ) : 1;
 
 ?>
 
@@ -10,7 +11,9 @@ $ajax_loader_src = get_template_directory_uri() . '/assets/loader.gif';
 <!-- BEGIN POST -->
 <section class="post" id="post">
 
-	<ul class="post-box blog"></ul>
+	<ul class="post-box blog">
+		<?php $hyip_articles->get_posts_html_till_page( $page ); ?>
+	</ul>
 
 	<div class="loader">
 		<button class="loader__btn" type="button">

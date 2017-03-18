@@ -71,8 +71,6 @@ class PostLoaderController {
 
 		this.ajaxAction = 'post_loader';
 		this.initAjaxAction = 'init_post_loader';
-
-		this.initialAjaxSuccess = this.initialAjaxSuccess.bind( this );
 		this.ajaxSuccess = this.ajaxSuccess.bind( this );
 		this.ajaxError = this.ajaxError.bind( this );
 	}
@@ -81,12 +79,17 @@ class PostLoaderController {
 		let button = document.getElementsByClassName( 'loader__btn' )[0];
 		let postContainer = document.getElementsByClassName( 'post-box' )[0];
 
-		let model = this.model = new Model({ currentPage: pageNum });
+		let model = this.model = new Model({ 
+			currentPage: pageNum,
+			maxPages: +globalData.articlesMaxPages
+		});
 
 		let buttonView = this.buttonView =  new ButtonView({ el: button, model, controller: this });
 		let postContainerView = this.postContainerView = new PostContainerView({ el: postContainer, model });
 
-		this.initialAjaxSend( pageNum );
+		if ( !this.isLastPage() ) {
+			this.buttonView.show();
+		}
 	}
 
 	isLastPage() {
@@ -108,22 +111,6 @@ class PostLoaderController {
 		this.mediator.trigger( 'changeArticleUrl', url );
 	}
 
-	initialAjaxSend( pageNum ) {
-		this.model.set({ loading: true });
-
-		$.ajax({
-			url: globalData.ajaxUrl,
-			type: 'POST',
-			dataType: 'json',
-			data: {
-				action: this.initAjaxAction,
-				initPage: pageNum
-			},
-			success: this.initialAjaxSuccess,
-			error: this.ajaxError
-		});
-	}
-
 	ajaxSend() {
 		if ( this.isLastPage() || this.model.get( 'loading') ) { 
 			return; 
@@ -142,18 +129,6 @@ class PostLoaderController {
 			success: this.ajaxSuccess,
 			error: this.ajaxError
 		});
-	}
-
-	initialAjaxSuccess( data ) {
-		this.model.set({ loading: false });
-
-		this.postContainerView.renderNewPosts( data.data.html );
-		
-		this.model.set({ maxPages: data.data.maxNumPages });
-
-		if ( !this.isLastPage() ) {
-			this.buttonView.show();
-		}
 	}
 
 	ajaxSuccess( data ) {
