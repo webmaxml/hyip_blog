@@ -1,6 +1,6 @@
 <?php
 
-class Hyip_Theme_Setup {
+class Theme_Controller {
 
 	function __construct() {
 		$this->remove_default_actions();
@@ -8,11 +8,6 @@ class Hyip_Theme_Setup {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'init', array( $this, 'set_users_options' ) );
-		add_action( 'widgets_init', array( $this, 'remove_default_widgets' ) );
-		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
-
-		add_filter( 'nav_menu_link_attributes', array( $this, 'set_menu_link_attrs' ), 10, 3 );
-		add_filter( 'excerpt_length', array( $this, 'set_custom_excerpt_length' ), 999 );
 	}
 
 	function remove_default_actions() {
@@ -30,21 +25,6 @@ class Hyip_Theme_Setup {
 		remove_action( 'the_content', 'convert_smilies', 20 );
 	}
 
-	function remove_default_widgets() {
-		unregister_widget( 'WP_Nav_Menu_Widget' );
-		unregister_widget( 'WP_Widget_Archives' );
-		unregister_widget( 'WP_Widget_Calendar' );
-		unregister_widget( 'WP_Widget_Categories' );
-		unregister_widget( 'WP_Widget_Links' );
-		unregister_widget( 'WP_Widget_Meta' );
-		unregister_widget( 'WP_Widget_Pages' );
-		unregister_widget( 'WP_Widget_Recent_Comments' );
-		unregister_widget( 'WP_Widget_Recent_Posts' );
-		unregister_widget( 'WP_Widget_RSS' );
-		unregister_widget( 'WP_Widget_Search' );
-		unregister_widget( 'WP_Widget_Tag_Cloud' );
-	}
-
 	function add_theme_support() {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
@@ -60,8 +40,6 @@ class Hyip_Theme_Setup {
 	}
 
 	function include_data_in_scripts() {
-		global $hyip_articles;
-
 		$user = is_user_logged_in() ? wp_get_current_user() : false;
 		$user_data = array(
 			'registered' => false
@@ -72,12 +50,9 @@ class Hyip_Theme_Setup {
 			$user_data[ 'login' ] = $user->data->user_login;
 		}
 
-		//-------------------------------------------------
-
 		wp_localize_script( 'script', 'globalData', array(
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				'user' => $user_data,
-				'articlesMaxPages' => $hyip_articles->get_max_pages()
+				'user' => $user_data
 		) );
 	}
 
@@ -99,45 +74,7 @@ class Hyip_Theme_Setup {
 			exit;
 		}
 	}
-
-	function register_theme_sidebars() {
-		register_sidebar( array(
-			'name' => 'Logo Sidebar',
-			'id' => 'logo_sidebar'
-		) );
-	}
-
-	function set_menu_link_attrs( $atts, $item ) {
-
-		$atts['class'] = 'main-menu__nav-link';
-
-		global $hyip_config;
-
-		$item_id = $item->ID;
-		$add_hyip_id = $hyip_config[ 'menu_items' ][ 'add_hyip' ][ 'id' ];
-		$refback_id = $hyip_config[ 'menu_items' ][ 'refback' ][ 'id' ];
-
-		if ( $item_id === $add_hyip_id ) {
-			$atts['href'] = '#';
-			$atts['data-modal-trigger'] = 'addHyip';
-		}
-
-		if ( $item_id === $refback_id ) {
-			$atts['href'] = '#';
-			$atts['data-modal-trigger'] = 'refback';
-		}
-
-		return $atts;
-	}
-
-	function set_custom_excerpt_length( $length ) {
-	    return 100;
-	}
-
+	
 }
-
-
-
-$hyip_theme_setup = new Hyip_Theme_Setup;
 
 ?>

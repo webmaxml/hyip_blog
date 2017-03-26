@@ -35,9 +35,10 @@ module.exports = {
     },
 
     externals: {
-        // for development - defining global var 'globalData' mocking data given from server
-        // for production - putting data given from server in 'globalData'
-        globalData: 'globalData'
+        // globalData - for general data from the server
+        // localData - for specific page data
+        globalData: 'globalData',
+        localData: 'localData'
     },
 
     resolveLoader: {

@@ -10,7 +10,8 @@ let devRoutes = {
 
 let prodRoutes = {
 	'hyip/': 'root',
-	'hyip/page/:pageNum/': 'root',
+	'hyip/page/:pageNum/': 'rootPage',
+	'hyip/category/:catSlug/': 'cats',
 	'hyip/article/*slug': 'postItem',
 	'hyip_index.html': 'hyipIndex',
 	'hyip.html': 'hyipItem',
@@ -28,8 +29,39 @@ let MainRouter = Backbone.Router.extend({
 		this.controller = attrs.controller;
 	},
 
-	root: function( pageNum ) {
-		this.controller.root( pageNum );
+	execute: function( callback, args, name ) {
+		this.controller.setQueryParams();
+
+		if ( callback ) {
+			callback.apply( this, args );
+		}
+	},
+
+	root: function() {
+		let params = {
+			pageNum: 1,
+			category: 'all' 
+		};
+
+		this.controller.root( params );
+	},
+
+	rootPage: function( pageNum ) {
+		let params = {
+			pageNum: +pageNum,
+			category: 'all' 
+		};
+
+		this.controller.root( params );
+	},
+
+	cats: function( catSlug ) {
+		let params = {
+			pageNum: 1,
+			category: catSlug 
+		};
+
+		this.controller.root( params );
 	},
 
 	postItem: function( slug ) {
@@ -55,21 +87,19 @@ class Router {
 	constructor( uiFacade, mediator ) {
 		this.uiFacade = uiFacade;
 		this.mediator = mediator;
+		this.page = new Page();
 
 		_.extend( this, Backbone.Events );
 
 		this.router = new MainRouter({ controller: this });
 		Backbone.history.start({ pushState: true });
 
-		this.listenTo( this.mediator, 'changeArticleUrl', this.changeArticleUrl );
+		this.listenTo( this.mediator, 'changeUrl', this.changeUrl );
 	}
 
-	root( pageNum ) {
-		if ( !pageNum ) { 
-			pageNum = 1; 
-		};
-
-		this.uiFacade.initRoot( +pageNum );
+	root( params ) {
+		console.log( 'root init' );
+		this.uiFacade.initRoot( params );
 	}
 
 	postItem() {
@@ -90,8 +120,28 @@ class Router {
 		this.uiFacade.initUser();
 	}
 
-	changeArticleUrl( url ) {
-		this.router.navigate( 'hyip/' + url );
+	changeUrl( fragmet ) {
+		let initFragment = Backbone.history.fragment.replace( /page\/\d+\//, '' );
+
+		this.router.navigate( initFragment + fragmet );
+		this.setQueryParams();
+	}
+
+	setQueryParams() {
+		this.page.setQueryParams();
+	}
+
+}
+
+class Page {
+
+	setQueryParams() {
+		let pageParamIndex = location.href.search( /\/page\/\d+\// );
+
+		if ( ~pageParamIndex ) {
+			console.log( location.href.substring( pageParamIndex ) );
+		}
+
 	}
 
 }

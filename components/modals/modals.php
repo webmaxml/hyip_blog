@@ -1,12 +1,3 @@
-<?php  
-
-// template vars
-$registration_nonce_action = 'hyip_registration';
-$login_nonce_action = 'hyip_logining';
-
-$ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d45c5078bb2e7719bfb7a';
-
-?>
 <div class="modals">
 
     <div class="modals__overlay" data-modal-window="refback">
@@ -93,7 +84,7 @@ $ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d
             </button>
             <h1 class="regModal__header">Регистрация</h1>
             <form class="regModal__form" method="post" action="">
-                <?php wp_nonce_field( $registration_nonce_action ); ?>
+                <?php wp_nonce_field( $this->registration_nonce_action ); ?>
                 <div class="regModal__input-wrap regModal__input-wrap--require">
                     <input class="regModal__input" id="regLogin" type="text" name="login" placeholder="Логин">
                 </div>
@@ -110,7 +101,7 @@ $ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d
                 <div class="regModal__submit-wrap">
                     <button class="regModal__submit">Регистрация
                         <div class="regModal__loader-wrap">
-                            <img class="regModal__loader" src=<?php echo $ajax_loader_src; ?> alt="Загрузка...">
+                            <img class="regModal__loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
                         </div>
                     </button>
                 </div>
@@ -125,7 +116,7 @@ $ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d
             </button>
             <h1 class="regModal__header">Вход</h1> 
             <form action="" method="post" class="loginModal__form">
-                <?php wp_nonce_field( $login_nonce_action ); ?>
+                <?php wp_nonce_field( $this->login_nonce_action ); ?>
                 <div class="loginModal__input-wrap loginModal__input-wrap--require">
                     <input type="text" class="loginModal__input" name="login" placeholder="Логин">
                 </div>
@@ -144,7 +135,7 @@ $ajax_loader_src = get_template_directory_uri() . '/assets/spin.svg?6fdf9e7aec0d
                 <div class="loginModal__submit-wrap">
                     <button class="loginModal__submit">Вход 
                         <span class="loginModal__loader-wrap">
-                            <img class="regModal__loader" src=<?php echo $ajax_loader_src; ?> alt="Загрузка...">
+                            <img class="regModal__loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
                         </span>
                     </button> 
                 </div>

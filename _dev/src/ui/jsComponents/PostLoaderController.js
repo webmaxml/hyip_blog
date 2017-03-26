@@ -5,6 +5,7 @@ let Model = Backbone.Model.extend({
 	defaults: {
 		currentPage: null,
 		maxPages: null,
+		category: null,
 		loading: false
 	}
 
@@ -75,13 +76,18 @@ class PostLoaderController {
 		this.ajaxError = this.ajaxError.bind( this );
 	}
 
-	init( pageNum ) {
+	init( params ) {
+		if ( typeof localData.maxPages !== 'number' ) {
+			throw new ReferenceError( 'localData.maxPages is not a number' );
+		}
+
 		let button = document.getElementsByClassName( 'loader__btn' )[0];
 		let postContainer = document.getElementsByClassName( 'post-box' )[0];
 
 		let model = this.model = new Model({ 
-			currentPage: pageNum,
-			maxPages: +globalData.articlesMaxPages
+			currentPage: params.pageNum,
+			maxPages: localData.maxPages,
+			category: params.category
 		});
 
 		let buttonView = this.buttonView =  new ButtonView({ el: button, model, controller: this });
@@ -106,9 +112,9 @@ class PostLoaderController {
 
 	changeUrl() {
 		let currentPage = this.model.get( 'currentPage' );
-		let url = 'page/' + currentPage + '/';
+		let fragment = 'page/' + currentPage + '/';
 
-		this.mediator.trigger( 'changeArticleUrl', url );
+		this.mediator.trigger( 'changeUrl', fragment );
 	}
 
 	ajaxSend() {
@@ -124,7 +130,8 @@ class PostLoaderController {
 			dataType: 'json',
 			data: {
 				action: this.ajaxAction,
-				currentPage: this.model.get( 'currentPage' )
+				currentPage: this.model.get( 'currentPage' ),
+				category: this.model.get( 'category' )
 			},
 			success: this.ajaxSuccess,
 			error: this.ajaxError

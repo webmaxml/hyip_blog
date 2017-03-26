@@ -2,13 +2,13 @@
 
 class Hyip_Logo_Widget extends WP_Widget {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'hyip_logo', 'Текст логотипа', array( 
 			'description' => 'Отображает логотип, состоящий из 2-ух цветовых частей' 
 		) );
 	}
 
-	function form( $instance ) {
+	public function form( $instance ) {
 		$first_part = '';
 		$second_part = '';
 
@@ -41,14 +41,14 @@ class Hyip_Logo_Widget extends WP_Widget {
 		<?php
 	}
 
-	function update( $newInstance, $oldInstance ) {
+	public function update( $newInstance, $oldInstance ) {
 		$values = array();
 		$values["first_part"] = htmlentities( $newInstance[ "first_part"] );
 		$values["second_part"] = htmlentities( $newInstance["second_part"] );
 		return $values;
 	}
 
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		?>
 
 		<a class="header__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -59,9 +59,5 @@ class Hyip_Logo_Widget extends WP_Widget {
 	}
 
 }
-
-add_action( 'widgets_init', function() { 
-	register_widget( 'Hyip_Logo_Widget' ); 
-} );
 
 ?>
