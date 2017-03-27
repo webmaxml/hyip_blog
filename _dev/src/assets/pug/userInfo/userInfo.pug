@@ -1,0 +1,29 @@
+mixin infoItem( title, value, accent )
+	li.userInfo__item
+		span.userInfo__item-title= title
+		if accent
+			span.userInfo__item-value.userInfo__item-value--accent= value
+		else
+			span.userInfo__item-value= value
+
+//--------------------------------------------------------------------------
+
+//userInfo
+.userInfo
+	.userInfo__wrap
+		.userInfo__avatar
+			h1.userInfo__name Keanu Reeves
+			.userInfo__img-wrap
+				img.userInfo__img( src=require( './img/avatar.jpg' ) )
+			.userInfo__change-btn-wrap
+				button.userInfo__change-btn( type="button" ) Сменить фото
+		ul.userInfo__body
+			+infoItem( 'Дата регистрации', '10.07.2016' )
+			+infoItem( 'Был на сайте', 'сейчас', true )
+			+infoItem( 'Комментариев', '20' )
+			+infoItem( 'Голосов', '0' )
+			+infoItem( 'Общий вклад', '303$' )
+			+infoItem( 'Общий доход', '214$' )
+			+infoItem( 'Общая прибыль', '89$' )
+			+infoItem( 'Рефбеки', '17.5$' )
+			+infoItem( 'Страховки', '8.64$' )

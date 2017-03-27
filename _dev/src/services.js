@@ -1,70 +1,69 @@
 import Bottle from 'bottlejs';
 
-/************************ Subsystems **************************/
+/************************ Controllers **************************/
 
-import Router from './router/Router';
-import UIFacade from './ui/UIFacade';
-import DomainFacade from './domain/DomainFacade';
-import Mediator from './Mediator';
+import RouterController from './controllers/RouterController';
+import ViewController from './controllers/ViewController';
 
-/************************ UI components **************************/
+/************************ Classes **************************/
 
-import Slider from './ui/components/slider/SliderController';
-import Tabs from './ui/components/tabs/TabsController';
-import Tooltip from './ui/components/tooltip/TooltipController';
-import UpButton from './ui/components/upButton/UpButtonController';
-import Comments from './ui/components/comments/CommentsController';
-import UserPanel from './ui/components/header/UserPanelController';
-import UserTabs from './ui/components/userCabinet/UserTabsController';
-import RegistrationForm from './ui/jsComponents/RegistrationFormController';
-import LoginForm from './ui/jsComponents/LoginFormController';
-import PostLoader from './ui/jsComponents/PostLoaderController';
+import Mediator from './classes/Mediator';
+import User from './classes/User';
+
+/************************ Components **************************/
+
+import Slider from './components/slider/SliderController';
+import PostTabs from './components/postTabs/PostTabsController';
+import Tooltip from './components/tooltip/TooltipController';
+import UpButton from './components/upButton/UpButtonController';
+import Comments from './components/comments/CommentsController';
+import UserPanel from './components/userPanel/UserPanelController';
+import UserTabs from './components/userTabs/UserTabsController';
+import RegistrationForm from './components/registrationForm/RegistrationFormController';
+import LoginForm from './components/loginForm/LoginFormController';
+import PostLoader from './components/postLoader/PostLoaderController';
 // profit component
-import Profit from './ui/components/hyipItem/Profit';
-import ProfitChart from './ui/components/hyipItem/ProfitChartController';
-import ProfitForm from './ui/components/hyipItem/ProfitFormController';
-import ProfitFormSelect from './ui/components/hyipItem/ProfitFormSelectController';
-import ProfitFormInput from './ui/components/hyipItem/ProfitFormInputController';
-import ProfitFormCheckbox from './ui/components/hyipItem/ProfitFormCheckboxController';
+import ProfitCalc from './components/profitCalc/Profit';
+import ProfitChart from './components/profitCalc/ProfitChartController';
+import ProfitForm from './components/profitCalc/ProfitFormController';
+import ProfitFormSelect from './components/profitCalc/ProfitFormSelectController';
+import ProfitFormInput from './components/profitCalc/ProfitFormInputController';
+import ProfitFormCheckbox from './components/profitCalc/ProfitFormCheckboxController';
 // modals component
-import Modals from './ui/components/modals/ModalsController';
-import ModalsSelect from './ui/components/modals/ModalsSelectController';
-
-/************************ Domain components **************************/
-
-import PlansList from './domain/components/PlansList';
-import User from './domain/components/User';
+import Modals from './components/modals/ModalsController';
+import ModalsSelect from './components/modals/ModalsSelectController';
 
 
 let bottle = new Bottle();
 
 /************************ Subsystems **************************/
 
-bottle.service( 'router', Router, 'uiFacade', 'mediator' );
-bottle.service( 'uiFacade', UIFacade, 
-				   'domainFacade',
+bottle.service( 'routerController', RouterController, 'viewController', 'mediator' );
+bottle.service( 'viewController', ViewController, 
+				   'user',
 				   'slider', 
-				   'tabs', 
+				   'postTabs', 
 				   'tooltip',
 				   'upButton',
 				   'comments',
-				   'profit',
+				   'profitCalc',
 				   'modals',
 				   'userPanel',
 				   'userTabs',
 				   'registrationForm',
 				   'loginForm',
 				   'postLoader' );
-bottle.service( 'domainFacade', DomainFacade, 
-				   'plansList',
-				   'user' );
+
+/************************ Classes **************************/
+
 bottle.service( 'mediator', Mediator );
+bottle.service( 'user', User );
 
 /************************ UI components **************************/
 
 bottle.service( 'tooltip', Tooltip );
 bottle.service( 'slider', Slider );
-bottle.service( 'tabs', Tabs );
+bottle.service( 'postTabs', PostTabs );
 bottle.service( 'comments', Comments );
 bottle.service( 'upButton', UpButton );
 bottle.service( 'userPanel', UserPanel );
@@ -73,7 +72,7 @@ bottle.service( 'registrationForm', RegistrationForm );
 bottle.service( 'loginForm', LoginForm );
 bottle.service( 'postLoader', PostLoader, 'mediator' );
 // profit component
-bottle.service( 'profit', Profit, 'domainFacade', 'mediator', 'profitChart', 'profitForm' );
+bottle.service( 'profitCalc', ProfitCalc, 'mediator', 'profitChart', 'profitForm' );
 bottle.service( 'profitForm', ProfitForm, 
 					'mediator', 
 					'profitFormSelect', 
@@ -87,9 +86,5 @@ bottle.service( 'profitChart', ProfitChart, 'mediator' );
 bottle.service( 'modals', Modals, 'modalsSelect' );
 bottle.service( 'modalsSelect', ModalsSelect );
 
-/************************ Domain components **************************/
-
-bottle.service( 'plansList', PlansList, 'mediator' );
-bottle.service( 'user', User );
 
 export default bottle;

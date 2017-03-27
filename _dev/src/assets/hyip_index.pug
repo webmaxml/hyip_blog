@@ -1,0 +1,31 @@
+//- mixins
+include pug/head/head.pug
+//- states
+- var page = 'hyip';
+
+html
+	head
+		+head( 'Хайпы' )
+	body
+		// wrapper
+		div.wrapper
+			a.wrapper__link( href="#ad" style="background-image: url( '/img/ad_bg.jpg' );" )
+			include pug/header/header.pug
+			include pug/mainMenu/mainMenu.pug
+			include pug/slider/slider.pug
+			// main
+			main.main
+				// post
+				section#post.post
+					include pug/hyipBox/hyipBox.pug
+					include pug/postLoader/postLoader.pug
+				// sidebar
+				aside.sidebar
+					include pug/categories/categories.pug
+					include pug/tabs/tabs.pug
+			include pug/footer/footer.pug
+		include pug/upButton/upButton.pug
+		include pug/tooltip/tooltip.pug
+		include pug/modals/modals.pug
+		script( src='https://www.gstatic.com/charts/loader.js' )
+		include pug/globalData.pug

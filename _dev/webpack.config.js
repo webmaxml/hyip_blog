@@ -88,23 +88,23 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'src/ui/pug/blog_index.pug'
+            template: 'src/assets/blog_index.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'post.html',
-            template: 'src/ui/pug/blog_item.pug'
+            template: 'src/assets/blog_item.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'hyip_index.html',
-            template: 'src/ui/pug/hyip_index.pug'
+            template: 'src/assets/hyip_index.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'hyip.html',
-            template: 'src/ui/pug/hyip_item.pug'
+            template: 'src/assets/hyip_item.pug'
         }),
         new HtmlWebpackPlugin({
             filename: 'user.html',
-            template: 'src/ui/pug/user_page.pug'
+            template: 'src/assets/user_page.pug'
         }),
         new ReloadPlugin(),
         new webpack.NoErrorsPlugin(), 

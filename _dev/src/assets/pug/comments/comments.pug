@@ -1,0 +1,81 @@
+//- mixins
+include ../sectionHeader/sectionHeader.pug
+
+mixin commentsForm()
+	.commentsForm__wrap
+		p.commentsForm__text Комментарии проходят премодерацию, перед добавлением соит ознакомиться с 
+			a.commentsForm__link( href="/" ) правилами
+		form.commentsForm__form
+			.commentsForm__input-wrap
+				textarea.commentsForm__input( placeholder="Комментарий" )
+			button.commentsForm__submit Добавить
+
+//--------------------------------------------------------
+
+mixin commentsRespond
+	//commentsRespond
+	.commentsRespond
+		.commentsRespond__btn-wrap
+			button.commentsRespond__btn( type='button' ) Ответить
+		+commentsForm()
+
+//--------------------------------------------------------
+
+mixin commentsItem()
+	//commentsItem
+	li.commentsItem
+		.commentsItem__avatar
+			a.commentsItem__avatar-link( href="/" )
+				img.commentsItem__avatar-img( src=require( './img/avatar.jpg' ) )
+			.commentsItem__rate-wrap
+				button.commentsItem__rate-btn( type="button" )
+					i.fa.fa-thumbs-up.commentsItem__rate-icon
+				span.commentsItem__rate-display 143
+		.commentsItem__body
+			.commentsItem__meta-header
+				a.commentsItem__name-link( href="/" ) Joseph Stalin
+				span.commentsItem__date 02.12.2016 20:55:44
+			.commentsItem__content
+				p 1. Проект Добро
+				p Проект предлагает разумный процентный план среди множества других проектов, сделал очень необычный шаг, предложил страховку 77% для вкладчиков. Данную страховку переводят на хранение администраторам многих блогов. Такие деньги (а это уже крупная сумма) проекту терять бессмысленно, глупо даже, если только администратор не в сговоре со всеми держателями страховки))) Но вероятность этого ничтожно мала! Администратор очень общительный и отзывчивый. Новый год переживет, верю в Добро. 
+				p 2. Capella 
+				p Investment Необычный проект на фоне многих, так как есть ограничение на минимальный вклад, ограничение на вывод, то есть отсеиваются все мелочные вкладчики. Есть определенный график, распорядок по начислению процентов, по выплатам. Очень интересно себя ведет администратор, никого не тянет, не рассказывает байки. У проекта все шансы пережить новый год.
+				p 3. iHands
+				p Интересный проект, грамотный администратор. Верится, что команда проекта так же, как и у предыдущих двух, не занимается обычным сбором денег, а пускает их в приумножающий оборот при помощи своих инструментов. Интересные планы. Думаю, что и этот проект переживет новый год.
+			+commentsRespond()
+			ul.commentsItem__inner-box
+				li.commentsItem
+					.commentsItem__avatar
+						a.commentsItem__avatar-link( href="/" )
+							img.commentsItem__avatar-img( src=require( './img/avatar.jpg' ) )
+						.commentsItem__rate-wrap
+							button.commentsItem__rate-btn( type="button" )
+								i.fa.fa-thumbs-up.commentsItem__rate-icon
+							span.commentsItem__rate-display 0
+					.commentsItem__body
+						.commentsItem__meta-header
+							a.commentsItem__name-link( href="/" ) Joseph Stalin
+							span.commentsItem__date 02.12.2016 20:55:44
+						.commentsItem__content
+							p Fuck you
+						+commentsRespond()
+
+//--------------------------------------------------------
+
+mixin commentsFormSection()
+	//commentsForm
+	.commentsForm
+		+sectionHeader( 'Добавить комментарий' )
+		+commentsForm()
+
+//--------------------------------------------------------
+
+//comments
+#comments.comments
+	+sectionHeader( 'Комментарии' )
+	ul.comments__box
+		+commentsItem()
+		+commentsItem()
+		+commentsItem()
+		+commentsItem()
++commentsFormSection()
