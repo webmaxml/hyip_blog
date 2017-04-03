@@ -84,8 +84,9 @@ let MainRouter = Backbone.Router.extend({
 
 class RouterController {
 
-	constructor( viewController, mediator ) {
-		this.viewController = viewController;
+	constructor( viewMapper, modelMapper, mediator ) {
+		this.viewMapper = viewMapper;
+		this.modelMapper = modelMapper;
 		this.mediator = mediator;
 
 		_.extend( this, Backbone.Events );
@@ -98,25 +99,30 @@ class RouterController {
 
 	root( params ) {
 		console.log( 'root init' );
-		this.viewController.initRoot( params );
+		this.viewMapper.initRoot( params );
+		this.modelMapper.initRoot();
 	}
 
 	postItem() {
-		this.viewController.initPostItem();
+		this.viewMapper.initPostItem();
+		this.modelMapper.initPostItem();
 	}
 
 
 	hyipIndex() {
-		this.viewController.initHyipIndex();
+		this.viewMapper.initHyipIndex();
+		this.modelMapper.initHyipIndex();
 	}
 
 
 	hyipItem() {
-		this.viewController.initHyipItem();
+		this.viewMapper.initHyipItem();
+		this.modelMapper.initHyipItem();
 	}
 
 	user() {
-		this.viewController.initUser();
+		this.viewMapper.initUser();
+		this.modelMapper.initUser();
 	}
 
 	changeUrl( fragmet ) {

@@ -38,7 +38,8 @@ module.exports = {
         // globalData - for general data from the server
         // localData - for specific page data
         globalData: 'globalData',
-        localData: 'localData'
+        localData: 'localData',
+        google: 'google'
     },
 
     resolveLoader: {

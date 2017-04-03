@@ -1,12 +1,15 @@
-class ViewController {
+class ViewMapper {
 
 	constructor( user,
 				 slider, 
 				 postTabs, 
 				 tooltip, 
 				 upButton, 
-				 comments, 
-				 profitCalc, 
+				 commentsController, 
+				 profitCalcPlanSelectController, 
+				 profitCalcDepositController, 
+				 profitCalcRefbackController, 
+				 profitCalcChartController, 
 				 modals, 
 				 userPanel,
 				 userTabs,
@@ -14,12 +17,16 @@ class ViewController {
 				 login,
 				 postLoader ) {
 		this.user = user;
+
 		this.slider = slider;
 		this.postTabs = postTabs;
 		this.tooltip = tooltip;
 		this.upButton = upButton;
-		this.comments = comments;
-		this.profitCalc = profitCalc;
+		this.commentsController = commentsController;
+		this.profitCalcPlanSelectController = profitCalcPlanSelectController;
+		this.profitCalcDepositController = profitCalcDepositController;
+		this.profitCalcRefbackController = profitCalcRefbackController;
+		this.profitCalcChartController = profitCalcChartController;
 		this.modals = modals;
 		this.userPanel = userPanel;
 		this.userTabs = userTabs;
@@ -51,13 +58,16 @@ class ViewController {
 
 	initPostItem() {
 		this.initCommon();
-		this.comments.init();
+		this.commentsController.init();
 	}
 
 	initHyipItem() {
 		this.initCommon();
-		this.comments.init();
-		this.profitCalc.init();
+		this.commentsController.init();
+		this.profitCalcPlanSelectController.init();
+		this.profitCalcDepositController.init();
+		this.profitCalcRefbackController.init();
+		this.profitCalcChartController.init();
 	}
 
 	initHyipIndex() {
@@ -71,4 +81,4 @@ class ViewController {
 
 }
 
-export default ViewController;
+export default ViewMapper;
