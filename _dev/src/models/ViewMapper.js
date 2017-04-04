@@ -1,8 +1,8 @@
 class ViewMapper {
 
 	constructor( user,
-				 slider, 
-				 postTabs, 
+				 sliderController, 
+				 postTabsController, 
 				 tooltip, 
 				 upButton, 
 				 commentsController, 
@@ -18,8 +18,8 @@ class ViewMapper {
 				 postLoader ) {
 		this.user = user;
 
-		this.slider = slider;
-		this.postTabs = postTabs;
+		this.sliderController = sliderController;
+		this.postTabsController = postTabsController;
 		this.tooltip = tooltip;
 		this.upButton = upButton;
 		this.commentsController = commentsController;
@@ -36,8 +36,8 @@ class ViewMapper {
 	}
 
 	initCommon() {
-		this.slider.init();
-		this.postTabs.init();
+		this.sliderController.init();
+		this.postTabsController.init();
 		this.tooltip.init();
 		this.upButton.init();
 		this.modals.init();

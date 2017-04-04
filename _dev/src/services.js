@@ -12,6 +12,9 @@ import ProfitCalcPlanSelect from './models/ProfitCalcPlanSelect';
 import ProfitCalcDeposit from './models/ProfitCalcDeposit';
 import ProfitCalcRefback from './models/ProfitCalcRefback';
 import ProfitCalcChart from './models/ProfitCalcChart';
+import Comments from './models/Comments';
+import Slider from './models/Slider';
+import PostTabs from './models/PostTabs';
 
 /************************ Controllers **************************/
 
@@ -21,6 +24,8 @@ import ProfitCalcDepositController from './controllers/ProfitCalcDepositControll
 import ProfitCalcRefbackController from './controllers/ProfitCalcRefbackController';
 import ProfitCalcChartController from './controllers/ProfitCalcChartController';
 import CommentsController from './controllers/CommentsController';
+import SliderController from './controllers/SliderController';
+import PostTabsController from './controllers/PostTabsController';
 
 /************************ Views **************************/
 
@@ -29,15 +34,16 @@ import ProfitCalcDepositView from './views/ProfitCalcDepositView';
 import ProfitCalcRefbackView from './views/ProfitCalcRefbackView';
 import ProfitCalcChartView from './views/ProfitCalcChartView';
 import ProfitCalcFormView from './views/ProfitCalcFormView';
+import SliderView from './views/SliderView';
 
 /************************ Factories **************************/
 
 import CommentsRespondFactory from './factories/CommentsRespondFactory';
+import SliderItemFactory from './factories/SliderItemFactory';
+import PostTabsFactory from './factories/PostTabsFactory';
 
 /************************ Components **************************/
 
-import Slider from './components/slider/SliderController';
-import PostTabs from './components/postTabs/PostTabsController';
 import Tooltip from './components/tooltip/TooltipController';
 import UpButton from './components/upButton/UpButtonController';
 import UserPanel from './components/userPanel/UserPanelController';
@@ -59,8 +65,8 @@ let bottle = new Bottle();
 bottle.service( 'mediator', Mediator );
 bottle.service( 'viewMapper', ViewMapper, 
 							  'user',
-							  'slider', 
-							  'postTabs', 
+							  'sliderController', 
+							  'postTabsController', 
 							  'tooltip',
 							  'upButton',
 							  'commentsController',
@@ -76,7 +82,8 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'postLoader' );
 bottle.service( 'modelMapper', ModelMapper,
 							   'plansList',
-							   'profitCalcChart' );
+							   'profitCalcChart',
+							   'postTabs' );
 bottle.service( 'user', User );
 bottle.service( 'page', Page );
 bottle.service( 'plansList', PlansList );
@@ -98,6 +105,9 @@ bottle.factory( 'profitCalcChart', container => {
 		_refbackInstance: container.profitCalcRefback 
 	});
 } );
+bottle.service( 'comments', Comments );
+bottle.service( 'slider', Slider );
+bottle.service( 'postTabs', PostTabs );
 
 /************************ Controllers **************************/
 
@@ -116,7 +126,9 @@ bottle.service( 'profitCalcChartController', ProfitCalcChartController,
 											    'profitCalcChart', 
 											    'profitCalcChartView',
 											    'profitCalcFormView' );
-bottle.service( 'commentsController', CommentsController, 'commentsRespondFactory' );
+bottle.service( 'commentsController', CommentsController, 'comments', 'commentsRespondFactory' );
+bottle.service( 'sliderController', SliderController, 'slider', 'sliderItemFactory', 'sliderView' );
+bottle.service( 'postTabsController', PostTabsController, 'postTabs', 'postTabsFactory' );
 
 /************************ Views **************************/
 
@@ -125,16 +137,17 @@ bottle.service( 'profitCalcDepositView', ProfitCalcDepositView );
 bottle.service( 'profitCalcRefbackView', ProfitCalcRefbackView );
 bottle.service( 'profitCalcChartView', ProfitCalcChartView );
 bottle.service( 'profitCalcFormView', ProfitCalcFormView );
+bottle.service( 'sliderView', SliderView );
 
 /************************ Factories **************************/
 
 bottle.service( 'commentsRespondFactory', CommentsRespondFactory );
+bottle.service( 'sliderItemFactory', SliderItemFactory );
+bottle.service( 'postTabsFactory', PostTabsFactory );
 
 /************************ Components **************************/
 
 bottle.service( 'tooltip', Tooltip );
-bottle.service( 'slider', Slider );
-bottle.service( 'postTabs', PostTabs );
 bottle.service( 'upButton', UpButton );
 bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );

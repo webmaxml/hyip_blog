@@ -12,4 +12,11 @@ let CommentsRespond = Backbone.Model.extend({
 
 });
 
-export default CommentsRespond;
+let Comments = Backbone.Collection.extend({
+
+	model: CommentsRespond
+
+});
+
+
+export default Comments;

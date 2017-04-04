@@ -1,24 +1,26 @@
 class CommentsController {
 	
-	constructor( commentsRespondFactory ) {
+	constructor( comments, commentsRespondFactory ) {
+		this.comments = comments;
 		this.commentsRespondFactory = commentsRespondFactory;
 
-		this.responds = [];
+		this.respondControllers = [];
 	}
 
 	init() {
 		this.createResponds();
-
-		this.responds.forEach( function( set ) {
-			set.controller.init();
-		} );
+		this.respondControllers.forEach( controller => controller.init() );
 	}
 
 	createResponds() {
 		let $responds = $( document.getElementsByClassName( 'comments__box' )[0] ).find( '.commentsRespond' );
 
 		$responds.each( function( i, elem ) {
-			this.responds.push( this.commentsRespondFactory.createRespond( elem ) );
+			let model = this.comments.add({});
+			let view = this.commentsRespondFactory.createView( elem );
+			let controller = this.commentsRespondFactory.createController( model, view );
+
+			this.respondControllers.push( controller );
 		}.bind( this ) );
 	}
 }

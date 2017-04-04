@@ -1,16 +1,22 @@
-import CommentsRespond from '../models/CommentsRespond';
 import CommentsRespondController from '../controllers/CommentsRespondController';
 import CommentsRespondView from '../views/CommentsRespondView';
 
 class CommentsRespondFactory {
 
-	createRespond( el ) {
-		let respond = {};
-		respond.model = new CommentsRespond();
-		respond.view = new CommentsRespondView({ el });
-		respond.controller = new CommentsRespondController( respond.model, respond.view );
+	createView( el ) {
+		if ( el.nodeType !== 1 ) { 
+			throw new Error( 'CommentsRespondView element is not an HTML element' );
+		}
 
-		return respond;
+		return new CommentsRespondView({ el });
+	}
+
+	createController( model, view ) {
+		if ( typeof model === 'undefined' || typeof view === 'undefined' ) {
+			throw new Error( 'model and a view must be provided to CommentsRespondController' );
+		}
+
+		return new CommentsRespondController( model, view );
 	}
 
 }
