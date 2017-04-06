@@ -15,6 +15,7 @@ import ProfitCalcChart from './models/ProfitCalcChart';
 import Comments from './models/Comments';
 import Slider from './models/Slider';
 import PostTabs from './models/PostTabs';
+import Modals from './models/Modals';
 
 /************************ Controllers **************************/
 
@@ -26,6 +27,8 @@ import ProfitCalcChartController from './controllers/ProfitCalcChartController';
 import CommentsController from './controllers/CommentsController';
 import SliderController from './controllers/SliderController';
 import PostTabsController from './controllers/PostTabsController';
+import TooltipController from './controllers/TooltipController';
+import ModalsController from './controllers/ModalsController';
 
 /************************ Views **************************/
 
@@ -41,17 +44,17 @@ import SliderView from './views/SliderView';
 import CommentsRespondFactory from './factories/CommentsRespondFactory';
 import SliderItemFactory from './factories/SliderItemFactory';
 import PostTabsFactory from './factories/PostTabsFactory';
+import TooltipFactory from './factories/TooltipFactory';
+import ModalsFactory from './factories/ModalsFactory';
 
 /************************ Components **************************/
 
-import Tooltip from './components/tooltip/TooltipController';
 import UpButton from './components/upButton/UpButtonController';
 import UserPanel from './components/userPanel/UserPanelController';
 import UserTabs from './components/userTabs/UserTabsController';
 import RegistrationForm from './components/registrationForm/RegistrationFormController';
 import LoginForm from './components/loginForm/LoginFormController';
 import PostLoader from './components/postLoader/PostLoaderController';
-import Modals from './components/modals/ModalsController';
 import ModalsSelect from './components/modals/ModalsSelectController';
 
 
@@ -67,14 +70,14 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'user',
 							  'sliderController', 
 							  'postTabsController', 
-							  'tooltip',
+							  'tooltipController',
 							  'upButton',
 							  'commentsController',
 							  'profitCalcPlanSelectController',
 							  'profitCalcDepositController',
 							  'profitCalcRefbackController',
 							  'profitCalcChartController',
-							  'modals',
+							  'modalsController',
 							  'userPanel',
 							  'userTabs',
 							  'registrationForm',
@@ -108,6 +111,7 @@ bottle.factory( 'profitCalcChart', container => {
 bottle.service( 'comments', Comments );
 bottle.service( 'slider', Slider );
 bottle.service( 'postTabs', PostTabs );
+bottle.service( 'modals', Modals );
 
 /************************ Controllers **************************/
 
@@ -129,6 +133,8 @@ bottle.service( 'profitCalcChartController', ProfitCalcChartController,
 bottle.service( 'commentsController', CommentsController, 'comments', 'commentsRespondFactory' );
 bottle.service( 'sliderController', SliderController, 'slider', 'sliderItemFactory', 'sliderView' );
 bottle.service( 'postTabsController', PostTabsController, 'postTabs', 'postTabsFactory' );
+bottle.service( 'tooltipController', TooltipController, 'tooltipFactory' );
+bottle.service( 'modalsController', ModalsController, 'modals', 'modalsFactory' );
 
 /************************ Views **************************/
 
@@ -144,17 +150,17 @@ bottle.service( 'sliderView', SliderView );
 bottle.service( 'commentsRespondFactory', CommentsRespondFactory );
 bottle.service( 'sliderItemFactory', SliderItemFactory );
 bottle.service( 'postTabsFactory', PostTabsFactory );
+bottle.service( 'tooltipFactory', TooltipFactory );
+bottle.service( 'modalsFactory', ModalsFactory );
 
 /************************ Components **************************/
 
-bottle.service( 'tooltip', Tooltip );
 bottle.service( 'upButton', UpButton );
 bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );
 bottle.service( 'registrationForm', RegistrationForm );
 bottle.service( 'loginForm', LoginForm );
 bottle.service( 'postLoader', PostLoader, 'mediator' );
-bottle.service( 'modals', Modals, 'modalsSelect' );
 bottle.service( 'modalsSelect', ModalsSelect );
 
 

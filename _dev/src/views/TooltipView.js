@@ -21,16 +21,4 @@ let TooltipView = Backbone.View.extend({
 
 });
 
-class TooltipController {
-
-	init() {
-		let $tooltips = $( document.getElementsByClassName( 'tooltip' ) );
-
-		$tooltips.each( function() {
-			let view = new TooltipView({ el: this });
-		} );
-	}
-
-}
-
-export default TooltipController;
+export default TooltipView;

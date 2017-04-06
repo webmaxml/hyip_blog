@@ -3,14 +3,14 @@ class ViewMapper {
 	constructor( user,
 				 sliderController, 
 				 postTabsController, 
-				 tooltip, 
+				 tooltipController, 
 				 upButton, 
 				 commentsController, 
 				 profitCalcPlanSelectController, 
 				 profitCalcDepositController, 
 				 profitCalcRefbackController, 
 				 profitCalcChartController, 
-				 modals, 
+				 modalsController, 
 				 userPanel,
 				 userTabs,
 				 registration,
@@ -20,14 +20,14 @@ class ViewMapper {
 
 		this.sliderController = sliderController;
 		this.postTabsController = postTabsController;
-		this.tooltip = tooltip;
+		this.tooltipController = tooltipController;
 		this.upButton = upButton;
 		this.commentsController = commentsController;
 		this.profitCalcPlanSelectController = profitCalcPlanSelectController;
 		this.profitCalcDepositController = profitCalcDepositController;
 		this.profitCalcRefbackController = profitCalcRefbackController;
 		this.profitCalcChartController = profitCalcChartController;
-		this.modals = modals;
+		this.modalsController = modalsController;
 		this.userPanel = userPanel;
 		this.userTabs = userTabs;
 		this.registration = registration;
@@ -38,9 +38,9 @@ class ViewMapper {
 	initCommon() {
 		this.sliderController.init();
 		this.postTabsController.init();
-		this.tooltip.init();
+		this.tooltipController.init();
 		this.upButton.init();
-		this.modals.init();
+		this.modalsController.init();
 
 		if ( this.user.isRegistered() ) {
 			this.userPanel.init();
