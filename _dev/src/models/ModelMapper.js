@@ -2,14 +2,17 @@ class ModelMapper {
 
 	constructor( plansList, 
 				 profitCalcChart,
-				 postTabs ) {
+				 postTabs,
+				 windowModel ) {
 		this.plansList = plansList;
 		this.profitCalcChart = profitCalcChart;
 		this.postTabs = postTabs;
+		this.windowModel = windowModel;
 	}
 
 	initCommon() {
 		this.postTabs.init();
+		this.windowModel.init();
 	}
 
 	initRoot() {

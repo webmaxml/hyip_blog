@@ -16,6 +16,8 @@ import Comments from './models/Comments';
 import Slider from './models/Slider';
 import PostTabs from './models/PostTabs';
 import Modals from './models/Modals';
+import Window from './models/Window';
+import UpButton from './models/UpButton';
 
 /************************ Controllers **************************/
 
@@ -29,6 +31,8 @@ import SliderController from './controllers/SliderController';
 import PostTabsController from './controllers/PostTabsController';
 import TooltipController from './controllers/TooltipController';
 import ModalsController from './controllers/ModalsController';
+import WindowController from './controllers/WindowController';
+import UpButtonController from './controllers/UpButtonController';
 
 /************************ Views **************************/
 
@@ -38,6 +42,8 @@ import ProfitCalcRefbackView from './views/ProfitCalcRefbackView';
 import ProfitCalcChartView from './views/ProfitCalcChartView';
 import ProfitCalcFormView from './views/ProfitCalcFormView';
 import SliderView from './views/SliderView';
+import WindowView from './views/WindowView';
+import UpButtonView from './views/UpButtonView';
 
 /************************ Factories **************************/
 
@@ -49,13 +55,11 @@ import ModalsFactory from './factories/ModalsFactory';
 
 /************************ Components **************************/
 
-import UpButton from './components/upButton/UpButtonController';
 import UserPanel from './components/userPanel/UserPanelController';
 import UserTabs from './components/userTabs/UserTabsController';
 import RegistrationForm from './components/registrationForm/RegistrationFormController';
 import LoginForm from './components/loginForm/LoginFormController';
 import PostLoader from './components/postLoader/PostLoaderController';
-import ModalsSelect from './components/modals/ModalsSelectController';
 
 
 
@@ -71,7 +75,8 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'sliderController', 
 							  'postTabsController', 
 							  'tooltipController',
-							  'upButton',
+							  'windowController',
+							  'upButtonController',
 							  'commentsController',
 							  'profitCalcPlanSelectController',
 							  'profitCalcDepositController',
@@ -86,7 +91,8 @@ bottle.service( 'viewMapper', ViewMapper,
 bottle.service( 'modelMapper', ModelMapper,
 							   'plansList',
 							   'profitCalcChart',
-							   'postTabs' );
+							   'postTabs',
+							   'window' );
 bottle.service( 'user', User );
 bottle.service( 'page', Page );
 bottle.service( 'plansList', PlansList );
@@ -112,6 +118,12 @@ bottle.service( 'comments', Comments );
 bottle.service( 'slider', Slider );
 bottle.service( 'postTabs', PostTabs );
 bottle.service( 'modals', Modals );
+bottle.service( 'window', Window );
+bottle.factory( 'upButton', container => {
+	return new UpButton({
+		_windowModelInstance: container.window
+	});
+} );
 
 /************************ Controllers **************************/
 
@@ -135,6 +147,8 @@ bottle.service( 'sliderController', SliderController, 'slider', 'sliderItemFacto
 bottle.service( 'postTabsController', PostTabsController, 'postTabs', 'postTabsFactory' );
 bottle.service( 'tooltipController', TooltipController, 'tooltipFactory' );
 bottle.service( 'modalsController', ModalsController, 'modals', 'modalsFactory' );
+bottle.service( 'windowController', WindowController, 'window', 'windowView' );
+bottle.service( 'upButtonController', UpButtonController, 'upButton', 'upButtonView' );
 
 /************************ Views **************************/
 
@@ -144,6 +158,8 @@ bottle.service( 'profitCalcRefbackView', ProfitCalcRefbackView );
 bottle.service( 'profitCalcChartView', ProfitCalcChartView );
 bottle.service( 'profitCalcFormView', ProfitCalcFormView );
 bottle.service( 'sliderView', SliderView );
+bottle.service( 'windowView', WindowView );
+bottle.service( 'upButtonView', UpButtonView );
 
 /************************ Factories **************************/
 
@@ -155,13 +171,11 @@ bottle.service( 'modalsFactory', ModalsFactory );
 
 /************************ Components **************************/
 
-bottle.service( 'upButton', UpButton );
 bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );
 bottle.service( 'registrationForm', RegistrationForm );
 bottle.service( 'loginForm', LoginForm );
 bottle.service( 'postLoader', PostLoader, 'mediator' );
-bottle.service( 'modalsSelect', ModalsSelect );
 
 
 export default bottle;

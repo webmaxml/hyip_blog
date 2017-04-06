@@ -4,7 +4,8 @@ class ViewMapper {
 				 sliderController, 
 				 postTabsController, 
 				 tooltipController, 
-				 upButton, 
+				 windowController, 
+				 upButtonController,
 				 commentsController, 
 				 profitCalcPlanSelectController, 
 				 profitCalcDepositController, 
@@ -21,7 +22,8 @@ class ViewMapper {
 		this.sliderController = sliderController;
 		this.postTabsController = postTabsController;
 		this.tooltipController = tooltipController;
-		this.upButton = upButton;
+		this.windowController = windowController;
+		this.upButtonController = upButtonController;
 		this.commentsController = commentsController;
 		this.profitCalcPlanSelectController = profitCalcPlanSelectController;
 		this.profitCalcDepositController = profitCalcDepositController;
@@ -39,7 +41,8 @@ class ViewMapper {
 		this.sliderController.init();
 		this.postTabsController.init();
 		this.tooltipController.init();
-		this.upButton.init();
+		this.windowController.init();
+		this.upButtonController.init();
 		this.modalsController.init();
 
 		if ( this.user.isRegistered() ) {
