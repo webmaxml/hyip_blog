@@ -19,6 +19,7 @@ import Modals from './models/Modals';
 import Window from './models/Window';
 import UpButton from './models/UpButton';
 import RefbackModalSelect from './models/RefbackModalSelect';
+import UserPopup from './models/UserPopup';
 
 /************************ Controllers **************************/
 
@@ -35,6 +36,7 @@ import ModalsController from './controllers/ModalsController';
 import WindowController from './controllers/WindowController';
 import UpButtonController from './controllers/UpButtonController';
 import RefbackModalSelectController from './controllers/RefbackModalSelectController';
+import UserPopupController from './controllers/UserPopupController';
 
 /************************ Views **************************/
 
@@ -47,6 +49,7 @@ import SliderView from './views/SliderView';
 import WindowView from './views/WindowView';
 import UpButtonView from './views/UpButtonView';
 import RefbackModalSelectView from './views/RefbackModalSelectView';
+import UserPopupView from './views/UserPopupView';
 
 /************************ Factories **************************/
 
@@ -58,7 +61,6 @@ import ModalsFactory from './factories/ModalsFactory';
 
 /************************ Components **************************/
 
-import UserPanel from './components/userPanel/UserPanelController';
 import UserTabs from './components/userTabs/UserTabsController';
 import RegistrationForm from './components/registrationForm/RegistrationFormController';
 import LoginForm from './components/loginForm/LoginFormController';
@@ -87,7 +89,7 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'profitCalcChartController',
 							  'modalsController',
 							  'refbackModalSelectController',
-							  'userPanel',
+							  'userPopupController',
 							  'userTabs',
 							  'registrationForm',
 							  'loginForm',
@@ -129,6 +131,7 @@ bottle.factory( 'upButton', container => {
 	});
 } );
 bottle.service( 'refbackModalSelect', RefbackModalSelect );
+bottle.service( 'userPopup', UserPopup );
 
 /************************ Controllers **************************/
 
@@ -157,6 +160,7 @@ bottle.service( 'upButtonController', UpButtonController, 'upButton', 'upButtonV
 bottle.service( 'refbackModalSelectController', RefbackModalSelectController, 
 												'refbackModalSelect', 
 												'refbackModalSelectView' );
+bottle.service( 'userPopupController', UserPopupController, 'userPopup', 'userPopupView' );
 
 /************************ Views **************************/
 
@@ -169,6 +173,7 @@ bottle.service( 'sliderView', SliderView );
 bottle.service( 'windowView', WindowView );
 bottle.service( 'upButtonView', UpButtonView );
 bottle.service( 'refbackModalSelectView', RefbackModalSelectView );
+bottle.service( 'userPopupView', UserPopupView );
 
 /************************ Factories **************************/
 
@@ -180,7 +185,6 @@ bottle.service( 'modalsFactory', ModalsFactory );
 
 /************************ Components **************************/
 
-bottle.service( 'userPanel', UserPanel );
 bottle.service( 'userTabs', UserTabs );
 bottle.service( 'registrationForm', RegistrationForm );
 bottle.service( 'loginForm', LoginForm );

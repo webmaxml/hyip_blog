@@ -13,7 +13,7 @@ class ViewMapper {
 				 profitCalcChartController, 
 				 modalsController, 
 				 refbackModalSelectController,
-				 userPanel,
+				 userPopupController,
 				 userTabs,
 				 registration,
 				 login,
@@ -32,7 +32,7 @@ class ViewMapper {
 		this.profitCalcChartController = profitCalcChartController;
 		this.modalsController = modalsController;
 		this.refbackModalSelectController = refbackModalSelectController;
-		this.userPanel = userPanel;
+		this.userPopupController = userPopupController;
 		this.userTabs = userTabs;
 		this.registration = registration;
 		this.login = login;
@@ -41,7 +41,6 @@ class ViewMapper {
 
 	initCommon() {
 		this.sliderController.init();
-		this.postTabsController.init();
 		this.tooltipController.init();
 		this.windowController.init();
 		this.upButtonController.init();
@@ -49,7 +48,7 @@ class ViewMapper {
 		this.refbackModalSelectController.init();
 
 		if ( this.user.isRegistered() ) {
-			this.userPanel.init();
+			this.userPopupController.init();
 		} else {
 			this.registration.init();
 			this.login.init();
@@ -59,16 +58,19 @@ class ViewMapper {
 
 	initRoot( params ) {
 		this.initCommon();
+		this.postTabsController.init();
 		this.postLoader.init( params );
 	}
 
 	initPostItem() {
 		this.initCommon();
+		this.postTabsController.init();
 		this.commentsController.init();
 	}
 
 	initHyipItem() {
 		this.initCommon();
+		this.postTabsController.init();
 		this.commentsController.init();
 		this.profitCalcPlanSelectController.init();
 		this.profitCalcDepositController.init();
@@ -78,6 +80,7 @@ class ViewMapper {
 
 	initHyipIndex() {
 		this.initCommon();
+		this.postTabsController.init();
 	}
 
 	initUser() {
