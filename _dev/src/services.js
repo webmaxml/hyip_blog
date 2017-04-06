@@ -18,6 +18,7 @@ import PostTabs from './models/PostTabs';
 import Modals from './models/Modals';
 import Window from './models/Window';
 import UpButton from './models/UpButton';
+import RefbackModalSelect from './models/RefbackModalSelect';
 
 /************************ Controllers **************************/
 
@@ -33,6 +34,7 @@ import TooltipController from './controllers/TooltipController';
 import ModalsController from './controllers/ModalsController';
 import WindowController from './controllers/WindowController';
 import UpButtonController from './controllers/UpButtonController';
+import RefbackModalSelectController from './controllers/RefbackModalSelectController';
 
 /************************ Views **************************/
 
@@ -44,6 +46,7 @@ import ProfitCalcFormView from './views/ProfitCalcFormView';
 import SliderView from './views/SliderView';
 import WindowView from './views/WindowView';
 import UpButtonView from './views/UpButtonView';
+import RefbackModalSelectView from './views/RefbackModalSelectView';
 
 /************************ Factories **************************/
 
@@ -83,6 +86,7 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'profitCalcRefbackController',
 							  'profitCalcChartController',
 							  'modalsController',
+							  'refbackModalSelectController',
 							  'userPanel',
 							  'userTabs',
 							  'registrationForm',
@@ -124,6 +128,7 @@ bottle.factory( 'upButton', container => {
 		_windowModelInstance: container.window
 	});
 } );
+bottle.service( 'refbackModalSelect', RefbackModalSelect );
 
 /************************ Controllers **************************/
 
@@ -149,6 +154,9 @@ bottle.service( 'tooltipController', TooltipController, 'tooltipFactory' );
 bottle.service( 'modalsController', ModalsController, 'modals', 'modalsFactory' );
 bottle.service( 'windowController', WindowController, 'window', 'windowView' );
 bottle.service( 'upButtonController', UpButtonController, 'upButton', 'upButtonView' );
+bottle.service( 'refbackModalSelectController', RefbackModalSelectController, 
+												'refbackModalSelect', 
+												'refbackModalSelectView' );
 
 /************************ Views **************************/
 
@@ -160,6 +168,7 @@ bottle.service( 'profitCalcFormView', ProfitCalcFormView );
 bottle.service( 'sliderView', SliderView );
 bottle.service( 'windowView', WindowView );
 bottle.service( 'upButtonView', UpButtonView );
+bottle.service( 'refbackModalSelectView', RefbackModalSelectView );
 
 /************************ Factories **************************/
 

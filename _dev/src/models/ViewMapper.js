@@ -12,6 +12,7 @@ class ViewMapper {
 				 profitCalcRefbackController, 
 				 profitCalcChartController, 
 				 modalsController, 
+				 refbackModalSelectController,
 				 userPanel,
 				 userTabs,
 				 registration,
@@ -30,6 +31,7 @@ class ViewMapper {
 		this.profitCalcRefbackController = profitCalcRefbackController;
 		this.profitCalcChartController = profitCalcChartController;
 		this.modalsController = modalsController;
+		this.refbackModalSelectController = refbackModalSelectController;
 		this.userPanel = userPanel;
 		this.userTabs = userTabs;
 		this.registration = registration;
@@ -44,6 +46,7 @@ class ViewMapper {
 		this.windowController.init();
 		this.upButtonController.init();
 		this.modalsController.init();
+		this.refbackModalSelectController.init();
 
 		if ( this.user.isRegistered() ) {
 			this.userPanel.init();
