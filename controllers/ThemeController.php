@@ -42,11 +42,11 @@ class Theme_Controller {
 	function include_data_in_scripts() {
 		$user = is_user_logged_in() ? wp_get_current_user() : false;
 		$user_data = array(
-			'registered' => false
+			'loggedIn' => false
 		);
 
 		if ( $user ) {
-			$user_data[ 'registered' ] = true;
+			$user_data[ 'loggedIn' ] = true;
 			$user_data[ 'login' ] = $user->data->user_login;
 		}
 

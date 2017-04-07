@@ -333,23 +333,21 @@
 
 	&__submit {
 		@extend %large_btn;
+		@extend %rncc;
 
-		position: relative;
-	}
-
-	&__loader-wrap {
-		display: none;
-		flex-flow: row nowrap;
-		justify-content: flex-start;
-		align-items: center;
-
-		position: absolute;
-		top: 0;
-		right: -50px;
-
+		width: 150px;
 		height: $base-lh * 2;
 
-		&.regModal__loader-wrap--active { display: flex; }
+		&.regModal__submit--loading {
+
+			& .regModal__submit-text { display: none; }
+			& .regModal__submit-loader { display: block; }
+
+		}
+	}
+
+	&__submit-loader {
+		display: none;
 	}
 
 	&__error-container {
@@ -445,8 +443,6 @@
 
 	&__checkbox {
 		display: none;
-
-
 	}
 
 	&__checkbox-fake {
@@ -490,8 +486,21 @@
 
 	&__submit {
 		@extend %large_btn;
+		@extend %rncc;
 
-		position: relative;
+		width: 85px;
+		height: $base-lh * 2;
+
+		&.loginModal__submit--loading {
+
+			& .loginModal__submit-text { display: none; }
+			& .loginModal__submit-loader { display: block; }
+
+		}
+	}
+
+	&__submit-loader {
+		display: none;
 	}
 
 	&__error-container {
@@ -510,20 +519,5 @@
 		font-size: $fz6;
 		line-height: $base-lh;
 		color: $c_dead; 
-	}
-
-	&__loader-wrap {
-		display: none;
-		flex-flow: row nowrap;
-		justify-content: flex-start;
-		align-items: center;
-
-		position: absolute;
-		top: 0;
-		right: -50px;
-
-		height: $base-lh * 2;
-
-		&.loginModal__loader-wrap--active { display: flex; }
 	}
 }

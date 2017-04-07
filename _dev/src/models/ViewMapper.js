@@ -15,8 +15,8 @@ class ViewMapper {
 				 refbackModalSelectController,
 				 userPopupController,
 				 userTabs,
-				 registration,
-				 login,
+				 registrationFormController,
+				 loginFormController,
 				 postLoader ) {
 		this.user = user;
 
@@ -34,8 +34,8 @@ class ViewMapper {
 		this.refbackModalSelectController = refbackModalSelectController;
 		this.userPopupController = userPopupController;
 		this.userTabs = userTabs;
-		this.registration = registration;
-		this.login = login;
+		this.registrationFormController = registrationFormController;
+		this.loginFormController = loginFormController;
 		this.postLoader = postLoader;
 	}
 
@@ -47,11 +47,11 @@ class ViewMapper {
 		this.modalsController.init();
 		this.refbackModalSelectController.init();
 
-		if ( this.user.isRegistered() ) {
+		if ( this.user.isLoggedIn() ) {
 			this.userPopupController.init();
 		} else {
-			this.registration.init();
-			this.login.init();
+			this.registrationFormController.init();
+			this.loginFormController.init();
 		}
 	
 	}

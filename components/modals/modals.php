@@ -99,10 +99,9 @@
                 </div>
                 <ul class="regModal__error-container" id="regErrorContainer"></ul>
                 <div class="regModal__submit-wrap">
-                    <button class="regModal__submit">Регистрация
-                        <div class="regModal__loader-wrap">
-                            <img class="regModal__loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
-                        </div>
+                    <button class="regModal__submit">
+                        <span class="regModal__submit-text">Регистрация</span>
+                        <img class="regModal__submit-loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
                     </button>
                 </div>
             </form>
@@ -133,10 +132,9 @@
                 </div>
                 <ul id="loginErrorContainer" class="loginModal__error-container"></ul>
                 <div class="loginModal__submit-wrap">
-                    <button class="loginModal__submit">Вход 
-                        <span class="loginModal__loader-wrap">
-                            <img class="regModal__loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
-                        </span>
+                    <button class="loginModal__submit">
+                        <span class="loginModal__submit-text">Вход</span>
+                        <img class="loginModal__submit-loader" src=<?php echo $this->ajax_loader_src; ?> alt="Загрузка...">
                     </button> 
                 </div>
             </form>

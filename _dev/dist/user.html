@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Slab:400,700" rel="stylesheet">
     <title>личный кабинет</title>
+    <script>
+      var localData = {
+      	maxPages:4
+      };
+    </script>
   <link href="/style.min.css" rel="stylesheet"></head>
   <body>
     <!-- wrapper-->
-    <div class="wrapper"><a class="wrapper__link" href="#ad"><img class="wrapper__img" src="/img/ad_bg.jpg?ac92c0627e3a57bdc9657d042a784c7e"></a>
+    <div class="wrapper"><a class="wrapper__link" href="#ad" style="background-image: url( '/img/ad_bg.jpg' );"></a>
       <!-- header-->
       <header class="header"><a class="header__logo" href="/"> <b class="header__logo-accent">Hyip</b>odrom</a>
         <button class="header__mobile-menu" type="button" data-modal-trigger="mobileMenu"><i class="fa fa-bars header__mobile-menu-icon"></i></button>
@@ -323,7 +328,7 @@
   var globalData = {
   	ajaxUrl: "http://hyip.webmaxml.ru/wp-admin/admin-ajax.php",
   	user: {
-  		registered: false,
+  		loggedIn: false,
   		login: 'Keanu Reeves'
   	}
   };
