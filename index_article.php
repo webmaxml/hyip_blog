@@ -1,11 +1,6 @@
 <?php /* Template Name: Выборка статей */ ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<?php $view->get( 'head' ); ?>
-</head>
-<body>
+<?php get_header(); ?>
 
 	<div class="wrapper">
 		<?php $view->get( 'topBanner' ); ?>
@@ -13,7 +8,7 @@
 		<?php $view->get( 'mainMenu' ); ?>
 		<main class="main">
 			<section class="post" id="post">
-				<?php $view->get( 'postIndex' ); ?>
+				<?php $view->get( 'articleIndex' ); ?>
 			</section>
 			<aside class="sidebar">
 				<?php $view->get( 'categories' ); ?>
@@ -24,6 +19,4 @@
 	</div>
 	<?php $view->get( 'modals' ); ?>
 
-<?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>

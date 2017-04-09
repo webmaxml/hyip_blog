@@ -1,48 +1,48 @@
-<li class="post-box__item">
+<div class="post-box__item">
 
 	<div class="postHeader">
-
-		<h1 class="postHeader__text">
-			<a class="postHeader__link" 
-			   href="<?php the_permalink(); ?>"
-			   title="<?php the_title_attribute(); ?>">
-			   <?php the_title(); ?>
-			</a>
-		</h1>
-
+		<h1 class="postHeader__text"><?php echo $this->post[ 'title' ][ 'name' ]; ?></h1>
 		<ul class="postHeader__meta-info">
 			<li class="postHeader__meta-item">
 				<i class="fa fa-list-ul postHeader__meta-icon"></i>
-				<?php the_category( ', ' ); ?>
+
+				<?php 
+					foreach ( $this->post[ 'cats' ] as $cat ) { ?>
+						<a class="postHeader__meta-link" 
+						   href="<?php echo $cat[ 'href' ]; ?>">
+						     <?php echo $cat[ 'name' ] ?>
+						</a>
+						
+						<?php if ( $cat !== end( $this->post[ 'cats' ] ) ) { echo ', '; }
+					}
+				?>
+
 			</li>
 			<li class="postHeader__meta-item">
 				<i class="fa fa-calendar postHeader__meta-icon"></i>
-				<span class="postHeader__meta-text">
-					<?php echo get_the_date(); ?>
-				</span>
+				<span class="postHeader__meta-text"><?php echo $this->post[ 'date' ]; ?></span>
 			</li>
 			<li class="postHeader__meta-item">
 				<i class="fa fa-comments postHeader__meta-icon"></i>
-				<a class="postHeader__meta-link" href="<?php echo get_permalink() . '#comments' ?>">
-					<?php echo get_comments_string( get_comments_number() ); ?>
+				<a class="postHeader__meta-link" 
+				   href="#comments">
+				   <?php echo $this->post[ 'comments_string' ]; ?>
 				</a>
 			</li>
 			<li class="postHeader__meta-item">
 				<i class="fa fa-eye postHeader__meta-icon"></i>
 				<span class="postHeader__meta-text">
-					<?php echo pvc_get_post_views() . ' просмотров' ?>
+					<?php echo $this->post[ 'views' ]; ?>
 				</span>
 			</li>
 		</ul>
-
 	</div>
 
 	<div class="post-box__info-wrap">
-
 		<div class="postThumbnail">
-			<a class="postThumbnail__link" href="<?php the_permalink(); ?>">
-				<?php the_post_thumbnail( 'thumbnail', array( 'class' => 'postThumbnail__img' ) ); ?>
-			</a>
+			
+			<?php echo $this->post[ 'thumbnail_tag' ]; ?>
+
 			<ul class="postThumbnail__social">
 				<li class="postThumbnail__social-item">
 					<a class="postThumbnail__social-link-vk" href="/">
@@ -67,17 +67,7 @@
 			</ul>
 		</div>
 
-		<div class="postExcerpt">
-			<div class="postExcerpt__text-wrap">
-				<div class="postExcerpt__text">
-					<?php the_excerpt(); ?>
-				</div>
-			</div>
-			<div class="postExcerpt__btn-wrap">
-				<a class="postExcerpt__btn" href="<?php echo get_permalink() . '#post' ?>">Читать</a>
-			</div>
-		</div>
-
+		<div class="postContent"><?php echo $this->post[ 'content' ]; ?></div>
 	</div>
 
-</li>
+</div>

@@ -112,7 +112,7 @@ class PostLoaderController {
 
 	changeUrl() {
 		let currentPage = this.model.get( 'currentPage' );
-		let fragment = 'page/' + currentPage + '/';
+		let fragment = '?page=' + currentPage;
 
 		this.mediator.trigger( 'changeUrl', fragment );
 	}
@@ -131,7 +131,6 @@ class PostLoaderController {
 			data: {
 				action: this.ajaxAction,
 				currentPage: this.model.get( 'currentPage' ),
-				category: this.model.get( 'category' )
 			},
 			success: this.ajaxSuccess,
 			error: this.ajaxError
@@ -140,6 +139,8 @@ class PostLoaderController {
 
 	ajaxSuccess( data ) {
 		this.model.set({ loading: false });
+
+		console.log( data );
 
 		this.postContainerView.renderNewPosts( data.data.html );
 		this.incrementPage();

@@ -6,6 +6,12 @@
 <pre><?php print_r( $pages ); ?></pre>
 <h1>$NUMPAGES</h1>
 <pre><?php print_r( $numpages ); ?></pre>
+
+<h1>query_vars</h1>
+<pre><?php print_r( 'page - ' . get_query_var( 'page' ) ); ?></pre>
+<pre><?php print_r( 'paged - ' . get_query_var( 'paged' ) ); ?></pre>
+
+
 <h1>CONDITIONALS</h1>
 
 <?php if ( is_main_query() )  { ?>
@@ -70,5 +76,3 @@
 
 <h1>WP_QUERY</h1>
 <pre><?php print_r( $wp_the_query ); ?></pre>
-
-<?php } ?>

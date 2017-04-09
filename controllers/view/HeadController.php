@@ -1,6 +1,6 @@
 <?php 
 
-class Main_Menu_Controller extends View_Controller {
+class Head_Controller extends View_Controller {
 
 	public function __construct() {}
 
@@ -8,9 +8,9 @@ class Main_Menu_Controller extends View_Controller {
 		parent::set_vars();
 	}
 
-	public function get_component() {
+	public function get_view() {
 		$this->set_vars();
-		require 'mainMenu.php';
+		require '/../../views/head.php';
 	}
 
 }

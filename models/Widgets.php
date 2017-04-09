@@ -1,11 +1,22 @@
 <?php
 
-class Widget_Controller {
+class Widgets {
 
-	function __construct() {
+	private static $instance;
+
+	public static function get_instance() {
+		if ( !isset( self::$instance ) ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+
+	private function __construct() {}
+
+	public function init() {
 		add_action( 'widgets_init', array( $this, 'remove_default_widgets' ) );
 		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
-
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 	}
 

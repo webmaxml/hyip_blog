@@ -1,8 +1,20 @@
 <?php
 
-class Theme_Controller {
+class Theme_Setup {
 
-	function __construct() {
+	private static $instance;
+
+	public static function get_instance() {
+		if ( !isset( self::$instance )  ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+
+	private function __construct() {}
+
+	public function init() {
 		$this->remove_default_actions();
 
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );

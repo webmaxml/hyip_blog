@@ -13,9 +13,9 @@ class Top_Banner_Controller extends View_Controller {
 		$this->top_banner_thumbnail_url = get_the_post_thumbnail_url( $top_banner_id, 'full' );
 	}
 
-	public function get_component() {
+	public function get_view() {
 		$this->set_vars();
-		require 'topBanner.php';
+		require '/../../views/topBanner.php';
 	}
 
 }

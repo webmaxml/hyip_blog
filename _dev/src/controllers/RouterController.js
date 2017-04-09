@@ -30,8 +30,6 @@ let MainRouter = Backbone.Router.extend({
 	},
 
 	execute: function( callback, args, name ) {
-		this.controller.setQueryParams();
-
 		if ( callback ) {
 			callback.apply( this, args );
 		}
@@ -126,14 +124,9 @@ class RouterController {
 	}
 
 	changeUrl( fragmet ) {
-		let initFragment = Backbone.history.fragment.replace( /page\/\d+\//, '' );
+		// let initFragment = Backbone.history.fragment.replace( /page\/\d+\//, '' );
 
-		this.router.navigate( initFragment + fragmet );
-		this.setQueryParams();
-	}
-
-	setQueryParams() {
-
+		this.router.navigate( Backbone.history.fragment + fragmet );
 	}
 
 }

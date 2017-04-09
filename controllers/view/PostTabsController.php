@@ -8,9 +8,9 @@ class Post_Tabs_Controller extends View_Controller {
 		parent::set_vars();
 	}
 
-	public function get_component() {
+	public function get_view() {
 		$this->set_vars();
-		require 'postTabs.php';
+		require '/../../views/postTabs.php';
 	}
 
 }

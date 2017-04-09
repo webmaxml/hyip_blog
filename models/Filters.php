@@ -1,8 +1,20 @@
 <?php
 
-class Filter_Controller {
+class Filters {
 
-	function __construct() {
+	private static $instance;
+
+	public static function get_instance() {
+		if ( !isset( self::$instance ) ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
+	}
+
+	private function __construct() {}
+
+	public function init() {
 		add_filter( 'nav_menu_link_attributes', array( $this, 'set_menu_link_attrs' ), 10, 3 );
 		add_filter( 'excerpt_length', array( $this, 'set_custom_excerpt_length' ), 999 );
 	}

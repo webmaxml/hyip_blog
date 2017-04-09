@@ -12,9 +12,9 @@ class Header_Controller extends View_Controller {
 		$this->user_cabinet_url = get_page_link( $this->pages_id[ 'cabinet' ] );
 	}
 
-	public function get_component() {
+	public function get_view() {
 		$this->set_vars();
-		require 'header.php';
+		require '/../../views/header.php';
 	}
 
 }

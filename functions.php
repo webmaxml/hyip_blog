@@ -1,40 +1,38 @@
 <?php
 
+// models
+require 'models/User.php';
+require 'models/Page.php';
+require 'models/ThemeSetup.php';
+require 'models/Filters.php';
+require 'models/Widgets.php';
+require 'models/View.php';
+require 'models/ArticleIndex.php';
+require 'models/Article.php';
+require 'models/Terms.php';
+require 'models/Comments.php';
 // controllers
-require 'controllers/MainController.php';
-require 'controllers/ThemeController.php';
-require 'controllers/FilterController.php';
-require 'controllers/WidgetController.php';
-require 'controllers/AjaxLoginController.php';
-require 'controllers/AjaxRegistrationController.php';
-require 'controllers/ViewController.php';
-// classes
-require 'classes/User.php';
+require 'controllers/RouterController.php';
+
+require 'controllers/ajax/AjaxLoginController.php';
+require 'controllers/ajax/AjaxRegistrationController.php';
+require 'controllers/ajax/AjaxPostLoaderController.php';
+
+require 'controllers/view/ViewController.php';
+require 'controllers/view/HeadController.php';
+require 'controllers/view/TopBannerController.php';
+require 'controllers/view/HeaderController.php';
+require 'controllers/view/MainMenuController.php';
+require 'controllers/view/ArticleIndexController.php';
+require 'controllers/view/CategoriesController.php';
+require 'controllers/view/PostTabsController.php';
+require 'controllers/view/SubscribeController.php';
+require 'controllers/view/ModalsController.php';
+require 'controllers/view/ArticleController.php';
 // widgets
 require 'widgets/Logo.php';
-// components
-require '/components/head/HeadController.php';
-require '/components/topBanner/TopBannerController.php';
-require '/components/header/HeaderController.php';
-require '/components/mainMenu/MainMenuController.php';
-require '/components/postIndex/PostIndexController.php';
-require '/components/categories/CategoriesController.php';
-require '/components/postTabs/PostTabsController.php';
-require '/components/subscribe/SubscribeController.php';
-require '/components/modals/ModalsController.php';
 
-$controller = new Main_Controller;
-$view = $controller->get_view_controller();
-
-function get_comments_string( $comments_num ) {
-	switch ( $comments_num ) {
-		case 0:
-			return '0 комментариев';
-		case 1:
-			return '1 комментарий';
-		default:
-			return $comments_num . ' комментариев';
-	}
-}
+$router = new Router_Controller;
+$view = View::get_instance();
 
 ?>
