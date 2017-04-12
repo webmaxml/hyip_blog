@@ -3,11 +3,13 @@ class ModelMapper {
 	constructor( plansList, 
 				 profitCalcChart,
 				 postTabs,
-				 windowModel ) {
+				 windowModel,
+				 postLoader ) {
 		this.plansList = plansList;
 		this.profitCalcChart = profitCalcChart;
 		this.postTabs = postTabs;
 		this.windowModel = windowModel;
+		this.postLoader = postLoader;
 	}
 
 	initCommon() {
@@ -17,6 +19,7 @@ class ModelMapper {
 	initRoot() {
 		this.initCommon();
 		this.postTabs.init();
+		this.postLoader.init();
 	}
 
 	initPostItem() {

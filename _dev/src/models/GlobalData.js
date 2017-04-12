@@ -1,4 +1,5 @@
 import globalData from 'globalData';
+import localData from 'localData';
 
 class GlobalData {
 
@@ -13,6 +14,12 @@ class GlobalData {
 
 		this.ajaxUrl = globalData.ajaxUrl;
 		this.user = globalData.user;
+
+		if ( typeof localData === 'undefined' ) {
+			this.localData = {};
+		} else {
+			this.localData = localData;
+		}
 	}
 
 	getAjaxUrl() {
@@ -22,6 +29,10 @@ class GlobalData {
 	getUserData() {
 		return this.user;
 	} 
+
+	getLocalData() {
+		return this.localData;
+	}
 
 }
 

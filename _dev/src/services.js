@@ -21,6 +21,7 @@ import Window from './models/Window';
 import UpButton from './models/UpButton';
 import RefbackModalSelect from './models/RefbackModalSelect';
 import UserPopup from './models/UserPopup';
+import PostLoader from './models/PostLoader';
 
 /************************ Controllers **************************/
 
@@ -40,6 +41,7 @@ import RefbackModalSelectController from './controllers/RefbackModalSelectContro
 import UserPopupController from './controllers/UserPopupController';
 import LoginFormController from './controllers/LoginFormController';
 import RegistrationFormController from './controllers/RegistrationFormController';
+import PostLoaderController from './controllers/PostLoaderController';
 
 /************************ Views **************************/
 
@@ -55,6 +57,8 @@ import RefbackModalSelectView from './views/RefbackModalSelectView';
 import UserPopupView from './views/UserPopupView';
 import LoginFormView from './views/LoginFormView';
 import RegistrationFormView from './views/RegistrationFormView';
+import PostLoaderButtonView from './views/PostLoaderButtonView';
+import PostContainerView from './views/PostContainerView';
 
 /************************ Factories **************************/
 
@@ -67,7 +71,6 @@ import ModalsFactory from './factories/ModalsFactory';
 /************************ Components **************************/
 
 import UserTabs from './components/userTabs/UserTabsController';
-import PostLoader from './components/postLoader/PostLoaderController';
 
 
 
@@ -97,18 +100,23 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'userTabs',
 							  'registrationFormController',
 							  'loginFormController',
-							  'postLoader' );
+							  'postLoaderController' );
 bottle.service( 'modelMapper', ModelMapper,
 							   'plansList',
 							   'profitCalcChart',
 							   'postTabs',
-							   'window' );
+							   'window',
+							   'postLoader' );
 bottle.factory( 'user', container => {
 	return new User({
 		_globalData: container.globalData
 	});
 });
-bottle.service( 'page', Page );
+bottle.factory( 'page', container => {
+	return new Page({
+		_mediator: container.mediator
+	});
+} );
 bottle.service( 'plansList', PlansList );
 bottle.service( 'profitCalcPlanSelect', ProfitCalcPlanSelect );
 bottle.factory( 'profitCalcDeposit', container => {
@@ -140,10 +148,23 @@ bottle.factory( 'upButton', container => {
 } );
 bottle.service( 'refbackModalSelect', RefbackModalSelect );
 bottle.service( 'userPopup', UserPopup );
+bottle.factory( 'postLoader', container => {
+	return new PostLoader({
+		_globalData: container.globalData,
+		_page: container.page
+	})
+} );
 
 /************************ Controllers **************************/
 
-bottle.service( 'routerController', RouterController, 'viewMapper', 'modelMapper', 'mediator' );
+bottle.factory( 'routerController', container => {
+	return new RouterController({
+		_viewMapper: container.viewMapper,
+		_modelMapper: container.modelMapper,
+		_mediator: container.mediator,
+		_page: container.page
+	})
+});
 bottle.service( 'profitCalcPlanSelectController', ProfitCalcPlanSelectController, 
 												  'plansList', 
 												  'profitCalcPlanSelect', 
@@ -171,6 +192,10 @@ bottle.service( 'refbackModalSelectController', RefbackModalSelectController,
 bottle.service( 'userPopupController', UserPopupController, 'userPopup', 'userPopupView' );
 bottle.service( 'loginFormController', LoginFormController, 'user', 'loginFormView' );
 bottle.service( 'registrationFormController', RegistrationFormController, 'user', 'registrationFormView' );
+bottle.service( 'postLoaderController', PostLoaderController, 
+										'postLoader',
+										'postLoaderButtonView',
+										'postContainerView' );
 
 /************************ Views **************************/
 
@@ -186,6 +211,8 @@ bottle.service( 'refbackModalSelectView', RefbackModalSelectView );
 bottle.service( 'userPopupView', UserPopupView );
 bottle.service( 'loginFormView', LoginFormView );
 bottle.service( 'registrationFormView', RegistrationFormView );
+bottle.service( 'postLoaderButtonView', PostLoaderButtonView );
+bottle.service( 'postContainerView', PostContainerView );
 
 /************************ Factories **************************/
 
@@ -198,7 +225,6 @@ bottle.service( 'modalsFactory', ModalsFactory );
 /************************ Components **************************/
 
 bottle.service( 'userTabs', UserTabs );
-bottle.service( 'postLoader', PostLoader, 'mediator' );
 
 
 export default bottle;

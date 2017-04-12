@@ -17,7 +17,7 @@ class ViewMapper {
 				 userTabs,
 				 registrationFormController,
 				 loginFormController,
-				 postLoader ) {
+				 postLoaderController ) {
 		this.user = user;
 
 		this.sliderController = sliderController;
@@ -36,7 +36,7 @@ class ViewMapper {
 		this.userTabs = userTabs;
 		this.registrationFormController = registrationFormController;
 		this.loginFormController = loginFormController;
-		this.postLoader = postLoader;
+		this.postLoaderController = postLoaderController;
 	}
 
 	initCommon() {
@@ -56,10 +56,10 @@ class ViewMapper {
 	
 	}
 
-	initRoot( params ) {
+	initRoot() {
 		this.initCommon();
 		this.postTabsController.init();
-		this.postLoader.init( params );
+		this.postLoaderController.init();
 	}
 
 	initPostItem() {
