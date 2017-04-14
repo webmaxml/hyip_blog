@@ -5,6 +5,7 @@ class Router_Controller {
 	public function __construct() {
 		$this->page = Page::get_instance();
 		$this->theme_setup = Theme_Setup::get_instance();
+		$this->meta_boxes = Meta_Boxes::get_instance();
 		$this->filters = Filters::get_instance();
 		$this->widgets = Widgets::get_instance();
 		$this->article_index = Article_Index::get_instance();
@@ -22,6 +23,7 @@ class Router_Controller {
 
 	public function init() {
 		$this->theme_setup->init();
+		$this->meta_boxes->init();
 		$this->filters->init();
 		$this->widgets->init();
 	}

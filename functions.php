@@ -4,6 +4,7 @@
 require 'models/User.php';
 require 'models/Page.php';
 require 'models/ThemeSetup.php';
+require 'models/MetaBoxes.php';
 require 'models/Filters.php';
 require 'models/Widgets.php';
 require 'models/View.php';
@@ -11,6 +12,7 @@ require 'models/ArticleIndex.php';
 require 'models/Article.php';
 require 'models/Terms.php';
 require 'models/Comments.php';
+require 'models/CommentItem.php';
 require 'models/ArticleTabs.php';
 // controllers
 require 'controllers/RouterController.php';

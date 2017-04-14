@@ -1,7 +1,7 @@
 <?php 
 
-$tabs = Article_Tabs::get_instance();
+$comments = Comments::get_instance();
 
 ?>
 
-<pre><?php print_r( $tabs->get_top_views_posts() ); ?></pre>
+<pre><?php print_r( $comments->get_comments( get_post( 41 ) ) ); ?></pre>

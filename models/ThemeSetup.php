@@ -20,6 +20,7 @@ class Theme_Setup {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'init', array( $this, 'set_users_options' ) );
+		add_action( 'comment_post', array( $this, 'add_comment_rating' ) );
 	}
 
 	function remove_default_actions() {
@@ -85,6 +86,10 @@ class Theme_Setup {
 			wp_redirect( home_url() );
 			exit;
 		}
+	}
+
+	function add_comment_rating( $comment_id ) {
+		add_comment_meta( $comment_id, 'c_rating', 0 );
 	}
 	
 }
