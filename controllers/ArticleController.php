@@ -13,7 +13,7 @@ class Article_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/article.php';
+		require '/../views/article.php';
 	}
 
 }

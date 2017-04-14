@@ -14,7 +14,7 @@ class Header_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/header.php';
+		require '/../views/header.php';
 	}
 
 }

@@ -17,7 +17,7 @@ class Article_Index_Controller extends View_Controller {
 	public function get_articles( $article_list ) {
 		ob_start();
 		foreach ( $article_list as $item ) {
-	        require '/../../views/articleIndexItem.php';
+	        require '/../views/articleIndexItem.php';
 	    }
 	    $html = ob_get_contents();
 		ob_end_clean();
@@ -27,7 +27,7 @@ class Article_Index_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/postIndex.php';
+		require '/../views/postIndex.php';
 	}
 
 }

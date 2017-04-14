@@ -14,7 +14,7 @@ class Categories_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/categories.php';
+		require '/../views/categories.php';
 	}
 }
 

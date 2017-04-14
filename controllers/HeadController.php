@@ -1,6 +1,6 @@
 <?php 
 
-class Main_Menu_Controller extends View_Controller {
+class Head_Controller extends View_Controller {
 
 	public function __construct() {}
 
@@ -10,7 +10,7 @@ class Main_Menu_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/mainMenu.php';
+		require '/../views/head.php';
 	}
 
 }

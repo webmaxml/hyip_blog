@@ -15,7 +15,7 @@ class Top_Banner_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/topBanner.php';
+		require '/../views/topBanner.php';
 	}
 
 }

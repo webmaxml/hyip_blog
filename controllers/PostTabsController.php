@@ -10,7 +10,7 @@ class Post_Tabs_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/postTabs.php';
+		require '/../views/postTabs.php';
 	}
 
 }

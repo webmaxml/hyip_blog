@@ -47,7 +47,7 @@ class Ajax_Post_Loader_Controller {
 			case 'root':
 			case 'category':
 				$this->post_index = Article_Index::get_instance();
-				$this->post_template = '/../../views/articleIndexItem.php'; 
+				$this->post_template = '/../views/articleIndexItem.php'; 
 				break;
 		}
 	}

@@ -11,24 +11,23 @@ require 'models/ArticleIndex.php';
 require 'models/Article.php';
 require 'models/Terms.php';
 require 'models/Comments.php';
+require 'models/ArticleTabs.php';
 // controllers
 require 'controllers/RouterController.php';
-
-require 'controllers/ajax/AjaxLoginController.php';
-require 'controllers/ajax/AjaxRegistrationController.php';
-require 'controllers/ajax/AjaxPostLoaderController.php';
-
-require 'controllers/view/ViewController.php';
-require 'controllers/view/HeadController.php';
-require 'controllers/view/TopBannerController.php';
-require 'controllers/view/HeaderController.php';
-require 'controllers/view/MainMenuController.php';
-require 'controllers/view/ArticleIndexController.php';
-require 'controllers/view/CategoriesController.php';
-require 'controllers/view/PostTabsController.php';
-require 'controllers/view/SubscribeController.php';
-require 'controllers/view/ModalsController.php';
-require 'controllers/view/ArticleController.php';
+require 'controllers/AjaxLoginController.php';
+require 'controllers/AjaxRegistrationController.php';
+require 'controllers/AjaxPostLoaderController.php';
+require 'controllers/ViewController.php';
+require 'controllers/HeadController.php';
+require 'controllers/TopBannerController.php';
+require 'controllers/HeaderController.php';
+require 'controllers/MainMenuController.php';
+require 'controllers/ArticleIndexController.php';
+require 'controllers/CategoriesController.php';
+require 'controllers/PostTabsController.php';
+require 'controllers/SubscribeController.php';
+require 'controllers/ModalsController.php';
+require 'controllers/ArticleController.php';
 // widgets
 require 'widgets/Logo.php';
 

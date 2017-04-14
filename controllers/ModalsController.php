@@ -13,7 +13,7 @@ class Modals_Controller extends View_Controller {
 
 	public function get_view() {
 		$this->set_vars();
-		require '/../../views/modals.php';
+		require '/../views/modals.php';
 	}
 
 }

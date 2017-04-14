@@ -8,6 +8,7 @@ class Router_Controller {
 		$this->filters = Filters::get_instance();
 		$this->widgets = Widgets::get_instance();
 		$this->article_index = Article_Index::get_instance();
+		$this->article_tabs = Article_Tabs::get_instance();
 
 		$this->ajax_post_loader_controller = Ajax_Post_Loader_Controller::get_instance();
 
@@ -28,9 +29,13 @@ class Router_Controller {
 	public function init_with_wp() {
 		$this->page->init();
 		$this->article_index->init();
+		$this->article_tabs->init();
 	}
 
 	public function ajax_init() {
+		$this->theme_setup->init();
+		$this->filters->init();
+
 		$this->page->ajax_init();
 		$this->article_index->init();
 
