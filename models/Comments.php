@@ -14,7 +14,31 @@ class Comments {
 
 	private function __construct() {
 		$this->comment = Comment_Item::get_instance();
+		$this->user = Hyip_User::get_instance();
+
 		$this->children = array();
+	}
+
+	public function create_comment( $post_id, $parent, $content ) {
+		$user = $this->user->get_user();
+
+		$data = array(
+			'comment_post_ID' => $post_id,
+			'comment_author' => $user->data->user_login,
+			'comment_author_email' => $user->data->user_email,
+			'comment_author_url' => $user->data->user_url, 
+			'comment_content' => $content,
+			'comment_type' => '',
+			'comment_parent' => $parent, 
+			'user_id' => $user->ID,
+		);
+
+		wp_new_comment( $data );
+	}
+
+	public function increment_rating( $comment_id ) {
+		$rating = get_comment_meta( $comment_id, 'c_rating', true );
+		update_comment_meta( $comment_id, 'c_rating', ++$rating );
 	}
 
 	public function get_number( $post ) {

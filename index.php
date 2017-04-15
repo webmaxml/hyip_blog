@@ -1,6 +1,7 @@
 <?php 
 
 $comments = Comments::get_instance();
+$user = Hyip_user::get_instance();
 
 ?>
 

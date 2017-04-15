@@ -14,6 +14,18 @@ class Hyip_User {
 
 	private function __construct() {}
 
+	public function init() {
+		$this->user = wp_get_current_user();
+	}
+
+	public function is_logged() {
+		return is_user_logged_in();
+	}
+
+	public function get_user() {
+		return $this->user;
+	}
+
 	public function is_user_exist( $login ) {
 		return get_user_by( 'login', $login );
 	}

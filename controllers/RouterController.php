@@ -4,6 +4,7 @@ class Router_Controller {
 
 	public function __construct() {
 		$this->page = Page::get_instance();
+		$this->user = Hyip_User::get_instance();
 		$this->theme_setup = Theme_Setup::get_instance();
 		$this->meta_boxes = Meta_Boxes::get_instance();
 		$this->filters = Filters::get_instance();
@@ -30,6 +31,7 @@ class Router_Controller {
 
 	public function init_with_wp() {
 		$this->page->init();
+		$this->user->init();
 		$this->article_index->init();
 		$this->article_tabs->init();
 	}
@@ -39,6 +41,7 @@ class Router_Controller {
 		$this->filters->init();
 
 		$this->page->ajax_init();
+		$this->user->init();
 		$this->article_index->init();
 
 		$this->ajax_post_loader_controller->init();
