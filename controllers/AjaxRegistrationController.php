@@ -2,56 +2,53 @@
 
 class Ajax_Registration_Controller {
 
-	private $user;
-	private $ajax_action = 'hyip_reg';
-	
-	private $nonce_field_name = '_wpnonce';
-	private $nonce_action = 'hyip_registration';
+	private static $instance;
 
-	private $login_field_name = 'login';
-	private $pwd_field_name = 'password';
-	private $email_field_name = 'email';
+	public static function get_instance() {
+		if ( !isset( self::$instance ) ) {
+			self::$instance = new self;
+		}
 
-	private $creating_error = 'Ошибка создания нового пользователя';
-	private $login_error = 'Ошибка авторизации пользователя';
-	private $verify_error = 'Ошибка верификации формы';
-	private $login_exist_error = 'Пользователь с таким логином уже существует';
-
-	public function __construct() {
-		$this->user = Hyip_User::get_instance();
-
-		add_action( 'wp_ajax_nopriv_' . $this->ajax_action, array( $this, 'register_user' ) );
+		return self::$instance;
 	}
 
-	private function is_nonce_verified() {
-		$nonce = isset( $_POST[ $this->nonce_field_name ] ) ? 
-				 $_POST[ $this->nonce_field_name ] : '';
-		$nonce_verified = wp_verify_nonce( $nonce, $this->nonce_action );
+	private function __construct() {
+		$this->user = Hyip_User::get_instance();
+	}
 
-		return $nonce_verified;
+	public function init() {
+		add_action( 'wp_ajax_nopriv_hyip_reg', array( $this, 'register_user' ) );
 	}
 
 	public function register_user() {
-		if ( !$this->is_nonce_verified() ) { wp_send_json_error( $this->verify_error ); }
+		$nonce = isset( $_POST[ '_wpnonce' ] ) ? $_POST[ '_wpnonce' ] : '';
+		$nonce_verified = wp_verify_nonce( $nonce, 'hyip_registration' );
 
-		$login = isset( $_POST[ $this->login_field_name ] ) ? 
-						$_POST[ $this->login_field_name ] : false;
-		$pwd = isset( $_POST[ $this->pwd_field_name ] ) ? 
-					  $_POST[ $this->pwd_field_name ] : false;
-		$email = isset( $_POST[ $this->email_field_name ] ) ? 
-						$_POST[ $this->email_field_name ] : false;
-
-		if ( $this->user->is_user_exist( $login ) ) { 
-			wp_send_json_error( $this->login_exist_error ); 
+		if ( !$nonce_verified ) { 
+			wp_send_json_error( 'Ошибка верификации формы' ); 
 		}
 
-		$new_user = $this->user->create_user( $login, $pwd, $email );
-		if ( !$new_user ) { wp_send_json_error( $this->creating_error ); }
+		$login = isset( $_POST[ 'login' ] ) ? $_POST[ 'login' ] : false;
+		$pwd = isset( $_POST[ 'password' ] ) ? $_POST[ 'password' ] : false;
+		$email = isset( $_POST[ 'email' ] ) ? $_POST[ 'email' ] : false;
 
-		$user = $this->user->login_user( $login, $pwd, true );
-		if ( !user ) { wp_send_json_error( $this->login_error ); }
+		if ( $login === false || $pwd === false || $email === false ) {
+			wp_send_json_error( 'Логин, пароль или email не заданы. По идее такого не может быть. Однако...' ); 
+		}
 
-		wp_send_json_success();
+		$reg_result = $this->user->create_user( $login, $pwd, $email );
+
+		if ( is_wp_error( $reg_result ) ) {
+			wp_send_json_error( $reg_result->get_error_message() );
+		} 
+
+		$log_result = $this->user->login_user( $login, $pwd, true );
+		
+		if ( is_wp_error( $log_result ) ) {
+			wp_send_json_error( $log_result->get_error_message() );
+		} else {
+			wp_send_json_success();
+		}
 	}
 
 }

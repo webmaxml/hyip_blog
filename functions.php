@@ -14,6 +14,7 @@ require 'models/Terms.php';
 require 'models/Comments.php';
 require 'models/CommentItem.php';
 require 'models/ArticleTabs.php';
+require 'models/Plan.php';
 // controllers
 require 'controllers/RouterController.php';
 require 'controllers/AjaxLoginController.php';

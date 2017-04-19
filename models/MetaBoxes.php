@@ -15,17 +15,25 @@ class Meta_Boxes {
 	private function __construct() {}
 
 	public function init() {
-		add_action( 'add_meta_boxes', array( $this, 'add_comment_rating_metabox' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_metaboxes' ) );
 	}
 
-	function add_comment_rating_metabox() {
+	public function add_metaboxes() {
 		add_meta_box( 'c_rating', 'Рейтинг', array( $this, 'comment_rating_metabox' ), 'comment', 'normal' );
+		add_meta_box( 'plans', 'Планы', array( $this, 'plans_metabox' ), 'hyip', 'normal' );
 	}
 
-	function comment_rating_metabox( $comment ) { ?>
+	public function comment_rating_metabox( $comment ) { ?>
 	    <div>
 	    	Рейтинг комментария - <strong><?php echo get_comment_meta( $comment->comment_ID, 'c_rating', true ); ?></strong>
 	    </div>
+	<?php }
+
+	public function plans_metabox( $hyip ) { ?>
+		<div class="hyip-plans" >
+	    	<?php echo $hyip->post_title; ?>
+	    	<button id="hyip-addPlan">Создать план</button>
+		</div>
 	<?php }
 	
 }

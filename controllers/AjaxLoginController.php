@@ -2,51 +2,48 @@
 
 class Ajax_Login_Controller {
 
-	private $user;
-	private $ajax_action = 'hyip_log';
+	private static $instance;
 
-	private $nonce_field_name = '_wpnonce';
-	private $nonce_action = 'hyip_logining';
+	public static function get_instance() {
+		if ( !isset( self::$instance ) ) {
+			self::$instance = new self;
+		}
 
-	private $login_field_name = 'login';
-	private $pwd_field_name = 'password';
-	private $rememberme_field_name = 'rememberme';
-
-	private $verify_error = 'Ошибка верификации формы';
-	private $user_not_exist_error = 'Такого пользователя несуществует';
-	private $login_error = 'Ошибка авторизации';
-
-	public function __construct() {
-		$this->user = Hyip_User::get_instance();
-
-		add_action( 'wp_ajax_nopriv_' . $this->ajax_action, array( $this, 'login_user' ) );
+		return self::$instance;
 	}
 
-	private function is_nonce_verified() {
-		$nonce = isset( $_POST[ $this->nonce_field_name ] ) ? 
-				 $_POST[ $this->nonce_field_name ] : '';
-		$nonce_verified = wp_verify_nonce( $nonce, $this->nonce_action );
+	private function __construct() {
+		$this->user = Hyip_User::get_instance();
+	}
 
-		return $nonce_verified;
+	public function init() {
+		add_action( 'wp_ajax_nopriv_hyip_log', array( $this, 'login_user' ) );
 	}
 
 	public function login_user() {
-		if ( !$this->is_nonce_verified() ) { wp_send_json_error( $this->verify_error ); }
+		$nonce = isset( $_POST[ '_wpnonce' ] ) ? $_POST[ '_wpnonce' ] : '';
+		$nonce_verified = wp_verify_nonce( $nonce, 'hyip_logining' );
 
-		$login = isset( $_POST[ $this->login_field_name ] ) ? 
-					    $_POST[ $this->login_field_name ] : false;
-		$pwd = isset( $_POST[ $this->pwd_field_name ] ) ? 
-					  $_POST[ $this->pwd_field_name ] : false;
-		$rememberme = isset( $_POST[ $this->rememberme_field_name ] ) ? 
-							 $_POST[ $this->rememberme_field_name ] : false;
-
-		if ( !$this->user->is_user_exist( $login ) ) { 
-			wp_send_json_error( $this->user_not_exist_error ); 
+		if ( !$nonce_verified ) { 
+			wp_send_json_error( 'Ошибка верификации формы' ); 
 		}
-		
+
+		$login = isset( $_POST[ 'login' ] ) ? $_POST[ 'login' ] : false;
+		$pwd = isset( $_POST[ 'password' ] ) ? $_POST[ 'password' ] : false;
+		$rememberme = isset( $_POST[ 'rememberme' ] ) ? $_POST[ 'rememberme' ] : false;
+
+		if ( $login === false || $pwd === false ) {
+			wp_send_json_error( 'Логин или пароль не заданы. По идее такого не может быть. Однако...' ); 
+		}
+
 		$result = $this->user->login_user( $login, $pwd, $rememberme );
 
-		return $result ? wp_send_json_success() : wp_send_json_error( $this->login_error );
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error( $result->get_error_message() );
+		} else {
+			wp_send_json_success();
+		}
+
 	}
 
 }

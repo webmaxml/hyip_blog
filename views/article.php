@@ -40,9 +40,9 @@
 
 	<div class="post-box__info-wrap">
 		<div class="postThumbnail">
-			
-			<?php echo $this->post[ 'thumbnail_tag' ]; ?>
-
+			<img class="postThumbnail__img" 
+					 src="<?php echo $this->post[ 'thumbnail_url' ]; ?>" 
+					 alt="<?php echo $this->post[ 'title' ][ 'title_attr' ]; ?>">
 			<ul class="postThumbnail__social">
 				<li class="postThumbnail__social-item">
 					<a class="postThumbnail__social-link-vk" href="/">

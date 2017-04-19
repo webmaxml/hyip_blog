@@ -54,7 +54,9 @@
 
 		<div class="postThumbnail">
 			<a class="postThumbnail__link" href="<?php echo $item[ 'link' ]; ?>">
-				<?php echo $item[ 'thumbnail_tag' ]; ?>
+				<img class="postThumbnail__img" 
+					 src="<?php echo $item[ 'thumbnail_url' ]; ?>" 
+					 alt="<?php echo $item[ 'title' ][ 'title_attr' ]; ?>">
 			</a>
 			<ul class="postThumbnail__social">
 				<li class="postThumbnail__social-item">

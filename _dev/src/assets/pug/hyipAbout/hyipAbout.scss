@@ -123,16 +123,10 @@
 
 /* paysystem */
 .paysystem {
-	&__perfectMoney,
-	&__bitcoin,
-	&__okPay,
-	&__visa {
-		width: 16px;
-		height: 16px;
+	width: 16px;
+	height: 16px;
 
-		background: url( '../img/payments.png' ) no-repeat;
-	}
-		
+	background: url( '../img/payments.png' ) no-repeat;
 
 	&__perfectMoney {
 		background-position: 0 0;
@@ -142,11 +136,78 @@
 		background-position: 0 -20px;
 	}
 
+	&__qiwi {
+		background-position: 0 -40px;
+	}
+
+	&__payeer {
+		background-position: 0 -60px;
+	}
+
+	&__alfaClick {
+		background-position: 0 -80px;
+	}
+
+	&__masterCard {
+		background-position: 0 -100px;
+	}
+
+	&__neteller {
+		background-position: 0 -120px;
+	}
+
+	&__payPal {
+		background-position: 0 -140px;
+	}
+
+	&__nixMoney {
+		background-position: 0 -160px;
+	}
+
+	&__payza {
+		background-position: 0 -180px;
+	}
+
 	&__okPay {
 		background-position: 0 -200px;
+	}
+
+	&__sPay {
+		background-position: 0 -220px;
 	}
 
 	&__visa {
 		background-position: 0 -240px;
 	}
+
+	&__webMoney {
+		background-position: 0 -260px;
+	}
+
+	&__solidTrustPay {
+		background-position: 0 -280px;
+	}
+
+	&__sberBank {
+		background-position: 0 -300px;
+	}
+
+	&__yandex {
+		background-position: 0 -320px;
+	}
+
+	&__advancedCash {
+		background-position: 0 -360px;
+	}
+
+	&__ePay {
+		background-position: 0 -380px;
+	}
+
+	&__vtbBank {
+		background-position: 0 -400px;
+	}
+
+	
+	
 }

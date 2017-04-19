@@ -34,7 +34,7 @@ class Article {
 		$article[ 'date' ] = get_the_date( get_option( 'date_format' ), $post->ID );
 		$article[ 'comments_string' ] = $this->comments->get_comments_string( $post );
 		$article[ 'views' ] = pvc_get_post_views( $post->ID ) . ' просмотров';
-		$article[ 'thumbnail_tag' ] = get_the_post_thumbnail( $post, 'thumbnail', array( 'class' => 'postThumbnail__img' ) );
+		$article[ 'thumbnail_url' ] = get_the_post_thumbnail_url( $post, 'thumbnail' );
 		$article[ 'excerpt' ] = apply_filters( 'the_excerpt', get_the_excerpt() );
 		
 		$content = get_the_content();

@@ -19,6 +19,7 @@ class Theme_Setup {
 
 		add_action( 'after_setup_theme', array( $this, 'add_theme_support' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_scripts' ) );
 		add_action( 'init', array( $this, 'set_users_options' ) );
 		add_action( 'comment_post', array( $this, 'add_comment_rating' ) );
 	}
@@ -50,6 +51,18 @@ class Theme_Setup {
 		wp_enqueue_script( 'script', get_template_directory_uri() . '/_dev/dist/app.min.js', array(), time(), true );
 
 		$this->include_data_in_scripts();
+	}
+
+	function add_admin_scripts() {
+		$screen = get_current_screen();
+
+		if ( is_object( $screen ) ) {
+
+			if ( in_array( $screen->post_type, [ 'hyip' ] ) ) {
+				wp_enqueue_script( 'hyip-admin-script', get_template_directory_uri() . '/assets/js/admin.js', [ 'jquery' ], time(), true );
+			}
+
+		}
 	}
 
 	function include_data_in_scripts() {
