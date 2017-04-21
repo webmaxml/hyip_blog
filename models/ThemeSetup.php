@@ -59,7 +59,11 @@ class Theme_Setup {
 		if ( is_object( $screen ) ) {
 
 			if ( in_array( $screen->post_type, [ 'hyip' ] ) ) {
-				wp_enqueue_script( 'hyip-admin-script', get_template_directory_uri() . '/assets/js/admin.js', [ 'jquery' ], time(), true );
+				wp_enqueue_script( 'hyip-admin-script', get_template_directory_uri() . '/assets/js/admin.js', [ 'jquery', 'underscore' ], time(), true );
+
+				wp_localize_script( 'hyip-admin-script', 'globalData', array(
+					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				) );
 			}
 
 		}

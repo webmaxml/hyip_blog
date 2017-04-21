@@ -20,6 +20,7 @@ require 'controllers/RouterController.php';
 require 'controllers/AjaxLoginController.php';
 require 'controllers/AjaxRegistrationController.php';
 require 'controllers/AjaxPostLoaderController.php';
+require 'controllers/AjaxHyipPlanController.php';
 require 'controllers/ViewController.php';
 require 'controllers/HeadController.php';
 require 'controllers/TopBannerController.php';

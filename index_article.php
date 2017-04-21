@@ -1,12 +1,23 @@
-<?php /* Template Name: Выборка статей */ ?>
+<?php /* Template Name: Выборка статей */
+
+$args = array(
+	'name' => 'Silver',
+	'payment_percent' => 2,
+	'deposit_in_payments' => true,
+	'payment_frequency' => 1,
+	'plan_period' => 75,
+	'refback_percent' => 5,
+	'min_deposit' => 10,
+	'max_deposit' => 299
+);
+
+$plan = Hyip_Plan::get_instance();
+
+?>
 
 <?php get_header(); ?>
 
-	<pre><?php print_r( get_post( 53 ) ); ?></pre>
-	<pre>ДЕТИ</pre>
-	<pre><?php print_r( get_children( array( 'post_type' => 'plan', 'post_parent' => 53  ) ) ); ?></pre>
-	<pre>Поле</pre>
-	<pre><?php print_r( get_field( 'hyip_plan', 53 ) ); ?></pre>
+	<!-- <pre><?php print_r(); ?></pre> -->
 
 	<div class="wrapper">
 		<?php $view->get( 'topBanner' ); ?>

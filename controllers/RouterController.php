@@ -15,6 +15,7 @@ class Router_Controller {
 		$this->ajax_post_loader_controller = Ajax_Post_Loader_Controller::get_instance();
 		$this->ajax_login_controller = Ajax_Login_Controller::get_instance();
 		$this->ajax_registration_controller = Ajax_Registration_Controller::get_instance();
+		$this->ajax_hyip_plan_controller = Ajax_Hyip_Plan_Controller::get_instance();
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			$this->ajax_init();
@@ -49,6 +50,7 @@ class Router_Controller {
 		$this->ajax_post_loader_controller->init();
 		$this->ajax_login_controller->init();
 		$this->ajax_registration_controller->init();
+		$this->ajax_hyip_plan_controller->init();
 	}
 }
 
