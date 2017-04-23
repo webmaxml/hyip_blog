@@ -63,7 +63,7 @@ class Hyip_Plan {
 		update_field( 'field_58f7959eaf7b8', $args[ 'payment_frequency' ], $plan_id );
 		update_field( 'field_58fa2510d08ff', $args[ 'refback_percent' ], $plan_id );
 
-		return $this->get_plan( get_post( $plan_id ) );
+		return get_post( $plan_id );
 	}
 
 	public function delete_plan( $plan_id ) {

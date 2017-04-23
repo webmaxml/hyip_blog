@@ -33,11 +33,20 @@ class Ajax_Hyip_Plan_Controller {
 
 		$hyip = get_post( $_POST[ 'hyip_id' ] );
 
+		if ( isset( $_POST[ 'deposit_in_payments' ] ) ) {
+			if ( $_POST[ 'deposit_in_payments' ] === 'true' ||
+				 $_POST[ 'deposit_in_payments' ] === true  ) {
+				$seposit_in_payments = true;
+			} else {
+				$seposit_in_payments = false;
+			}
+		}
+
 		$args = array(
 			'id' => isset( $_POST[ 'plan_id' ] ) ? (int) $_POST[ 'plan_id' ] : 0,
 			'name' => isset( $_POST[ 'name' ] ) ? $_POST[ 'name' ] : '',
 			'payment_percent' => isset( $_POST[ 'payment_percent' ] ) ? (float) $_POST[ 'payment_percent' ] : 0,
-			'deposit_in_payments' => isset( $_POST[ 'deposit_in_payments' ] ) ? $_POST[ 'deposit_in_payments' ] : false,
+			'deposit_in_payments' => $seposit_in_payments,
 			'payment_frequency' => isset( $_POST[ 'payment_frequency' ] ) ? (int) $_POST[ 'payment_frequency' ] : 0,
 			'plan_period' => isset( $_POST[ 'plan_period' ] ) ? (int) $_POST[ 'plan_period' ] : 0,
 			'refback_percent' => isset( $_POST[ 'refback_percent' ] ) ? (float) $_POST[ 'refback_percent' ] : 0,
@@ -45,11 +54,21 @@ class Ajax_Hyip_Plan_Controller {
 			'max_deposit' => isset( $_POST[ 'max_deposit' ] ) ? (float) $_POST[ 'max_deposit' ] : 0
 		);
 
-		$result = $this->plan->update_plan( $args, $hyip );
+		$plan = $this->plan->update_plan( $args, $hyip );
 
-		if ( is_wp_error( $result ) ) {
-			wp_send_json_error( $result->get_error_message() );
+		if ( is_wp_error( $plan ) ) {
+			wp_send_json_error( $plan->get_error_message() );
 		}
+
+		ob_start();
+		require '/../views/metaBoxPlan.php';
+		$html = ob_get_contents();
+		ob_end_clean();
+
+		$result = array(
+			'id' => $plan->ID,
+			'html' => $html
+		);
 
 		wp_send_json_success( $result );
 	}
@@ -58,9 +77,9 @@ class Ajax_Hyip_Plan_Controller {
 		if ( !$this->is_nonce_verified() ) { wp_send_json_error( 'Ошибка верификации формы' ); }
 		if ( !isset( $_POST[ 'plan_id' ] ) ) { wp_send_json_error( 'Ошибка передачи id плана' ); }
 
-		$result = $this->plan->delete_plan( $_POST[ 'plan_id' ] );
+		$plan = $this->plan->delete_plan( $_POST[ 'plan_id' ] );
 
-		if ( $result ) {
+		if ( $plan ) {
 			wp_send_json_success();
 		} else {
 			wp_send_json_error( 'Ошибка удаления' );
