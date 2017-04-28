@@ -1,4 +1,4 @@
-<li class="post-box__item">
+<li class="post-box__item" data-item-id="<?php echo $item[ 'id' ]; ?>">
 
 	<div class="postHeader">
 
@@ -60,17 +60,23 @@
 			</a>
 			<ul class="postThumbnail__social">
 				<li class="postThumbnail__social-item">
-					<a class="postThumbnail__social-link-vk" href="/">
-						<i class="fa fa-vk postThumbnail__social-icon"></i>
-					</a>
+					<div class="postThumbnail__social-link-vk">						
+						<script type="text/javascript">
+							localData.social[ "vk-<?php echo $item[ 'id' ]; ?>" ] = VK.Share.button({
+								url: "<?php echo $item[ 'link' ]; ?>",
+								title: "<?php echo $item[ 'title' ][ 'name' ]; ?>",
+								image: "<?php echo $item[ 'thumbnail_url' ]; ?>",
+								noparse: true
+							},{
+								type: 'custom',
+								text: '<i class="fa fa-vk postThumbnail__social-icon"></i>'
+							});
+						</script>
+					</div>
 				</li>
 				<li class="postThumbnail__social-item">
-					<a class="postThumbnail__social-link-facebook" href="/">
-						<i class="fa fa-facebook postThumbnail__social-icon"></i>
-					</a>
-				</li>
-				<li class="postThumbnail__social-item">
-					<a class="postThumbnail__social-link-twitter" href="/">
+					<a class="postThumbnail__social-link-twitter" 
+					   href="https://twitter.com/intent/tweet?url=<?php echo $item[ 'link' ]; ?>">
 						<i class="fa fa-twitter postThumbnail__social-icon"></i>
 					</a>
 				</li>

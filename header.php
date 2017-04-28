@@ -6,5 +6,6 @@ global $view;
 <html>
 <head>
 	<?php $view->get( 'head' ); ?>
+	<?php wp_head(); ?>
 </head>
 <body>

@@ -35,6 +35,10 @@ let PostTabs = Backbone.Model.extend({
 	},
 
 	addButton: function( index ) {
+		if ( typeof index === 'undefined' ) {
+			console.warn( 'index must be provided for postTabs.addButton' );
+		}
+
 		let buttons = this.get( 'buttons' );
 		let button = new PostTabsButton({ index });
 
@@ -45,6 +49,10 @@ let PostTabs = Backbone.Model.extend({
 	},
 
 	addPane: function( index ) {
+		if ( typeof index === 'undefined' ) {
+			console.warn( 'index must be provided for postTabs.addPane' );
+		}
+
 		let panes = this.get( 'panes' );
 		let pane = new PostTabsPane({ index });
 
@@ -70,12 +78,12 @@ let PostTabs = Backbone.Model.extend({
 
 		let button = _.find( buttons, button => button.get( 'index' ) === activeIndex );
 		if ( !button ) {
-			throw new Error( 'there is no button with index of ' + activeIndex + ' in PostTabs' );
+			console.warn( 'there is no button with index of ' + activeIndex + ' in PostTabs' );
 		}
 
 		let pane = _.find( panes, pane => pane.get( 'index' ) === activeIndex );
 		if ( !pane ) {
-			throw new Error( 'there is no pane with index of ' + activeIndex + ' in PostTabs' );
+			console.warn( 'there is no pane with index of ' + activeIndex + ' in PostTabs' );
 		}
 
 		button.set({ active: true });

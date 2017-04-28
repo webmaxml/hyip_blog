@@ -16,6 +16,10 @@ let Modals = Backbone.Model.extend({
 	},
 
 	addModal: function( id ) {
+		if ( !_.isString( id ) || _.isEmpty( id ) ) {
+			console.warn( 'id for addModal must be non empty string' );
+		}
+
 		let modalList = this.get( 'modalList' );
 		let existingModal = _.find( modalList, modal => modal.id === id );
 

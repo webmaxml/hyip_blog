@@ -195,7 +195,8 @@ bottle.service( 'registrationFormController', RegistrationFormController, 'user'
 bottle.service( 'postLoaderController', PostLoaderController, 
 										'postLoader',
 										'postLoaderButtonView',
-										'postContainerView' );
+										'postContainerView',
+										'globalData' );
 
 /************************ Views **************************/
 

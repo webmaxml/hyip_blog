@@ -13,7 +13,7 @@ let User = Backbone.Model.extend({
 		let globalData = attrs._globalData;
 
 		this.set({ 
-			loggedIn: globalData.user.loggedIn 
+			loggedIn: globalData.get( 'user' ).loggedIn 
 		});
 
 		this.loginAjaxAction = 'hyip_log';
@@ -38,7 +38,7 @@ let User = Backbone.Model.extend({
 		};
 
 		$.ajax({
-			url: this.get( '_globalData' ).ajaxUrl,
+			url: this.get( '_globalData' ).get( 'ajaxUrl' ),
 			type: 'POST',
 			dataType: 'json',
 			data: 'action=' + this.loginAjaxAction + '&' + query,
@@ -72,7 +72,7 @@ let User = Backbone.Model.extend({
 		};
 
 		$.ajax({
-			url: this.get( '_globalData' ).ajaxUrl,
+			url: this.get( '_globalData' ).get( 'ajaxUrl' ),
 			type: 'POST',
 			dataType: 'json',
 			data: 'action=' + this.regAjaxAction + '&' + query,

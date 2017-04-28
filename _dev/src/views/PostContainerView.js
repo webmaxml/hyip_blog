@@ -13,6 +13,11 @@ let PostContainerView = Backbone.View.extend({
 		$( htmlString ).hide()
 					   .appendTo( this.$el )
 					   .fadeIn( 'fast' );
+	},
+
+	addSocialVKButton: function( postId, buttonHtml ) {
+		this.$el.find( `[data-item-id=${postId}] .postThumbnail__social-link-vk` )
+				.append( buttonHtml );
 	}
 
 });

@@ -54,7 +54,7 @@ let PlansList = Backbone.Model.extend({
 
 	setActivePlan: function( planId ) {
 		if ( typeof planId !== 'number' ) {
-			throw new Error( 'to set active plan, you should provide plan id number' );
+			console.warn( 'to set active plan, you should provide plan id number' );
 		}
 
 		let activePlan = _.find( this.get( 'plansList' ), plan => plan.id === planId );

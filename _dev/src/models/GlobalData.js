@@ -1,9 +1,16 @@
+import Backbone from 'backbone';
 import globalData from 'globalData';
 import localData from 'localData';
 
-class GlobalData {
+let GlobalData = Backbone.Model.extend({
 
-	constructor() {
+	defaults: {
+		ajaxUrl: globalData.ajaxUrl,
+		user: globalData.user,
+		localData: localData
+	},
+
+	initialize: function() {
 		if ( typeof globalData.ajaxUrl !== 'string' ) {
 			throw new Error( 'globalData.ajaxUrl should be string' );
 		}
@@ -12,28 +19,11 @@ class GlobalData {
 			throw new Error( 'globalData.user.loggedIn should be boolean' );
 		}
 
-		this.ajaxUrl = globalData.ajaxUrl;
-		this.user = globalData.user;
-
-		if ( typeof localData === 'undefined' ) {
-			this.localData = {};
-		} else {
-			this.localData = localData;
+		if ( typeof localData !== 'object' ) {
+			console.warn( 'You should create global localData object in the head' );
 		}
 	}
 
-	getAjaxUrl() {
-		return this.ajaxUrl;
-	}
-
-	getUserData() {
-		return this.user;
-	} 
-
-	getLocalData() {
-		return this.localData;
-	}
-
-}
+}); 
 
 export default GlobalData;

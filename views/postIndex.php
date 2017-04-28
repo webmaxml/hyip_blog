@@ -1,4 +1,5 @@
 <script>localData.maxPages = <?php echo $this->max_num_pages; ?>;</script>
+<script>localData.social = {}</script>
 
 <ul class="post-box blog"><?php echo $this->posts; ?></ul>
 

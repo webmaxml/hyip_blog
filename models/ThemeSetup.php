@@ -56,16 +56,11 @@ class Theme_Setup {
 	function add_admin_scripts() {
 		$screen = get_current_screen();
 
-		if ( is_object( $screen ) ) {
-
-			if ( in_array( $screen->post_type, [ 'hyip' ] ) ) {
-				wp_enqueue_script( 'hyip-admin-script', get_template_directory_uri() . '/assets/js/admin.js', [ 'jquery', 'underscore', 'backbone' ], time(), true );
-
-				wp_localize_script( 'hyip-admin-script', 'globalData', array(
-					'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-				) );
-			}
-
+		if ( is_object( $screen ) ) {	
+			wp_enqueue_script( 'hyip-admin-script', get_template_directory_uri() . '/assets/js/admin.js', [ 'jquery', 'underscore', 'backbone' ], time(), true );
+			wp_localize_script( 'hyip-admin-script', 'globalData', array(
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			) );
 		}
 	}
 

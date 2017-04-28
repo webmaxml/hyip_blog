@@ -30,3 +30,4 @@ $RECYCLE.BIN/
 sftp-config.json
 
 node_modules/
+.tmp/

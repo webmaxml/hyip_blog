@@ -2,6 +2,7 @@
 
 // models
 require 'models/User.php';
+require 'models/UserStats.php';
 require 'models/Page.php';
 require 'models/ThemeSetup.php';
 require 'models/MetaBoxes.php';

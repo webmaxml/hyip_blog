@@ -6,6 +6,7 @@ let devRoutes = {
 	'hyip_index.html': 'hyipIndex',
 	'hyip.html': 'hyipItem',
 	'user.html': 'user',
+	'*notFound': 'notFound'
 };
 
 let prodRoutes = {
@@ -16,6 +17,7 @@ let prodRoutes = {
 	'hyip_index.html': 'hyipIndex',
 	'hyip.html': 'hyipItem',
 	'user.html': 'user',
+	'*notFound': 'notFound'
 };
 
 let routes = process.env.NODE_ENV === 'development' ? devRoutes : prodRoutes;
@@ -40,7 +42,11 @@ let RouterController = Backbone.Router.extend({
 		if ( callback ) {
 			this.page.parseUrl();
 			callback.apply( this, args );
-		}
+		} 
+	},
+
+	notFound: function() {
+		console.warn( 'no proper callback is set for current url' );
 	},
 
 	root: function() {
@@ -69,7 +75,6 @@ let RouterController = Backbone.Router.extend({
 	},
 
 	changeUrl: function( path ) {
-		console.log( 'changing url - ' + path );
 		this.navigate( path );
 	}
 

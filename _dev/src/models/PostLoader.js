@@ -27,7 +27,7 @@ let PostLoader = Backbone.Model.extend({
 		this.set({ 'loading': true });
 
 		$.ajax({
-			url: this.globalData.getAjaxUrl(),
+			url: this.globalData.get( 'ajaxUrl' ),
 			type: 'POST',
 			dataType: 'json',
 			data: {
@@ -41,11 +41,11 @@ let PostLoader = Backbone.Model.extend({
 	},
 
 	checkIfLastPage: function() {
-		let maxPages = this.globalData.getLocalData().maxPages;
+		let maxPages = this.globalData.get( 'localData' ).maxPages;
 		let currentPage = this.page.get( 'currentPage' );
 
 		if ( typeof maxPages === 'undefined' ) {
-			throw new Error( 'undefined maxPages for post loading proccessing' );
+			console.warn( 'undefined maxPages for post loading proccessing' );
 		}
 
 		if ( currentPage >= maxPages ) {
@@ -57,19 +57,21 @@ let PostLoader = Backbone.Model.extend({
 	},
 
 	ajaxSuccess: function( data ) {
+		if ( typeof data.data.html !== 'string' || 
+			 typeof data.success !== 'boolean' ) {
+			console.warn( 'post loader must receive { success: bool, data: { html: string } }' );
+		}
+
 		this.set({ loading: false });
 		this.set({ posts: data.data.html });
 
 		this.page.incrementPage();
 		this.checkIfLastPage();
-
-		console.log( data );
 	},
 
 	ajaxError: function( xhr, status, error ) {
 		this.set({ loading: false });
-		console.log( status );
-		console.log( error );
+		console.warn( error );
 	}
 
 });

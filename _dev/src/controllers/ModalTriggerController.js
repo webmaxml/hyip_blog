@@ -16,6 +16,7 @@ class ModalTriggerController {
 	//------------------------------ View callbacks -------------------------------
 
 	handleClick( event ) {
+		event.preventDefault();
 		this.modal.set({ active: true });
 	}
 

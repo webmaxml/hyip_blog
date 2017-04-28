@@ -24,9 +24,17 @@ jQuery( function( $ ) {
 					plan_id: this.id
 				},
 				success: function( data ) {
+					if ( !_.has( data, 'success' ) ) {
+						console.warn( 'ajax data must be object with success property' );
+					}
+
 					if ( data.success ) {
 						this.trigger( 'deleted', this );
 					} else {
+						if ( typeof data.data !== 'string' ) {
+							console.warn( 'ajax error must be string' );
+						}
+
 						this.set({ error: data.data });
 					}
 
@@ -62,9 +70,21 @@ jQuery( function( $ ) {
 					hyip_id: hyip_id
 				},
 				success: function( data ) {
+					if ( !_.has( data, 'success' ) || !_.has( data, 'data' ) ) {
+						console.warn( 'ajax data must be object with success and data properties' );
+					}
+
 					if ( data.success ) {
+						if ( !_.has( data.data, 'html' ) ) {
+							console.warn( 'ajax data for updating plan must be object with html property' );
+						}
+
 						this.set({ html: data.data.html });
 					} else {
+						if ( typeof data.data !== 'string' ) {
+							console.warn( 'ajax error must be string' );
+						}
+
 						this.set({ error: data.data });
 					}
 
@@ -109,9 +129,21 @@ jQuery( function( $ ) {
 					hyip_id: hyip_id
 				},
 				success: function( data ) {	
+					if ( !_.has( data, 'success' ) || !_.has( data, 'data' ) ) {
+						console.warn( 'ajax data must be object with success and data properties' );
+					}
+
 					if ( data.success ) {
+						if ( !_.has( data.data, 'id' ) || !_.has( data.data, 'html' ) ) {
+							console.warn( 'ajax data for adding plan must be object with id and html properties' );
+						}
+
 						this.createNewPlan( data.data );
 					} else {
+						if ( typeof data.data !== 'string' ) {
+							console.warn( 'ajax error must be string' );
+						}
+
 						this.set({ error: data.data });
 					}
 
@@ -125,6 +157,10 @@ jQuery( function( $ ) {
 		},
 
 		createNewPlan: function( planData ) {
+			if ( !_.has( planData, 'id' ) || !_.has( planData, 'html' ) ) {
+				console.warn( 'data for creating new plan must be object with id and html properties' );
+			}
+
 			var newPlan = new Plan( planData );
 			var plans = _.clone( this.get( 'plans' ) );
 
@@ -136,6 +172,10 @@ jQuery( function( $ ) {
 		},
 
 		deletePlanFromList: function( plan ) {
+			if ( !_.isObject( plan ) ) {
+				console.warn( 'plan must be an object' );
+			}
+
 			this.stopListening( plan );
 
 			this.set({ plans: _.without( this.get( 'plans' ), plan ) });
@@ -157,6 +197,10 @@ jQuery( function( $ ) {
 
 		var plansListContainer = document.getElementsByClassName( 'hyip-plans-list' )[0];
 		var addPlanForm = document.getElementsByClassName( 'hyip-add-plan-form' )[0];
+
+		if ( !_.isElement( plansListContainer ) || !_.isElement( addPlanForm ) ) {
+			console.warn( 'plansListContainer or addPlanForm is not a DOM element' );
+		}
 
 		this.plansListView = new PlansListView({ el: plansListContainer, controller: this });
 		this.addPlanFormView = new AddPlanFormView({ el: addPlanForm, controller: this });
@@ -202,6 +246,11 @@ jQuery( function( $ ) {
 		this.plansListView = plansListView;
 
 		var el = this.plansListView.appendPlan( plan.get( 'html' ) );
+
+		if ( !_.isElement( el ) ) {
+			console.warn( 'planView el is not a DOM element' );
+		}
+
 		this.planView = new PlanView({ el: el, controller: this });
 
 		this.listenTo( this.plan, 'change:html', this.setUpdate );
@@ -223,6 +272,11 @@ jQuery( function( $ ) {
 		this.planView.delete();
 
 		var el = this.plansListView.replacePlan( this.planView.el, planHtml );
+
+		if ( !_.isElement( el ) ) {
+			console.warn( 'planView el is not a DOM element' );
+		}
+
 		this.planView = new PlanView({ el: el, controller: this });
 	};
 
@@ -288,11 +342,20 @@ jQuery( function( $ ) {
 
 	var PlansListView = Backbone.View.extend({
 
-		appendPlan: function( planHtml ) {
-			return $( planHtml ).hide().appendTo( this.el ).fadeIn( 'slow' ).get( 0 );				 
+		appendPlan: function( plan ) {
+			if ( !_.isElement( plan ) && typeof plan !== 'string' ) {
+				console.warn( 'plan for appending to plansList container must be htmlstring or DOM object' );
+			}
+
+			return $( plan ).hide().appendTo( this.el ).fadeIn( 'slow' ).get( 0 );				 
 		},
 
 		replacePlan: function( oldPlan, newPlan ) {
+			if ( !_.isElement( oldPlan ) && typeof oldPlan !== 'string' ||
+				 !_.isElement( newPlan ) && typeof newPlan !== 'string') {
+				console.warn( 'plans for replacing in plansList container must be htmlstring or DOM object' );
+			}
+
 			return $( newPlan ).hide().replaceAll( oldPlan ).fadeIn( 'slow' ).get( 0 );				 
 		}
 		
@@ -347,11 +410,19 @@ jQuery( function( $ ) {
 
 	//------------------------ Initialization ---------------------------
 
-	var plansList = new PlansList();
-	var plansListController = new PlansListController( plansList );
+	if ( typeof hyipPlansList !== 'undefined' ) {
 
-	hyipPlansList.forEach( function( plan ) {
-		plansList.createNewPlan( plan );
-	} );
+		if ( !Array.isArray( hyipPlansList ) ) {
+			console.warn( 'hyipPlanList must be an array' );
+		}
 
+		var plansList = new PlansList();
+		var plansListController = new PlansListController( plansList );
+
+		hyipPlansList.forEach( function( plan ) {
+			plansList.createNewPlan( plan );
+		} );
+	}
+
+	
 } );

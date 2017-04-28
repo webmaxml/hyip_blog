@@ -15,6 +15,10 @@ class Hyip_Plan {
 	private function __construct() {}
 
 	public function get_plan( $plan ) {
+		if ( !is_object( $plan ) ) {
+			trigger_error( 'plan for get_plan must be object' );
+		}
+
 		$result =  array(
 			'name' => $plan->post_title,
 			'payment_percent' => get_field( 'payment_percent', $plan->ID ),
@@ -30,6 +34,10 @@ class Hyip_Plan {
 	}
 
 	public function update_plan( $args, $hyip ) {
+
+		if ( !is_object( $hyip ) ) {
+			trigger_error( '$hyip for update_plan must be object' );
+		}
 
 		if ( !isset( $args[ 'id' ] ) ||
 			 !isset( $args[ 'name' ] ) ||

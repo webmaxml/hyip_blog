@@ -2,7 +2,8 @@
   "name": "hd",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --inline"
+    "start": "webpack-dev-server --inline",
+    "test": "mocha-webpack --webpack-config webpack.config-test.js --watch \"src/tests/**/*.js\""
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -14,6 +15,7 @@
     "babel-preset-react": "^6.5.0",
     "backbone": "^1.3.3",
     "bottlejs": "^1.5.0",
+    "chai": "^3.5.0",
     "compass-mixins": "^0.12.10",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -28,6 +30,8 @@
     "javascript-state-machine": "^2.4.0",
     "jquery-touch-events": "^1.0.7",
     "jquery-validation": "^1.16.0",
+    "mocha": "^3.3.0",
+    "mocha-webpack": "^0.7.0",
     "node-sass": "^3.7.0",
     "owl.carousel": "^2.2.0",
     "postcss-loader": "^0.9.1",
@@ -52,12 +56,14 @@
     "reload-html-webpack-plugin": "^0.1.2",
     "resolve-url-loader": "^1.4.3",
     "sass-loader": "^3.2.0",
+    "sinon": "^2.1.0",
     "slick-carousel": "^1.6.0",
     "style-loader": "^0.13.1",
     "tooltipster": "^4.1.6",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "jquery": "^2.2.3",

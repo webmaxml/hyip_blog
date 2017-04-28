@@ -6,5 +6,9 @@ console.log( globalData );
 console.log( '--localData--' );
 console.log( localData );
 
-bottle.container.routerController;
+$( function() {
+	bottle.container.routerController;
+} );
+
+
 

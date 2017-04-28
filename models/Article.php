@@ -25,6 +25,7 @@ class Article {
 
 		$article = array();
 
+		$article[ 'id' ] = $post->ID;
 		$article[ 'link' ] = get_permalink();
 		$article[ 'title' ] = array( 
 			'name' => the_title( '', '', false ),
@@ -36,6 +37,7 @@ class Article {
 		$article[ 'views' ] = pvc_get_post_views( $post->ID ) . ' просмотров';
 		$article[ 'thumbnail_url' ] = get_the_post_thumbnail_url( $post, 'thumbnail' );
 		$article[ 'excerpt' ] = apply_filters( 'the_excerpt', get_the_excerpt() );
+		$article[ 'excerpt_text' ] = get_the_excerpt();
 		
 		$content = get_the_content();
 		$content = apply_filters( 'the_content', $content );
