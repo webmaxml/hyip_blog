@@ -20,7 +20,7 @@
 	}
 </style>
 <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 <script type=text/javascript>
 	var localData = {};
 </script>

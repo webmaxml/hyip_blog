@@ -81,9 +81,11 @@
 					</a>
 				</li>
 				<li class="postThumbnail__social-item">
-					<a class="postThumbnail__social-link-google" href="/">
+					<a class="postThumbnail__social-link-google"
+					   href="https://plus.google.com/share?url=<?php echo $item[ 'link' ]; ?>" 
+					   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
 						<i class="fa fa-google-plus postThumbnail__social-icon"></i>
-					</a>
+  					</a>
 				</li>
 			</ul>
 		</div>
