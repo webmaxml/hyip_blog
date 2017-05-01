@@ -17,7 +17,6 @@ class Widgets {
 	public function init() {
 		add_action( 'widgets_init', array( $this, 'remove_default_widgets' ) );
 		add_action( 'widgets_init', array( $this, 'register_theme_sidebars' ) );
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 	}
 
 	function remove_default_widgets() {
@@ -40,10 +39,6 @@ class Widgets {
 			'name' => 'Logo Sidebar',
 			'id' => 'logo_sidebar'
 		) );
-	}
-
-	function register_widgets() {
-		register_widget( 'Hyip_Logo_Widget' );
 	}
 
 }

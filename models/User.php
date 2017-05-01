@@ -15,6 +15,8 @@ class Hyip_User {
 	private function __construct() {}
 
 	public function init() {
+		add_action( 'user_register', array( $this, 'create_meta' ), 10, 1 );
+
 		$this->user = wp_get_current_user();
 	}
 
@@ -38,6 +40,10 @@ class Hyip_User {
 		);
 
 		return wp_signon( $creds, false );
+	}
+
+	public function create_meta( $user_id ) {
+		add_user_meta( $user_id, 'article_subscribed', 0 );
 	}
 
 }

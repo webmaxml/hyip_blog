@@ -22,6 +22,7 @@ import UpButton from './models/UpButton';
 import RefbackModalSelect from './models/RefbackModalSelect';
 import UserPopup from './models/UserPopup';
 import PostLoader from './models/PostLoader';
+import ArticleSubscribe from './models/ArticleSubscribe';
 
 /************************ Controllers **************************/
 
@@ -42,6 +43,7 @@ import UserPopupController from './controllers/UserPopupController';
 import LoginFormController from './controllers/LoginFormController';
 import RegistrationFormController from './controllers/RegistrationFormController';
 import PostLoaderController from './controllers/PostLoaderController';
+import SubscribeFormController from './controllers/SubscribeFormController';
 
 /************************ Views **************************/
 
@@ -59,6 +61,7 @@ import LoginFormView from './views/LoginFormView';
 import RegistrationFormView from './views/RegistrationFormView';
 import PostLoaderButtonView from './views/PostLoaderButtonView';
 import PostContainerView from './views/PostContainerView';
+import SubscribeFormView from './views/SubscribeFormView';
 
 /************************ Factories **************************/
 
@@ -100,7 +103,8 @@ bottle.service( 'viewMapper', ViewMapper,
 							  'userTabs',
 							  'registrationFormController',
 							  'loginFormController',
-							  'postLoaderController' );
+							  'postLoaderController',
+							  'subscribeFormController' );
 bottle.service( 'modelMapper', ModelMapper,
 							   'plansList',
 							   'profitCalcChart',
@@ -154,6 +158,11 @@ bottle.factory( 'postLoader', container => {
 		_page: container.page
 	})
 } );
+bottle.factory( 'articleSubscribe', container => {
+	return new ArticleSubscribe({
+		_globalData: container.globalData,
+	})
+} );
 
 /************************ Controllers **************************/
 
@@ -197,6 +206,7 @@ bottle.service( 'postLoaderController', PostLoaderController,
 										'postLoaderButtonView',
 										'postContainerView',
 										'globalData' );
+bottle.service( 'subscribeFormController', SubscribeFormController, 'articleSubscribe', 'subscribeFormView' );
 
 /************************ Views **************************/
 
@@ -214,6 +224,7 @@ bottle.service( 'loginFormView', LoginFormView );
 bottle.service( 'registrationFormView', RegistrationFormView );
 bottle.service( 'postLoaderButtonView', PostLoaderButtonView );
 bottle.service( 'postContainerView', PostContainerView );
+bottle.service( 'subscribeFormView', SubscribeFormView );
 
 /************************ Factories **************************/
 

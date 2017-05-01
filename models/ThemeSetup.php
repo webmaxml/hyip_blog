@@ -21,6 +21,7 @@ class Theme_Setup {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_scripts' ) );
 		add_action( 'init', array( $this, 'set_users_options' ) );
+
 		add_action( 'comment_post', array( $this, 'add_comment_rating' ) );
 	}
 

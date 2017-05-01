@@ -35,9 +35,57 @@
 		width: 100%;
 		height: $base-lh * 1.5;
 		margin-bottom: $base-lh;
+		border: 1px solid transparent;
+
+		&.subscribe__input--error { 
+			border: 1px solid $c_dead; 
+			box-shadow: inset 0.8px 0.6px 1px $c_dead;
+		}
+
+		&.subscribe__input--valid { 
+			border: 1px solid $c_sub_accent;
+			box-shadow: inset 0.8px 0.6px 1px $c_sub_accent; 
+		}
 	}
 
 	&__submit {
 		@extend %large_btn;
+		@extend %rncc;
+
+		width: 150px;
+		height: $base-lh * 2;
+		margin: 0 auto;
+
+		&.subscribe__submit--loading {
+
+			& .subscribe__submit-text { display: none; }
+			& .subscribe__submit-loader { display: block; }
+
+		}
 	}
+
+	&__submit-loader {
+		display: none;
+	}
+
+	&__error-container {
+		// this block is totally operated by jquery validation plugin
+		// in order to not see it by default:
+		display: none;
+
+		width: 100%;
+		margin-bottom: $base-lh;
+
+		font-family: $ff_header;
+		font-size: $fz6;
+		line-height: $base-lh;
+		color: $c_dead; 
+		text-align: left;
+	}
+
+	&__error--success {
+		color: $c_sub_accent;
+	}
+
+	
 }

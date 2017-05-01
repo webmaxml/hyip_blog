@@ -10,6 +10,7 @@ class Router_Controller {
 		$this->meta_boxes = Meta_Boxes::get_instance();
 		$this->filters = Filters::get_instance();
 		$this->widgets = Widgets::get_instance();
+		$this->subscribe = Hyip_Subscribe_Mail::get_instance();
 		$this->article_index = Article_Index::get_instance();
 		$this->article_tabs = Article_Tabs::get_instance();
 
@@ -17,6 +18,7 @@ class Router_Controller {
 		$this->ajax_login_controller = Ajax_Login_Controller::get_instance();
 		$this->ajax_registration_controller = Ajax_Registration_Controller::get_instance();
 		$this->ajax_hyip_plan_controller = Ajax_Hyip_Plan_Controller::get_instance();
+		$this->ajax_article_subscribe_controller = Ajax_Article_Subscribe_Controller::get_instance();
 
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			$this->ajax_init();
@@ -34,6 +36,7 @@ class Router_Controller {
 		$this->meta_boxes->init();
 		$this->filters->init();
 		$this->widgets->init();
+		$this->subscribe->init();
 	}
 
 	public function init_with_wp() {
@@ -55,6 +58,7 @@ class Router_Controller {
 		$this->ajax_login_controller->init();
 		$this->ajax_registration_controller->init();
 		$this->ajax_hyip_plan_controller->init();
+		$this->ajax_article_subscribe_controller->init();
 	}
 }
 
