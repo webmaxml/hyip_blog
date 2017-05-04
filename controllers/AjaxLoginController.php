@@ -28,7 +28,7 @@ class Ajax_Login_Controller {
 			wp_send_json_error( 'Ошибка верификации формы' ); 
 		}
 
-		$login = isset( $_POST[ 'login' ] ) ? $_POST[ 'login' ] : false;
+		$login = isset( $_POST[ 'login' ] ) ? sanitize_user( $_POST[ 'login' ] ) : false;
 		$pwd = isset( $_POST[ 'password' ] ) ? $_POST[ 'password' ] : false;
 		$rememberme = isset( $_POST[ 'rememberme' ] ) ? $_POST[ 'rememberme' ] : false;
 

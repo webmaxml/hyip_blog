@@ -2,8 +2,6 @@
 
 <?php get_header(); ?>
 
-<pre><?php print_r( Hyip_Subscribe_Mail::get_instance()->send_emails( 42, get_post( 42 ) ) ); ?></pre>
-
 	<div class="wrapper">
 		<?php $view->get( 'topBanner' ); ?>
 		<?php $view->get( 'header' ); ?>

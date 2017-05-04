@@ -28,9 +28,13 @@ class Ajax_Registration_Controller {
 			wp_send_json_error( 'Ошибка верификации формы' ); 
 		}
 
-		$login = isset( $_POST[ 'login' ] ) ? $_POST[ 'login' ] : false;
+		$login = isset( $_POST[ 'login' ] ) ? sanitize_user( $_POST[ 'login' ] ) : false;
 		$pwd = isset( $_POST[ 'password' ] ) ? $_POST[ 'password' ] : false;
-		$email = isset( $_POST[ 'email' ] ) ? $_POST[ 'email' ] : false;
+		$email = isset( $_POST[ 'email' ] ) ? sanitize_email( $_POST[ 'email' ] ) : false;
+
+		if ( !is_email( $email ) ) {
+			wp_send_json_error( 'Мы не работаем с подобными почтовыми адресами. Пожалуйста, выберите другой адрес' );
+		}
 
 		if ( $login === false || $pwd === false || $email === false ) {
 			wp_send_json_error( 'Логин, пароль или email не заданы. По идее такого не может быть. Однако...' ); 
